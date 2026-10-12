@@ -1,0 +1,56 @@
+{
+  "_nota": "Congelado usando SÓ o split calib da Fase 3, antes de calcular qualquer métrica no teste.",
+  "congelado_em": "2026-10-12T09:54:29-0300",
+  "grid": "runs/fase3-grid",
+  "n_calib_avaliaveis": 140,
+  "tau1": 0.8,
+  "curva_tau1_calib": {
+    "0.0": 0.84625,
+    "0.3": 0.84625,
+    "0.4": 0.84625,
+    "0.5": 0.84625,
+    "0.6": 0.84375,
+    "0.7": 0.855,
+    "0.8": 0.8575,
+    "0.85": 0.8575,
+    "0.9": 0.85,
+    "0.95": 0.8375,
+    "0.98": 0.8325,
+    "0.99": 0.79375,
+    "0.995": 0.77125,
+    "0.999": 0.6625
+  },
+  "c2": {
+    "v1_score": {
+      "params": {
+        "tau": 0.0,
+        "fallback": "complexa"
+      },
+      "atinge_criterio": true,
+      "calib_nota": 4.542448979591837,
+      "calib_custo": 0.0004582294106122449
+    },
+    "v2_ctx": {
+      "params": {
+        "tau": 0.8,
+        "fallback": "+1"
+      },
+      "atinge_criterio": true,
+      "calib_nota": 4.530816326530612,
+      "calib_custo": 0.0005428991668027211
+    },
+    "v3_noul": {
+      "params": {
+        "ta": 0.7,
+        "tb": 0.3
+      },
+      "atinge_criterio": true,
+      "calib_nota": 4.527891156462585,
+      "calib_custo": 0.00043803047292517006
+    }
+  },
+  "ref_calib_always_media": {
+    "nota": 4.566258503401361,
+    "custo": 0.0003490589708843537
+  }
+}

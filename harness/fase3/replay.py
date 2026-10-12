@@ -103,12 +103,50 @@ def holm(ps):
     return adj
 
 
+GRID_T1 = [0.0, .3, .4, .5, .6, .7, .8, .85, .9, .95, .98, .99, .995, .999]
+
+
+def u1(c, it, tau):
+    """mesma utilidade da Fase 2 (harness/calibrate.py): +1 certo; +1 clarificou ambígua; +0,5 ambígua p/ rótulo aceito; -1 errado; 0 clarificou clara"""
+    acc = c["p_max"] >= tau; ch = c["raw_choice"]; lab = it["label"]
+    if lab == "clarificar": return 1 if not acc else (0.5 if ch in (it.get("aceitos") or []) else -1)
+    return (1 if ch == lab else -1) if acc else 0
+
+
+def c1_metricas(ds, c1, split, tau):
+    ids = [i for i in c1 if ds[i]["split"] == split]; claras = [i for i in ids if ds[i]["label"] != "clarificar"]
+    amb = [i for i in ids if ds[i]["label"] == "clarificar"]
+    aceitas = [i for i in claras if c1[i]["p_max"] >= tau]
+    return {"n": len(ids), "acuracia_bruta_claras": sum(c1[i]["raw_choice"] == ds[i]["label"] for i in claras) / max(1, len(claras)),
+            "taxa_clarificacao": sum(c1[i]["p_max"] < tau for i in ids) / max(1, len(ids)),
+            "clarificacao_desnecessaria": sum(c1[i]["p_max"] < tau for i in claras) / max(1, len(claras)),
+            "erro_entre_aceitas": sum(c1[i]["raw_choice"] != ds[i]["label"] for i in aceitas) / max(1, len(aceitas)),
+            "ambiguas_ok": sum((c1[i]["p_max"] < tau) or (c1[i]["raw_choice"] in (ds[i].get("aceitos") or [])) for i in amb) / max(1, len(amb)),
+            "utilidade": sum(u1(c1[i], ds[i], tau) for i in ids) / max(1, len(ids))}
+
+
+def ajustar_tau1(ds, c1):
+    ids = [i for i in c1 if ds[i]["split"] == "calib"]
+    curva = {t: sum(u1(c1[i], ds[i], t) for i in ids) / len(ids) for t in GRID_T1}
+    return max(GRID_T1, key=lambda t: (round(curva[t], 6), -t)), curva
+
+
 def main(grid, tau1=None, out="report/fase3"):
     from ..pipeline import TH
-    tau1 = TH["tau1"] if tau1 is None else tau1
     ds, c1, c2, ger = carregar(grid)
+    tau1_fase2 = TH["tau1"]
+    CONG = ROOT / "config/fase3_congelado.json"
+    if CONG.exists():  # parâmetros congelados ANTES de olhar o teste
+        cg = json.loads(CONG.read_text()); tau1_ajustado, curva_t1 = cg["tau1"], {float(k): v for k, v in cg["curva_tau1_calib"].items()}
+    else:
+        cg = None; tau1_ajustado, curva_t1 = ajustar_tau1(ds, c1)
+    tau1 = tau1_ajustado if tau1 is None else tau1
+    c1_tab = {f"τ1={t} ({nome})": {sp: c1_metricas(ds, c1, sp, t) for sp in ("calib", "teste")} for t, nome in ((tau1_fase2, "Fase 2"), (tau1_ajustado, "reajustado no calib Fase 3"), (0.0, "sem threshold"))}
     cal, tst = itens_avaliaveis(ds, c1, c2, ger, "calib", tau1), itens_avaliaveis(ds, c1, c2, ger, "teste", tau1)
     best, ref_cal = ajustar(cal)
+    if cg:
+        assert all(best[v]["params"] == cg["c2"][v]["params"] for v in best), "ajuste do calib diverge do congelado"
+        best = cg["c2"]
     est = {"always-cheap": "always-cheap", "always-media": "always-media", "always-expensive": "always-expensive",
            "oracle-regra": "oracle-regra", "oracle-empirico": "oracle-empirico"}
     for var, b in best.items(): est[f"msd1-{var}"] = (var, b["params"])
@@ -123,12 +161,16 @@ def main(grid, tau1=None, out="report/fase3"):
         z = [(V.politica(c2[i][var], var, b["params"]), ds[i]["tier_regra"]) for i in c2 if ds[i]["split"] == "teste" and ds[i]["tier_regra"] and var in c2[i]]
         acc[var] = {"n": len(z), "acerto_vs_regra": sum(a == b_ for a, b_ in z) / len(z) if z else None}
     por_tier = {k: {t: (sum(it["peso"] * q for it, q in zip(tst, M[k]["_q"]) if it["tier_regra"] == t) / max(1e-9, sum(it["peso"] for it in tst if it["tier_regra"] == t))) for t in ORD} for k in M}
-    res = {"n_calib": len(cal), "n_teste": len(tst), "tau1": tau1, "ajuste": best, "ref_calib_always_media": {k: ref_cal[k] for k in ("nota", "custo")},
+    res = {"n_calib": len(cal), "n_teste": len(tst), "tau1": tau1, "tau1_fase2": tau1_fase2, "tau1_ajustado": tau1_ajustado, "curva_tau1_calib": curva_t1, "c1": c1_tab, "ajuste": best, "ref_calib_always_media": {k: ref_cal[k] for k in ("nota", "custo")},
            "teste": {k: {kk: vv for kk, vv in m.items() if not kk.startswith("_")} for k, m in M.items()}, "pareado": P, "c2_acerto": acc, "nota_por_tier_regra": por_tier,
            "truncamento": {t: sum(it["trunc"][t] for it in tst) / max(1, len(tst)) for t in ORD}}
     o = pathlib.Path(out); o.mkdir(parents=True, exist_ok=True)
     (o / "replay_resultado.json").write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str))
     L = ["# Resultados da Fase 3 (replay)", "", f"Grid: `{grid}` · itens avaliáveis: calib {len(cal)}, teste {len(tst)} · τ1={tau1}. Médias ponderadas pelo peso de amostragem.", "",
+         "## Camada 1 — τ1", "", "| configuração | split | acurácia (claras) | clarificação | clarif. desnecessária | erro entre aceitas | ambíguas ok | utilidade |", "|---|---|---:|---:|---:|---:|---:|---:|"]
+    for k, d in c1_tab.items():
+        for sp, m in d.items(): L.append(f"| {k} | {sp} | {100*m['acuracia_bruta_claras']:.1f}% | {100*m['taxa_clarificacao']:.1f}% | {100*m['clarificacao_desnecessaria']:.1f}% | {100*m['erro_entre_aceitas']:.1f}% | {100*m['ambiguas_ok']:.1f}% | {m['utilidade']:.3f} |")
+    L += ["",
          "## Parâmetros da Camada 2 escolhidos no calib", "", "| variante | parâmetros | atinge critério | nota calib | US$/msg calib |", "|---|---|---|---:|---:|"]
     for v, b in best.items(): L.append(f"| {v} | `{b['params']}` | {b['atinge_criterio']} | {b['calib_nota']:.3f} | {b['calib_custo']:.6f} |")
     L += ["", f"Referência no calib — always-media: nota {ref_cal['nota']:.3f}, US${ref_cal['custo']:.6f}/msg.", "", "## Teste", "",
@@ -145,6 +187,20 @@ def main(grid, tau1=None, out="report/fase3"):
     (o / "RESULTADOS_FASE3.md").write_text("\n".join(L) + "\n"); print("\n".join(L)); return res
 
 
+def congelar(grid):
+    """Só calib: escolhe τ1 e parâmetros da C2 e grava config/fase3_congelado.json (antes de qualquer métrica de teste)."""
+    import time
+    ds, c1, c2, ger = carregar(grid)
+    t1, curva = ajustar_tau1(ds, c1)
+    cal = itens_avaliaveis(ds, c1, c2, ger, "calib", t1)
+    best, ref = ajustar(cal)
+    cg = {"_nota": "Congelado usando SÓ o split calib da Fase 3, antes de calcular qualquer métrica no teste.", "congelado_em": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+          "grid": str(grid), "n_calib_avaliaveis": len(cal), "tau1": t1, "curva_tau1_calib": curva, "c2": best,
+          "ref_calib_always_media": {k: ref[k] for k in ("nota", "custo")}}
+    (ROOT / "config/fase3_congelado.json").write_text(json.dumps(cg, indent=2, ensure_ascii=False)); print(json.dumps(cg, indent=1, ensure_ascii=False))
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
+    if "--congelar" in a: congelar(a[0]); sys.exit()
     main(a[0], float(a[a.index("--tau1") + 1]) if "--tau1" in a else None, a[a.index("--out") + 1] if "--out" in a else "report/fase3")

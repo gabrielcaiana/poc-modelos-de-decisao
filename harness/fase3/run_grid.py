@@ -38,7 +38,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(); g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--mock", action="store_true"); g.add_argument("--live", action="store_true")
     ap.add_argument("--split", default="all"); ap.add_argument("--limit", type=int); ap.add_argument("--ids")
-    ap.add_argument("--sem-geracao", action="store_true"); ap.add_argument("--session-cap", type=float); ap.add_argument("--out", required=True)
+    ap.add_argument("--sem-geracao", action="store_true"); ap.add_argument("--workers", type=int, default=1); ap.add_argument("--session-cap", type=float); ap.add_argument("--out", required=True)
     a = ap.parse_args(argv)
     ids_m = {P.MODELS["msd1"], P.MODELS["judge"], *P.MODELS["tiers"].values()}
     prices = load_prices(refresh=a.live, ids=ids_m)
@@ -55,33 +55,46 @@ def main(argv=None):
            "dataset_sha256": hashlib.sha256(DS.read_bytes()).hexdigest(), "n_itens": len(items), "ledger_antes_usd": budget.spent,
            "max_tokens": P.MAX_TOKENS, "variantes_c2": VARS, "precos": {k: prices.get(k) for k in ids_m}}
     status = "ok"
-    with open(gf, "a") as f:
-        w = lambda r: (f.write(json.dumps({"ts": time.time(), **r}, ensure_ascii=False) + "\n"), f.flush())
+    import threading
+    from concurrent.futures import ThreadPoolExecutor
+    lock = threading.Lock(); parar = threading.Event()
+    f = open(gf, "a")
+    def w(r):
+        with lock: f.write(json.dumps({"ts": time.time(), **r}, ensure_ascii=False) + "\n"); f.flush()
+    def proc(it):
+        if parar.is_set(): return
         try:
-            for it in items:
-                st = P.state_of(it["mensagem"], it.get("historico"))
-                if it["id"] in c1_cache:
-                    c1 = c1_cache[it["id"]]
-                else:
-                    _, d1 = P.camada1(c, st, tau1=0)
-                    c1 = {"id": it["id"], "tipo": "c1", "probs": d1["probs"], "raw_choice": d1["raw_choice"], "p_max": d1["p_max"],
-                          "cost": d1["cost"], "lat_ms": d1["lat_ms"], "model": d1.get("model")}
-                    w(c1); c1_cache[it["id"]] = c1
-                sub = c1["raw_choice"]
-                if sub == "fora_de_escopo": continue
-                for v in VARS:
-                    if (it["id"], "c2", v) in feitos: continue
-                    w({"id": it["id"], "tipo": "c2", "subagente": sub, **V.decidir(c, it, sub, v)})
-                if not it.get("gerar") or a.sem_geracao: continue
-                for tier in P.TIER_ORDER:
-                    if (it["id"], "ger", tier) in feitos: continue
-                    g_ = P.gerar(c, sub, tier, it["mensagem"], it.get("historico"))
-                    j = julgar(c, it, g_["contexto"], g_["text"])
-                    w({"id": it["id"], "tipo": "ger", "tier": tier, "subagente": sub, "modelo": g_.get("model"), "provider": g_.get("provider"),
-                       "usage": g_.get("usage"), "finish": g_.get("finish"), "cost": g_["cost"], "lat_ms": g_["lat_ms"], "resposta": g_["text"],
-                       "contexto": g_["contexto"], "juiz": j})
+            st = P.state_of(it["mensagem"], it.get("historico"))
+            c1 = c1_cache.get(it["id"])
+            if c1 is None:
+                _, d1 = P.camada1(c, st, tau1=0)
+                c1 = {"id": it["id"], "tipo": "c1", "probs": d1["probs"], "raw_choice": d1["raw_choice"], "p_max": d1["p_max"],
+                      "cost": d1["cost"], "lat_ms": d1["lat_ms"], "model": d1.get("model")}
+                w(c1); c1_cache[it["id"]] = c1
+            sub = c1["raw_choice"]
+            if sub == "fora_de_escopo": return
+            for v in VARS:
+                if (it["id"], "c2", v) in feitos: continue
+                w({"id": it["id"], "tipo": "c2", "subagente": sub, **V.decidir(c, it, sub, v)})
+            if not it.get("gerar") or a.sem_geracao: return
+            for tier in P.TIER_ORDER:
+                if (it["id"], "ger", tier) in feitos: continue
+                g_ = P.gerar(c, sub, tier, it["mensagem"], it.get("historico"))
+                j = julgar(c, it, g_["contexto"], g_["text"])
+                w({"id": it["id"], "tipo": "ger", "tier": tier, "subagente": sub, "modelo": g_.get("model"), "provider": g_.get("provider"),
+                   "usage": g_.get("usage"), "finish": g_.get("finish"), "cost": g_["cost"], "lat_ms": g_["lat_ms"], "resposta": g_["text"],
+                   "contexto": g_["contexto"], "juiz": j})
         except BudgetExceeded as e:
-            status = f"ABORTADO_ORCAMENTO: {e}"; print(status, file=sys.stderr)
+            parar.set(); erros.append(f"ABORTADO_ORCAMENTO: {e}")
+        except Exception as e:  # erro HTTP persistente: registra e segue (item fica incompleto, retomável)
+            erros.append(f"{it['id']}: {str(e)[:200]}")
+    erros = []
+    with ThreadPoolExecutor(max_workers=a.workers) as ex:
+        list(ex.map(proc, items))
+    f.close()
+    aborts = [e for e in erros if e.startswith("ABORTADO")]
+    if aborts: status = aborts[0]; print(status, file=sys.stderr)
+    man["erros"] = erros[:50]; man["n_erros"] = len(erros)
     man.update({"fim": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "status": status, "ledger_depois_usd": budget.spent, "gasto_sessao_usd": budget.session_spent})
     (out / f"manifest-{time.strftime('%H%M%S')}.json").write_text(json.dumps(man, indent=2, ensure_ascii=False))
     print(f"{out}  status={status}  gasto_sessao=US${budget.session_spent:.6f}  ledger=US${budget.spent:.6f}")
