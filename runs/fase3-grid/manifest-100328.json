@@ -1,0 +1,56 @@
+{
+  "inicio": "2026-10-12T09:54:24-0300",
+  "modo": "live",
+  "models": {
+    "_verificado_em": "2026-10-12 via https://openrouter.ai/api/v1/models",
+    "msd1": "microsoft/microsoft-decision-1",
+    "tiers": {
+      "simples": "google/gemini-2.5-flash-lite",
+      "media": "google/gemini-3.5-flash-lite",
+      "complexa": "openai/gpt-6-sol"
+    },
+    "judge": "deepseek/deepseek-v4.1-flash"
+  },
+  "tau1": 0.9,
+  "dataset_sha256": "dea0175ebf5ba04b93f7256b7d4f046695085524a06124cc4b9fbe051ae76426",
+  "n_itens": 600,
+  "ledger_antes_usd": 0.7797683200000023,
+  "max_tokens": {
+    "simples": 400,
+    "media": 400,
+    "complexa": 800
+  },
+  "variantes_c2": [
+    "v1_score",
+    "v2_ctx",
+    "v3_noul"
+  ],
+  "precos": {
+    "microsoft/microsoft-decision-1": {
+      "in": 4.2e-08,
+      "out": 0.0
+    },
+    "google/gemini-3.5-flash-lite": {
+      "in": 3e-07,
+      "out": 2.5e-06
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "in": 1.5e-07,
+      "out": 6e-07
+    },
+    "openai/gpt-6-sol": {
+      "in": 2e-06,
+      "out": 1e-05
+    },
+    "google/gemini-2.5-flash-lite": {
+      "in": 1e-07,
+      "out": 4e-07
+    }
+  },
+  "erros": [],
+  "n_erros": 0,
+  "fim": "2026-10-12T10:03:28-0300",
+  "status": "ok",
+  "ledger_depois_usd": 1.6638659797600097,
+  "gasto_sessao_usd": 0.8840976597599969
+}

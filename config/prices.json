@@ -1,6 +1,6 @@
 {
   "_fonte": "https://openrouter.ai/api/v1/models",
-  "_data": "2026-10-12 09:44 -03",
+  "_data": "2026-10-12 09:54 -03",
   "models": {
     "openai/gpt-6-sol": {
       "in": 2e-06,

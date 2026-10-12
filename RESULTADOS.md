@@ -1,3 +1,5 @@
+> **Atualização:** a Fase 3 (1000 conversas) muda esta conclusão em parte. Veja [`RESULTADOS_FASE3.md`](RESULTADOS_FASE3.md).
+
 # Resultados — POC modelos de decisão (Fase 2)
 
 Rodada: `20261012-holdout-live` (holdout, 60 mensagens × 6 estratégias), iniciada 2026-10-12T08:57:56-0300 (horário de SP). Calibração: `20261012-085619-calib-live` (180 mensagens do split calib).

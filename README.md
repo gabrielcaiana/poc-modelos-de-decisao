@@ -209,15 +209,39 @@ A chave nunca entra no código: vem só da variável `OPENROUTER_API_KEY` (veja 
 - Medi a latência de um único servidor Linux em São Paulo, num só horário.
 - O manifest da rodada registra o sha256 do dataset antes de eu renomear um campo de metadados (`rotulo_autor` → `rotulo_status`); mensagens, rótulos e splits não mudaram.
 
-## Fase 3 (em preparação)
+## Fase 3: 1000 conversas, testes de significância
 
-Preparei uma terceira fase para testar se a derrota da Camada 2 para always-media foi efeito do teste pequeno: 1000 conversas multi-turno com contexto de pedido, distribuição realista de complexidade, coleta em grade com replay pareado, três variantes da Camada 2 (incluindo uma que vê o resultado da ferramenta) e testes de significância. A análise dos dados da Fase 2 já mostrou que o modelo barato passa em 93% das mensagens sem nº de pedido e em só 23% das que exigem cruzar o pedido com a política. Detalhes em [`PLANO_FASE3.md`](PLANO_FASE3.md), custo em [`ESTIMATIVA_CUSTO_FASE3.md`](ESTIMATIVA_CUSTO_FASE3.md).
+Na Fase 3, testei se a derrota da Camada 2 para always-media foi efeito do teste pequeno. Montei:
+
+- 1000 conversas multi-turno com contexto de pedido e distribuição realista de complexidade;
+- coleta em grade com replay pareado;
+- três variantes da Camada 2;
+- ajuste feito só no calib e congelado antes do teste;
+- testes estatísticos: bootstrap, permutação, McNemar e correção de Holm.
+
+As conversas e os rótulos também foram gerados com apoio de um LLM e ainda não passaram por revisão humana. O relatório completo está em [`RESULTADOS_FASE3.md`](RESULTADOS_FASE3.md).
+
+**A conclusão muda em parte.** No teste (265 conversas):
+
+- O msd1 deixou de ser dominado por always-media, mas a vantagem não é significativa:
+  - `v2_ctx`: nota 4,629 contra 4,588, Δ +0,041 (IC95% −0,004; +0,091), p de Holm 0,51;
+  - taxa de "passa" 88,7% contra 85,9%, McNemar com Holm p = 0,054.
+- Contra always-expensive, a qualidade é estatisticamente igual, com 77–82% menos custo:
+  - `v1_score`: Δ −0,038 (−0,091; +0,013);
+  - custo de US$0,000427 contra US$0,002238 por mensagem.
+- O ganho está na cauda complexa (análise exploratória): +0,40 ponto sobre always-media, IC95% (+0,26; +0,56).
+- O τ1 reajustado no calib foi de 0,9 para 0,8. No teste, a utilidade empatou (0,848): o novo valor pede menos clarificações (2,8% vs 5,2%), mas acerta menos ambíguas.
+- Gasto da Fase 3: US$1,35. Ledger acumulado: US$1,66.
+
+![Custo × qualidade (Fase 3)](report/graficos/fase3/custo_vs_qualidade_fase3.png)
+
+![Rastro de uma conversa](report/graficos/fase3/terminal_rastro_c0541.png)
 
 ## Próximos passos
 
 1. Revisão humana dos rótulos e calibração do juiz com a planilha cega (kappa ponderado).
-2. Rotular o tier de forma **empírica** (o mais barato que passa no juiz) e recalibrar o τ2 em cima disso.
-3. Testar outras perguntas para a Camada 2 (por exemplo, "o modelo barato resolve isto?" como `noul`) em vez da escala de complexidade.
+2. Treinar ou ajustar a Camada 2 no tier **empírico**: na Fase 3, o oracle empírico chega à nota 4,706 pelo custo de always-media.
+3. Juiz com mais resolução (as notas saturam em 4,75).
 4. Conversas multi-turno com tool-calling real.
 5. Comparar a Camada 1 com um router gerativo (GPT-6 Luna) e com outros modelos de decisão (Jev, OpenAI Decisions).
 6. Aumentar o holdout para estreitar os intervalos de confiança.
@@ -253,6 +277,7 @@ datasets/  gerar_dataset.py, extra_v2.py, mensagens.jsonl (300 mensagens; split 
 mocks/     dados.py (pedidos fictícios, política, ferramenta de consulta)
 harness/   budget.py, client.py, pipeline.py, run.py, calibrate.py, judge.py, metrics.py,
            estimate.py, report.py, show.py, figuras_extra.py
+harness/fase3/  run_grid.py, replay.py, variantes.py, tier_empirico.py, figuras.py, show.py
 tests/     test_poc.py
 runs/      smoke-20261012/, 20261012-085619-calib-live/, 20261012-holdout-live/, ledger.json
 report/    graficos/*.png, tabelas/estrategias.csv, exemplos-routing.md, revisao_rotulos.csv

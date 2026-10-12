@@ -107,7 +107,20 @@ def relatorio(res, rows, titulo, out):
     print("\n".join(L[:9]))
 
 
+def carregar_fase3(grid):
+    ds = {r["id"]: r for r in map(json.loads, (ROOT / "datasets/fase3/conversas.jsonl").read_text().splitlines())}
+    por = defaultdict(dict)
+    for l in (pathlib.Path(grid) / "grid.jsonl").read_text().splitlines():
+        r = json.loads(l)
+        if r["tipo"] == "ger" and r["juiz"]["media"] is not None:
+            por[r["id"]][r["tier"]] = {"media": r["juiz"]["media"], **r["juiz"]["nota"], "resposta": r["resposta"]}
+    return [{"id": i, "mensagem": ds[i]["mensagem"], "historico": ds[i]["historico"], "label": ds[i]["label"], "tier_rotulo": ds[i]["tier_regra"], "notas": n}
+            for i, n in por.items() if len(n) == 3]
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]; out = a[a.index("--out") + 1] if "--out" in a else "report/fase3"
     if a[0] == "fase2":
         res, rows = analisar(carregar_fase2(a[1])); relatorio(res, rows, "Análise do tier empírico — dados da Fase 2 (holdout)", out)
+    else:
+        res, rows = analisar(carregar_fase3(a[1])); relatorio(res, rows, "Análise do tier empírico — Fase 3 (calib + teste, rótulo = regra)", out)

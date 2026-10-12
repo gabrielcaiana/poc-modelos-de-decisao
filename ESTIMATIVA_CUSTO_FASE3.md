@@ -1,6 +1,6 @@
 # Estimativa de custo — Fase 3
 
-Preços ao vivo do OpenRouter (`/api/v1/models`, 2026-10-12 09:44 -03); MSD1 em `config/prices_extra.json`. Gerado por `python3 -m harness.fase3.estimate`.
+Preços ao vivo do OpenRouter (`/api/v1/models`, 2026-10-12 09:49 -03); MSD1 em `config/prices_extra.json`. Gerado por `python3 -m harness.fase3.estimate`.
 
 ## Orçamento
 

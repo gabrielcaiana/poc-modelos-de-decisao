@@ -1,11 +1,11 @@
 {
-  "spent_usd": 0.3150301610000004,
-  "calls": 1195,
+  "spent_usd": 1.6638659797600097,
+  "calls": 7418,
   "by_model": {
-    "microsoft/microsoft-decision-1": 0.0035480760000000102,
-    "google/gemini-3.5-flash-lite": 0.047445,
-    "google/gemini-2.5-flash-lite": 0.007621500000000002,
-    "openai/gpt-6-sol": 0.21292599999999998,
-    "deepseek/deepseek-v4.1-flash": 0.04348958500000002
+    "microsoft/microsoft-decision-1": 0.03983788199999992,
+    "google/gemini-3.5-flash-lite": 0.19286149999999982,
+    "google/gemini-2.5-flash-lite": 0.03493779999999999,
+    "openai/gpt-6-sol": 1.205666,
+    "deepseek/deepseek-v4.1-flash": 0.19056279776000007
   }
 }

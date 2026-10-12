@@ -155,6 +155,11 @@ def main(grid, tau1=None, out="report/fase3"):
     P = {f"{a} vs {b}": pareado(tst, M[a], M[b]) for a, b in comps}
     adj = holm([x["p_perm_nota"] for x in P.values()])
     for (k, x), h in zip(P.items(), adj): x["p_perm_nota_holm"] = h
+    for (k, x), h in zip(P.items(), holm([x["mcnemar_p"] for x in P.values()])): x["mcnemar_p_holm"] = h
+    # subgrupo exploratório (post hoc): cauda complexa (tier da regra = complexa) — msd1 vs always-media
+    sub = [k for k, it in enumerate(tst) if it["tier_regra"] == "complexa"]; tsub = [tst[k] for k in sub]
+    Ms = {k: {kk: [M[k][kk][i] for i in sub] for kk in ("_q", "_c", "_p")} for k in M}
+    Psub = {f"{a} vs {b} [complexa]": pareado(tsub, Ms[a], Ms[b]) for a, b in comps if b == "always-media"}
     # acerto de tier da C2 (todas as conversas roteadas do teste) vs regra, nos parâmetros congelados
     acc = {}
     for var, b in best.items():
@@ -162,7 +167,7 @@ def main(grid, tau1=None, out="report/fase3"):
         acc[var] = {"n": len(z), "acerto_vs_regra": sum(a == b_ for a, b_ in z) / len(z) if z else None}
     por_tier = {k: {t: (sum(it["peso"] * q for it, q in zip(tst, M[k]["_q"]) if it["tier_regra"] == t) / max(1e-9, sum(it["peso"] for it in tst if it["tier_regra"] == t))) for t in ORD} for k in M}
     res = {"n_calib": len(cal), "n_teste": len(tst), "tau1": tau1, "tau1_fase2": tau1_fase2, "tau1_ajustado": tau1_ajustado, "curva_tau1_calib": curva_t1, "c1": c1_tab, "ajuste": best, "ref_calib_always_media": {k: ref_cal[k] for k in ("nota", "custo")},
-           "teste": {k: {kk: vv for kk, vv in m.items() if not kk.startswith("_")} for k, m in M.items()}, "pareado": P, "c2_acerto": acc, "nota_por_tier_regra": por_tier,
+           "teste": {k: {kk: vv for kk, vv in m.items() if not kk.startswith("_")} for k, m in M.items()}, "pareado": P, "pareado_complexa": Psub, "c2_acerto": acc, "nota_por_tier_regra": por_tier,
            "truncamento": {t: sum(it["trunc"][t] for it in tst) / max(1, len(tst)) for t in ORD}}
     o = pathlib.Path(out); o.mkdir(parents=True, exist_ok=True)
     (o / "replay_resultado.json").write_text(json.dumps(res, indent=2, ensure_ascii=False, default=str))
@@ -177,9 +182,12 @@ def main(grid, tau1=None, out="report/fase3"):
           "| estratégia | nota | % passa | US$/msg | sub-roteamento vs empírico | lat P50/P95 (s) | simples/media/complexa |", "|---|---:|---:|---:|---:|---:|---|"]
     for k, m in M.items():
         L.append(f"| {k} | {m['nota']:.3f} | {100*m['passa']:.1f}% | {m['custo']:.6f} | {100*m['sub_vs_empirico']:.1f}% | {m['lat_p50']/1000:.2f}/{m['lat_p95']/1000:.2f} | {m['dist'].get('simples',0)}/{m['dist'].get('media',0)}/{m['dist'].get('complexa',0)} |")
-    L += ["", "## Comparações pareadas (teste)", "", "| comparação | Δ nota (IC95%) | p perm. | p Holm | Δ US$/msg (IC95%) | McNemar p (passa) |", "|---|---:|---:|---:|---:|---:|"]
+    L += ["", "## Comparações pareadas (teste)", "", "| comparação | Δ nota (IC95%) | p perm. | p Holm | Δ US$/msg (IC95%) | McNemar p (passa) | McNemar p Holm | passa só A / só B |", "|---|---:|---:|---:|---:|---:|---:|---:|"]
     for k, x in P.items():
-        L.append(f"| {k} | {x['d_nota']:+.3f} ({x['d_nota_ic'][0]:+.3f}; {x['d_nota_ic'][1]:+.3f}) | {x['p_perm_nota']:.4f} | {x['p_perm_nota_holm']:.4f} | {x['d_custo']:+.6f} ({x['d_custo_ic'][0]:+.6f}; {x['d_custo_ic'][1]:+.6f}) | {x['mcnemar_p']:.4f} |")
+        L.append(f"| {k} | {x['d_nota']:+.3f} ({x['d_nota_ic'][0]:+.3f}; {x['d_nota_ic'][1]:+.3f}) | {x['p_perm_nota']:.4f} | {x['p_perm_nota_holm']:.4f} | {x['d_custo']:+.6f} ({x['d_custo_ic'][0]:+.6f}; {x['d_custo_ic'][1]:+.6f}) | {x['mcnemar_p']:.4f} | {x['mcnemar_p_holm']:.4f} | {x['a_passa_b_nao']} / {x['b_passa_a_nao']} |")
+    L += ["", f"Análise exploratória (post hoc, decidida depois de ver a quebra por tier; não estava no plano) — cauda complexa (n={len(tsub)}, sem correção adicional):", "", "| comparação | Δ nota (IC95%) | p perm. | Δ US$/msg (IC95%) | McNemar p |", "|---|---:|---:|---:|---:|"]
+    for k, x in Psub.items():
+        L.append(f"| {k} | {x['d_nota']:+.3f} ({x['d_nota_ic'][0]:+.3f}; {x['d_nota_ic'][1]:+.3f}) | {x['p_perm_nota']:.4f} | {x['d_custo']:+.6f} ({x['d_custo_ic'][0]:+.6f}; {x['d_custo_ic'][1]:+.6f}) | {x['mcnemar_p']:.4f} |")
     L += ["", "## Nota por tier da regra (teste)", "", "| estratégia | simples | media | complexa |", "|---|---:|---:|---:|"]
     for k, d in por_tier.items(): L.append(f"| {k} | " + " | ".join(f"{d[t]:.2f}" for t in ORD) + " |")
     L += ["", "## Acerto da C2 vs regra (todas as conversas roteadas do teste)", ""] + [f"- {v}: {a['acerto_vs_regra']:.3f} (n={a['n']})" if a["acerto_vs_regra"] is not None else f"- {v}: —" for v, a in acc.items()]

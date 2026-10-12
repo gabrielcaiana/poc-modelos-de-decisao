@@ -1,0 +1,417 @@
+id,label,tier_rotulo,tier_relativo,tier_absoluto,nao_resolvido,nota_simples,nota_media,nota_complexa,mensagem
+c0004,financeiro,simples,simples,simples,False,4.75,4.5,4.5,preciso saber: vocês cobram taxa de reembolso???
+c0000,financeiro,media,simples,simples,False,4.75,4.75,4.75,fui cobrado duas vezes no pedido 10435? obrigado
+c0002,financeiro,complexa,simples,simples,False,4.75,4.75,4.75,"por favor, três cobranças do pedido 10406 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0007,devolucao,complexa,media,media,False,4.0,4.75,4.75,"boa tarde! passou do prazo mas o notebook do pedido 10455 nunca funcionou direito, vocês têm que aceitar obrigado"
+c0005,financeiro,complexa,media,media,False,2.75,4.75,4.75,"devolvi só o kit do pedido 10452, que tinha cupom, e o estorno veio menor. quero o cálculo é urgente"
+c0003,clarificar,,media,media,False,4.0,4.5,4.5,preciso saber: ainda não resolveram pfv
+c0008,devolucao,simples,simples,simples,False,5.0,4.75,5.0,boa tarde! qual o prazo pra devolver? pfv
+c0009,financeiro,media,simples,simples,False,5.0,5.0,4.75,boa tarde! quando cai o reembolso do pedido 10418???
+c0010,devolucao,media,media,media,False,4.25,4.75,4.75,"o caneca do pedido 10444 parou de funcionar, tá na garantia? pfv"
+c0011,clarificar,,simples,simples,False,4.75,4.0,4.75,"oi, qro meu dinheiro de volta é urgente"
+c0012,clarificar,,media,media,False,2.75,4.75,4.75,"olá, uma dúvida: veio diferente e mais caro"
+c0013,devolucao,media,simples,simples,False,4.75,5.0,4.75,"o fone parou de funcionar, tá na garantia? obrigado"
+c0014,devolucao,simples,simples,simples,False,5.0,4.25,4.25,"por favor, vocês buscam o produto em casa?"
+c0015,financeiro,simples,simples,simples,False,4.5,4.75,4.75,"olá, uma dúvida: vocês cobram IOF??? pfv"
+c0017,devolucao,simples,complexa,media,False,3.25,4.5,5.0,"por favor, prazo conta da compra ou da entrega???"
+c0020,financeiro,simples,simples,simples,False,4.5,4.5,4.75,"oi, olá, uma dúvida: vocês estornam o frete?"
+c0016,financeiro,simples,simples,simples,False,4.75,4.5,4.75,"olá, uma dúvida: dá pra receber o reembolso como crédito na loja?"
+c0018,clarificar,,media,media,False,2.5,4.75,4.75,"oi, veio diferente e mais caro obrigado"
+c0022,devolucao,simples,simples,simples,False,5.0,4.75,5.0,preciso saber: aceita devolução de item de higiene aberto? valeu
+c0021,suporte,simples,simples,simples,False,4.75,4.75,4.5,"oi, vocês entregam no sábado? pfv"
+c0023,financeiro,complexa,simples,simples,False,4.5,4.5,4.75,"olá, uma dúvida: três cobranças do pedido 10411 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje?? pfv"
+c0024,suporte,simples,simples,simples,False,4.75,4.75,4.75,"por favor, como pareio o fone bluetooth? valeu"
+c0025,financeiro,simples,simples,simples,False,5.0,4.75,5.0,"por favor, reembolso cai em dia útil???"
+c0027,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, o boleto venceu, gero outro pfv"
+c0028,financeiro,simples,simples,simples,False,4.75,4.5,4.5,"olá, uma dúvida: vocês cobram taxa de reembolso? é urgente"
+c0026,financeiro,media,simples,simples,False,4.5,4.75,4.5,"oi, por favor, o estorno do pedido 10429 já foi feito?"
+c0030,devolucao,media,simples,simples,False,4.5,2.5,4.75,"preciso saber: o caneca do pedido 10401 parou de funcionar, tá na garantia? pfv"
+c0029,suporte,simples,media,media,False,3.0,4.75,3.25,"oi, como excluo minha conta? obrigado"
+c0031,financeiro,simples,simples,simples,False,4.75,5.0,4.75,"por favor, parcelado, o estorno volta parcelado?"
+c0032,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, o estorno sai em qual fatura?"
+c0033,suporte,simples,media,complexa,True,2.5,4.25,4.0,"oi, como excluo minha conta? é urgente"
+c0034,suporte,media,media,media,False,4.25,4.75,4.5,o pedido 10430 tá atrasado?
+c0037,devolucao,simples,simples,simples,False,4.5,4.5,4.75,preciso saber: como embalo o produto pra devolver???
+c0036,devolucao,complexa,simples,simples,False,4.75,4.75,4.75,"olá, uma dúvida: passou do prazo mas o mochila do pedido 10421 nunca funcionou direito, vocês têm que aceitar"
+c0038,financeiro,complexa,simples,simples,False,4.75,4.75,4.75,"três cobranças do pedido 10406 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje é urgente"
+c0039,devolucao,complexa,simples,simples,False,4.75,4.75,4.75,"boa tarde! passou do prazo mas o notebook do pedido 10440 nunca funcionou direito, vocês têm que aceitar pfv"
+c0040,financeiro,simples,simples,simples,False,4.5,4.75,4.75,preciso saber: o estorno sai em qual fatura? pfv pfv
+c0041,financeiro,media,simples,simples,False,4.75,4.75,4.75,"oi, oi, quanto vou receber de volta do pedido 10400?"
+c0042,devolucao,simples,simples,simples,False,4.5,4.75,3.75,troca de tamanho tem custo???
+c0043,financeiro,simples,simples,simples,False,4.75,4.75,4.75,dá pra antecipar o reembolso? obrigado
+c0045,financeiro,simples,simples,simples,False,4.5,4.75,4.75,"por favor, dá pra antecipar o reembolso? pfv"
+c0044,financeiro,simples,simples,simples,False,4.75,5.0,5.0,preciso saber: quanto tempo leva o reembolso no pix? valeu
+c0046,devolucao,simples,simples,simples,False,4.5,4.75,4.5,"olá, uma dúvida: quanto tempo vocês levam pra analisar a devolução???"
+c0048,devolucao,media,simples,simples,False,5.0,5.0,5.0,"boa tarde! quero devolver o camiseta do pedido 10454, ainda dá?"
+c0049,financeiro,simples,simples,simples,False,5.0,4.5,5.0,"oi, olá, uma dúvida: dá pra receber o reembolso como crédito na loja? valeu"
+c0047,devolucao,media,simples,simples,False,4.75,4.25,4.75,"preciso saber: o escova do pedido 10424 parou de funcionar, tá na garantia? é urgente"
+c0050,clarificar,,media,media,False,2.5,4.75,4.75,"oi, veio diferente e mais caro"
+c0051,financeiro,simples,simples,simples,False,4.75,4.5,5.0,o estorno sai em qual fatura?
+c0052,suporte,simples,simples,simples,False,4.5,4.5,4.75,"olá, uma dúvida: como pareio o fone bluetooth? é urgente"
+c0053,devolucao,simples,simples,simples,False,5.0,5.0,5.0,aceita devolução de item de higiene aberto?
+c0054,clarificar,,simples,simples,False,4.5,4.5,4.75,"oi, quero meu dinheiro de volta"
+c0055,devolucao,simples,simples,simples,False,4.75,4.75,4.75,como gero a etiqueta de devolução??? pfv
+c0057,financeiro,complexa,complexa,complexa,False,3.0,4.25,4.75,"parcelei o pedido 10430, devolvi metade e a fatura continua cheia obrigado"
+c0061,devolucao,simples,simples,simples,False,4.5,4.5,4.5,posso devolver sem a caixa original
+c0062,suporte,media,simples,simples,False,4.75,4.75,4.75,preciso saber: cadê o pedido 10440? obrigado
+c0059,financeiro,media,media,media,False,4.0,4.75,4.75,preciso saber: o estorno do pedio 10420 já foi feito?
+c0065,financeiro,media,complexa,complexa,False,2.75,2.5,4.75,"oi, paguei o meu pedido e aparece como não pago é urgente"
+c0063,financeiro,simples,media,media,False,3.5,4.5,4.75,"olá, uma dúvida: vocês cobram IOF? pfv"
+c0066,financeiro,simples,simples,simples,False,4.5,4.75,4.75,o estorno sai em qual fatura? obrigado
+c0067,devolucao,simples,simples,simples,False,4.5,4.75,4.5,troca de tamanho tem custo? valeu
+c0068,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"olá, uma dúvida: como gero a etiqta de devolução? pfv"
+c0069,devolucao,media,complexa,complexa,False,2.25,4.0,4.75,boa tarde! veio o liquidificador errado no pedido 10437 valeu
+c0070,devolucao,media,simples,simples,False,4.75,4.75,4.75,"oi, dá pra devolver o kit? é do pedido 10428 valeu pfv"
+c0071,financeiro,media,simples,complexa,False,4.25,1.75,4.5,"por favor, paguei o pedido 10447 e aparece como não pago"
+c0072,financeiro,simples,simples,simples,False,4.75,4.75,4.75,como peço segunda via do boleto???
+c0074,devolucao,complexa,complexa,complexa,False,2.25,3.0,4.75,"boa tarde! passou do prazo mas o escova do pedido 10409 nunca funcionou direito, vcs têm q aceitar??"
+c0073,devolucao,complexa,simples,simples,False,4.5,4.75,4.75,"no pedido 10432 usei cupom, um item veio com defeito e quero devolver só ele. quanto volta? é urgente"
+c0075,devolucao,media,simples,simples,False,4.5,4.5,4.75,"preciso saber: qro devolver o notebook do pedido 10455, ainda dá?"
+c0076,devolucao,media,simples,simples,False,4.75,4.75,4.75,"oi, dá pra devolver o kit? é do pedido 10423 obrigado pfv"
+c0077,devolucao,media,simples,simples,False,4.5,4.25,4.75,"oi, o liquidificador do pedido 10437 parou de funcionar, tá na garantia pfv"
+c0080,suporte,simples,simples,simples,False,4.75,4.75,4.75,"oi, qual o prazo de entrega pra Recife? pfv"
+c0078,devolucao,simples,simples,simples,False,4.75,4.75,4.75,boa tarde! quanto tempo vocês levam pra analisar a devolução?
+c0081,financeiro,simples,simples,simples,False,4.5,4.75,4.75,dá pra antecipar o reembolso? pfv
+c0083,devolucao,simples,media,media,False,4.25,4.5,4.75,prazo conta da compra ou da entrega? é urgente
+c0084,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"olá, uma dúvida: qual o prazo pra devolver é urgente"
+c0087,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"oi, como gero a etiqueta de devolução? obrigado"
+c0086,suporte,media,simples,simples,False,5.0,4.75,4.75,o pedido 10421 tá atrasado? pfv
+c0088,suporte,simples,media,media,False,4.25,4.75,4.5,"olá, uma dúvida: vcs entregam no sábado?"
+c0085,financeiro,complexa,media,media,False,3.0,4.75,4.75,"oi, olá, uma dúvida: três cobranças do pedido 10428 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje??"
+c0091,devolucao,media,simples,simples,False,5.0,4.75,4.75,"oi, preciso saber: dá pra devolver o mochila? é do pedido 10421"
+c0092,financeiro,media,simples,simples,False,4.5,4.75,4.5,o estorno do pedido 10403 já foi feito? valeu
+c0090,suporte,media,simples,simples,False,4.75,4.75,5.0,o pedido 10410 tá atrasado?
+c0093,devolucao,simples,simples,simples,False,4.5,4.5,4.75,"por favor, posso devolver sem a caixa original?"
+c0094,devolucao,simples,simples,simples,False,5.0,4.75,5.0,"oi, olá, uma dúvida: aceita devolução de item de higiene aberto?"
+c0095,suporte,media,media,simples,False,4.5,5.0,4.75,boa tarde! posso mudar o endereço do pedio 10452? é urgente
+c0096,financeiro,simples,simples,simples,False,4.75,4.75,4.75,boa tarde! como vejo o comprovante do estorno?
+c0100,devolucao,complexa,media,complexa,True,2.75,4.0,2.5,"no meu pedido usei cupom, um item veio com defeito e qro devolver só ele. quanto volta?"
+c0099,suporte,media,simples,simples,False,4.75,4.75,4.75,cadê o pedido 10433? obrigado
+c0102,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, o boleto venceu, gero outro???"
+c0097,devolucao,simples,simples,simples,False,5.0,4.5,4.5,preciso saber: como embalo o produto pra devolver? é urgente pfv
+c0104,suporte,simples,simples,simples,False,4.75,4.5,4.75,como configuro o smartwatch? obrigado
+c0108,financeiro,simples,simples,simples,False,4.5,4.5,4.5,preciso saber: vocês estornam o frete? valeu
+c0107,suporte,simples,media,media,False,3.5,4.5,3.75,preciso saber: como atualizo meu CPF?
+c0109,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, o boleto venceu, gero outro? obrigado"
+c0110,suporte,complexa,media,media,False,2.5,4.75,4.5,preciso saber: o pedido 10400 consta entregue mas não recebi nada e já é a terceira vez q reclamo pfv
+c0105,financeiro,media,simples,simples,False,4.75,4.75,4.75,boa tarde! fui cobrado duas vezes no pedido 10424?
+c0114,suporte,complexa,simples,simples,False,4.5,4.75,4.5,"alguém fez o pedido 10448 na minha conta, não fui eu"
+c0113,suporte,simples,simples,simples,False,5.0,4.25,4.5,como mudo minha senha? obrigado
+c0115,financeiro,media,complexa,complexa,False,4.0,4.25,4.75,"oi, quanto vou receber de volta do pedio 10456?"
+c0116,financeiro,media,complexa,complexa,False,2.5,4.25,4.75,preciso saber: paguei o pedido 10418 e aparece como não pago
+c0117,devolucao,simples,simples,simples,False,4.5,4.75,4.75,preciso saber: posso devolver sem a caixa original? pfv
+c0118,devolucao,complexa,media,media,False,4.0,4.75,4.75,"oi, por favor, é a segunda troca do mochila do pedido 10420 com defeito, quero meu dinheiro e não outro, isso é um absurdo??"
+c0122,suporte,simples,simples,simples,False,5.0,2.5,4.0,preciso saber: como mudo minha senha?
+c0119,suporte,simples,simples,simples,False,4.75,4.75,4.5,"por favor, o app mostra o rastreio?"
+c0120,devolucao,simples,simples,simples,False,4.75,4.5,4.5,"por favor, prazo conta da compra ou da entrega? pfv pfv"
+c0123,suporte,media,media,media,False,3.75,4.75,4.75,boa tarde! dá pra cancelar o pedido 10441? pfv pfv
+c0111,devolucao,simples,simples,simples,False,4.5,4.75,4.75,preciso saber: quanto tempo vocês levam pra analisar a devolução?
+c0126,suporte,media,media,media,False,4.25,4.75,4.75,"oi, dá pra cancelar o meu pedido?"
+c0127,suporte,media,media,simples,False,4.5,5.0,4.75,"olá, uma dúvida: dá pra cancelar o meu pedido? pfv pfv"
+c0128,devolucao,simples,simples,simples,False,5.0,5.0,5.0,aceita devolução de item de higiene aberto? obrigado
+c0124,financeiro,media,media,media,False,4.25,5.0,5.0,quanto vou receber de volta do pedio 10442?
+c0129,devolucao,complexa,media,media,False,2.75,5.0,4.75,"oi, quero devolver o notebook do pedido 10431 e trocar o outro item por um maior, como fica o valor?"
+c0131,suporte,simples,simples,simples,False,4.75,4.5,4.75,"olá, uma dúvida: como pareio o fone bluetooth? é urgente"
+c0130,financeiro,simples,complexa,complexa,False,3.75,4.25,4.75,vocês cobram IOF? pfv
+c0133,financeiro,simples,complexa,simples,False,4.5,4.5,5.0,dá pra receber o reembolso como crédito na loja?
+c0132,financeiro,media,simples,simples,False,4.75,4.75,4.75,"olá, uma dúvida: quando cai o reembolso do pedido 10452 obrigado"
+c0134,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"olá, uma dúvida: o boleto venceu, gero outro?"
+c0135,suporte,media,media,media,False,4.25,4.5,4.75,"por favor, o pedido 10450 já saiu pra entrega"
+c0137,devolucao,simples,simples,simples,False,4.75,4.75,4.0,troca de tamanho tem custo? pfv
+c0136,financeiro,simples,simples,simples,False,5.0,4.75,5.0,boa tarde! reembolso cai em dia útil?
+c0138,devolucao,simples,simples,simples,False,4.75,5.0,5.0,"olá, uma dúvida: qual o prazo pra devolver???"
+c0139,devolucao,media,simples,simples,False,4.5,4.75,4.75,"boa tarde! quero devolver o camiseta do pedio 10430, ainda dá?"
+c0140,financeiro,simples,simples,simples,False,4.75,4.25,4.75,"olá, uma dúvida: vocês estornam o frete???"
+c0141,suporte,media,simples,simples,False,4.5,4.0,3.5,boa tarde! dá pra cancelar o pedido 10430? obrigado pfv
+c0143,suporte,complexa,complexa,complexa,False,4.0,3.5,4.5,"oi, olá, uma dúvida: alguém fez o pedido 10431 na minha conta, não fui eu"
+c0153,suporte,media,media,media,False,4.25,4.75,4.75,"oi, olá, uma dúvida: dá pra cancelar o pedido 10427???"
+c0154,financeiro,media,simples,simples,False,4.5,4.75,4.75,"oi, paguei o pedido 10447 e aparece como não pago obrigado"
+c0150,suporte,media,simples,simples,False,4.5,4.75,4.75,"oi, o pedido 10420 tá atrasado?"
+c0156,financeiro,media,media,media,False,4.0,4.5,4.75,boa tarde! paguei o pedido 10408 e aparece como não pago pfv
+c0157,devolucao,complexa,simples,simples,False,4.75,4.75,4.75,"passou do prazo mas o smartwatch nunca funcionou direito, vocês têm que aceitar é urgente pfv"
+c0172,suporte,complexa,complexa,complexa,True,3.0,3.75,4.25,"por favor, o meu pedio veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo pfv"
+c0175,financeiro,complexa,simples,simples,False,4.5,4.75,4.75,"preciso saber: três cobranças do pedido 10408 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje obrigado"
+c0179,financeiro,complexa,complexa,complexa,False,3.25,4.25,4.75,"parcelei o pedido 10438, devolvi metade e a fatura continua cheia obrigado"
+c0182,devolucao,complexa,simples,simples,False,4.5,4.75,4.75,"boa tarde! é a segunda troca do escova do pedido 10429 com defeito, quero meu dinheiro e não outro, isso é um absurdo"
+c0184,financeiro,complexa,media,complexa,False,3.25,4.25,4.5,"olá, uma dúvida: devolvi só o mochila do pedido 10432, que tinha cupom, e o estorno veio menor. quero o cálculo"
+c0186,devolucao,complexa,simples,simples,False,4.75,4.75,5.0,"oi, é a segunda troca do kit do pedido 10423 com defeito, quero meu dinheiro e não outro, isso é um absurdo é urgente"
+c0188,financeiro,complexa,media,media,False,4.25,4.75,4.75,"três cobranças do pedido 10418 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje é urgente"
+c0239,suporte,complexa,media,media,False,3.5,4.75,4.75,"preciso saber: alguém fez o pedido 10432 na minha conta, não fui eu é urgente"
+c0242,devolucao,complexa,media,media,False,2.5,4.75,4.75,"boa tarde! qro devolver o smartwatch do pedido 10435 e trocar o outro item por um maior, como fica o valor???"
+c0238,financeiro,complexa,media,media,False,3.75,4.75,4.75,"olá, uma dúvida: três cobranças do pedido 10456 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0246,devolucao,complexa,simples,simples,False,4.75,4.75,4.25,"é a segunda troca do smartwatch do pedio 10453 com defeito, quero meu dinheiro e não outro, isso é um absurdo pfv"
+c0248,financeiro,complexa,simples,complexa,False,4.25,4.25,4.5,"boa tarde! devolvi só o liquidificador do pedido 10438, que tinha cupom, e o estorno veio menor. quero o cálculo pfv"
+c0405,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, oi, como vejo o comprovante do estorno? obrigado"
+c0403,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, como peço segunda via do boleto???"
+c0401,devolucao,simples,complexa,complexa,False,3.5,4.25,4.75,"por favor, devolução vale pra loja física? obrigado"
+c0400,suporte,simples,simples,simples,False,4.75,4.5,4.75,"oi, como pareio o fone bluetooth? valeu"
+c0402,clarificar,,simples,simples,False,4.75,4.75,4.75,cancela tudo??
+c0407,financeiro,media,simples,simples,False,4.75,4.75,4.75,"por favor, fui cobrado duas vezes no pedido 10417? é urgente"
+c0410,suporte,complexa,media,media,False,3.25,4.75,4.5,"oi, oi, o pedido 10417 consta entregue mas não recebi nada e já é a terceira vez que reclamo pfv"
+c0412,clarificar,,simples,simples,False,4.5,4.75,4.5,"oi, ainda não resolveram pfv"
+c0409,suporte,media,simples,media,False,4.25,4.5,4.25,cadê o pedido 10414???
+c0411,devolucao,media,complexa,complexa,False,3.5,3.25,4.75,"o notebook do pedio 10455 veio com defeito, como troco?"
+c0414,financeiro,simples,simples,simples,False,4.75,4.5,4.75,como vejo o comprovante do estorno? é urgente
+c0415,devolucao,simples,simples,simples,False,5.0,5.0,4.75,"oi, boa tarde! aceita devolução de item de higiene aberto?"
+c0416,suporte,media,simples,simples,False,5.0,5.0,4.75,"olá, uma dúvida: o pedido 10430 já saiu pra entrega pfv"
+c0417,suporte,simples,simples,simples,False,4.75,4.75,4.75,"por favor, dá pra retirar na loja?"
+c0418,suporte,simples,media,media,False,4.25,4.5,4.75,boa tarde! como cadastro outro endereço? pfv
+c0419,financeiro,simples,simples,simples,False,4.75,4.75,4.5,"oi, parcelado, o estorno volta parcelado???"
+c0420,financeiro,simples,simples,simples,False,4.75,4.75,4.75,como peço segunda via do boleto? é urgente
+c0421,suporte,simples,simples,simples,False,4.75,4.5,4.75,como pareio o fone bluetooth? obrigado
+c0423,devolucao,simples,simples,simples,False,4.5,4.75,4.5,quanto tempo vocês levam pra analisar a devolução? obrigado
+c0425,suporte,complexa,complexa,complexa,False,4.0,4.0,4.5,"oi, o pedido 10446 consta entregue mas não recebi nada e já é a terceira vez q reclamo??"
+c0424,devolucao,media,media,media,False,4.0,5.0,4.75,"o kit do pedido 10407 parou de funcionar, tá na garantia? pfv"
+c0422,devolucao,simples,simples,simples,False,4.75,4.75,5.0,"oi, posso devolver produto em promoção???"
+c0426,suporte,media,media,media,False,2.5,4.75,4.5,"por favor, posso mudar o endereço do pedido 10442? pfv"
+c0427,devolucao,simples,simples,simples,False,4.5,4.75,4.5,boa tarde! onde deixo o pacote da devolução?
+c0428,suporte,media,simples,simples,False,4.75,4.75,4.25,preciso saber: cadê o pedido 10428?
+c0431,suporte,simples,simples,simples,False,4.75,5.0,4.75,preciso saber: como mudo minha senha? pfv
+c0432,suporte,media,media,media,False,4.25,4.5,4.75,boa tarde! o pedido 10407 já saiu pra entrega valeu
+c0434,financeiro,media,simples,simples,False,5.0,5.0,4.75,boa tarde! quando cai o reembolso do pedido 10456? pfv
+c0430,devolucao,media,media,media,False,4.25,4.5,4.75,"o tênis do pedio 10408 parou de funcionar, tá na garantia? obrigado"
+c0429,financeiro,media,simples,simples,False,4.5,4.75,4.5,o estorno do pedido 10458 já foi feito? obrigado pfv
+c0435,devolucao,simples,simples,simples,False,4.5,4.75,4.75,"olá, uma dúvida: posso devolver sem a caixa original?"
+c0436,suporte,simples,simples,simples,False,4.75,4.5,4.5,vocês entregam no sábado? é urgente
+c0437,financeiro,simples,simples,simples,False,4.5,4.75,4.75,vocês cobram IOF? pfv
+c0438,clarificar,,simples,simples,False,4.75,4.75,4.75,cancela tudo pfv
+c0440,devolucao,media,simples,simples,False,4.75,4.75,4.75,"o notebook do pedido 10404 veio com defeito, como troco"
+c0441,suporte,media,simples,simples,False,5.0,5.0,5.0,"olá, uma dúvida: o pedio 10400 já saiu pra entrega?"
+c0443,devolucao,simples,simples,simples,False,4.5,4.75,4.5,"oi, onde deixo o pacote da devolução???"
+c0442,suporte,simples,simples,simples,False,4.5,4.25,4.75,"oi, preciso saber: como configuro o smartwatch?"
+c0446,devolucao,simples,media,simples,False,4.5,5.0,4.75,boa tarde! como gero a etiqueta de devolução valeu
+c0445,suporte,media,media,media,False,4.25,5.0,4.75,o pedido 10453 tá atrasado???
+c0447,devolucao,simples,media,simples,False,4.5,4.75,5.0,o frete da devolução é pago por mim? é urgente pfv
+c0448,financeiro,media,simples,simples,False,5.0,4.75,4.75,boa tarde! quando cai o reembolso do pedido 10411? obrigado
+c0449,suporte,complexa,simples,complexa,True,4.0,2.5,4.25,"boa tarde! o pedido 10403 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo"
+c0450,suporte,complexa,complexa,complexa,False,2.75,3.75,4.5,boa tarde! o pedido 10402 consta entregue mas não recebi nada e já é a terceira vez que reclamo??
+c0452,financeiro,media,simples,simples,False,5.0,4.75,4.75,"oi, olá, uma dúvida: quando cai o reembolso do pedido 10419? pfv"
+c0454,suporte,simples,simples,simples,False,4.75,4.75,3.5,"olá, uma dúvida: dá pra retirar na loja???"
+c0455,suporte,complexa,media,media,False,3.25,4.75,4.75,"alguém fez o pedido 10405 na minha conta, não fui eu valeu"
+c0451,financeiro,simples,simples,simples,False,4.75,4.5,4.25,vocês cobram iof valeu
+c0453,financeiro,simples,simples,simples,False,4.5,4.75,4.75,preciso saber: dá pra antecipar o reembolso? pfv
+c0456,devolucao,complexa,complexa,complexa,False,2.5,4.0,4.75,"olá, uma dúvida: é a segunda troca do tênis do pedido 10408 com defeito, quero meu dinheiro e não outro, isso é um absurdo obrigado"
+c0457,financeiro,simples,complexa,simples,False,4.5,4.5,5.0,dá pra receber o reembolso como crédito na loja? valeu
+c0458,financeiro,simples,simples,simples,False,4.75,4.5,5.0,preciso saber: dá pra receber o reembolso como crédito na loja?
+c0459,financeiro,media,media,media,False,3.25,5.0,4.75,fui cobrado duas vezes? pfv
+c0461,devolucao,simples,simples,simples,False,5.0,3.0,4.75,prazo conta da compra ou da entrega? obrigado
+c0460,suporte,media,simples,simples,False,5.0,5.0,4.75,preciso saber: dá pra cancelar o pedido 10457? pfv
+c0468,devolucao,complexa,media,media,False,2.0,4.75,4.75,"quero devolver o camiseta do pedido 10454 e trocar o outro item por um maior, como fica o valor? é urgente"
+c0469,suporte,media,media,media,False,4.25,4.75,4.5,"olá, uma dúvida: posso mudar o endereço do pedido 10429?"
+c0466,financeiro,complexa,complexa,complexa,False,3.25,4.25,4.75,"parcelei o pedido 10412, devolvi metade e a fatura continua cheia é urgente"
+c0470,clarificar,,simples,simples,False,5.0,5.0,5.0,"oi, cancela tudo valeu"
+c0471,financeiro,complexa,media,media,False,2.5,4.75,4.75,"parcelei o pedido 10405, devolvi metade e a fatura continua cheia"
+c0472,suporte,complexa,media,media,False,4.25,4.75,4.5,"boa tarde! alguém fez o pedio 10431 na minha conta, não fui eu valeu"
+c0473,financeiro,media,simples,simples,False,4.75,4.75,4.5,"olá, uma dúvida: o estorno do pedio 10425 já foi feito? é urgente"
+c0475,devolucao,simples,simples,simples,False,4.5,4.75,4.75,boa tarde! posso devolver produto em promoção?
+c0476,suporte,media,simples,simples,False,4.5,4.75,4.75,"olá, uma dúvida: dá pra cancelar o pedido 10432?"
+c0477,suporte,simples,simples,simples,False,4.5,4.5,4.5,como atualizo meu CPF? é urgente
+c0478,clarificar,,simples,simples,False,4.5,4.5,4.5,"olá, uma dúvida: e agora?"
+c0481,devolucao,simples,simples,simples,False,5.0,4.75,5.0,"oi, oi, aceita devolução de item de higiene aberto? valeu"
+c0480,financeiro,media,simples,simples,False,4.75,4.75,4.75,preciso saber: quanto vou receber de volta do pedido 10407? valeu pfv
+c0479,devolucao,media,simples,simples,False,4.75,4.0,4.75,"boa tarde! o mochila parou de funcionar, tá na garantia? é urgente"
+c0482,suporte,simples,simples,simples,False,4.75,4.75,4.5,"por favor, o app mostra o rastreio??? pfv"
+c0483,financeiro,complexa,media,media,False,2.0,4.75,4.75,"três cobranças do pedido 10423 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0484,suporte,media,media,media,False,3.5,4.75,4.5,"oi, por favor, dá pra cancelar o pedido 10414? obrigado"
+c0485,devolucao,simples,complexa,complexa,False,3.5,3.5,4.75,devolução vale pra loja física?
+c0486,suporte,simples,simples,simples,False,4.75,4.75,4.75,"oi, como rastreio meu pedido???"
+c0487,suporte,simples,simples,simples,False,4.75,4.75,4.25,"oi, por favor, o app mostra o rastreio???"
+c0489,suporte,simples,simples,simples,False,4.5,4.75,4.25,"oi, preciso saber: vocês entregam no sábado? valeu"
+c0490,financeiro,complexa,media,media,False,1.5,4.75,4.75,"oi, parcelei o pedido 10439, devolvi metade e a fatura continua cheia??"
+c0492,financeiro,media,simples,simples,False,4.75,5.0,4.75,preciso saber: fui cobrado duas vezes?
+c0493,clarificar,,complexa,complexa,False,3.75,4.0,4.5,preciso saber: veio diferente e mais caro é urgente
+c0491,devolucao,media,simples,simples,False,4.75,4.75,4.75,"boa tarde! o kit do pedido 10432 veio com defeito, como troco? pfv"
+c0494,suporte,media,simples,simples,False,4.75,4.75,4.75,"por favor, cadê o pedido 10410?"
+c0495,suporte,media,simples,simples,False,4.5,4.75,4.75,dá pra cancelar o pedido 10424? é urgente
+c0496,financeiro,media,simples,simples,False,5.0,4.75,4.75,"oi, olá, uma dúvida: fui cobrado duas vezes no pedido 10400? valeu"
+c0497,financeiro,complexa,simples,simples,False,4.75,4.75,4.75,"preciso saber: três cobranças do pedido 10459 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje??"
+c0498,clarificar,,simples,simples,False,4.5,4.5,4.75,deu problema de novo
+c0499,devolucao,simples,simples,simples,False,5.0,4.5,4.75,prazo conta da compra ou da entrega? pfv
+c0501,devolucao,media,simples,simples,False,4.75,4.75,4.25,"o escova do pedido 10443 veio com defeito, como troco? obrigado"
+c0502,devolucao,media,media,simples,False,4.5,5.0,4.75,"olá, uma dúvida: o mochila do pedio 10434 veio com defeito, como troco???"
+c0503,suporte,simples,simples,simples,False,4.5,4.75,4.5,como atualizo meu cpf é urgente
+c0504,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, olá, uma dúvida: vocês estornam o frete? obrigado"
+c0505,devolucao,simples,simples,simples,False,5.0,4.75,5.0,preciso saber: aceita devolução de item de higiene aberto
+c0506,financeiro,simples,simples,simples,False,4.75,4.75,4.75,boa tarde! quanto tempo leva o reembolso no pix?
+c0507,suporte,media,simples,simples,False,5.0,5.0,4.75,"oi, o pedido 10429 já saiu pra entrega??? pfv"
+c0508,devolucao,simples,simples,simples,False,4.5,4.75,4.5,"por favor, posso trocar por outro modelo valeu"
+c0509,devolucao,media,simples,simples,False,4.75,4.75,4.75,"oi, o liquidificador do pedio 10449 veio com defeito, como troco? pfv"
+c0513,suporte,media,media,media,False,4.25,4.75,4.75,"oi, cadê o pedido 10450 obrigado"
+c0514,devolucao,simples,simples,simples,False,4.5,4.5,4.25,quanto tempo vocês levam pra analisar a devolução?
+c0516,devolucao,simples,complexa,complexa,False,3.25,3.5,4.75,boa tarde! devolução vale pra loja física?
+c0515,devolucao,simples,simples,simples,False,4.5,4.5,4.5,"olá, uma dúvida: posso devolver sem a caixa original? valeu"
+c0517,financeiro,simples,simples,simples,False,4.75,4.5,4.75,dá pra receber o reembolso como crédito na loja? obrigado
+c0518,suporte,media,media,simples,False,4.5,5.0,4.75,posso mudar o endereço do pedido 10401?
+c0519,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, boa tarde! como peço segunda via do boleto? obrigado"
+c0520,financeiro,simples,simples,simples,False,4.75,4.75,4.75,reembolso cai em dia útil é urgente
+c0521,suporte,simples,simples,simples,False,4.5,4.5,4.75,"por favor, como configuro o smartwatch? é urgente"
+c0523,devolucao,simples,simples,simples,False,4.75,4.75,5.0,"oi, qual o prazo pra devolver"
+c0524,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"oi, como gero a etiqueta de devolução?"
+c0522,financeiro,media,simples,simples,False,4.5,4.75,4.75,o estorno do pedio 10423 já foi feito? valeu
+c0525,financeiro,simples,simples,simples,False,4.75,4.75,4.75,preciso saber: dá pra receber o reembolso como crédito na loja é urgente
+c0528,suporte,simples,simples,simples,False,4.75,5.0,4.5,preciso saber: como rastreio meu pedido? pfv pfv
+c0527,suporte,complexa,simples,simples,False,4.5,4.25,4.5,"olá, uma dúvida: alguém fez o pedido 10406 na minha conta, não fui eu"
+c0529,suporte,simples,simples,simples,False,4.75,4.75,4.25,"oi, vocês entregam no sábado???"
+c0526,suporte,simples,simples,simples,False,4.5,4.5,4.75,"oi, como configuro o smartwatch???"
+c0530,devolucao,media,simples,simples,False,4.75,4.75,5.0,"oi, oi, quero devolver o liquidificador do pedido 10422, ainda dá? é urgente"
+c0531,devolucao,media,simples,simples,False,4.75,4.75,4.5,"oi, boa tarde! veio o camiseta errado no pedido 10447 obrigado"
+c0534,devolucao,complexa,media,media,False,3.75,4.5,4.75,"olá, uma dúvida: é a segunda troca do notebook do pedido 10413 com defeito, quero meu dinheiro e não outro, isso é um absurdo obrigado"
+c0532,devolucao,simples,simples,simples,False,4.5,4.75,4.5,boa tarde! quanto tempo vocês levam pra analisar a devolução? valeu
+c0533,suporte,simples,simples,simples,False,4.75,4.5,4.75,como pareio o fone bluetooth?
+c0537,suporte,simples,simples,simples,False,4.75,4.75,3.25,"olá, uma dúvida: entregam em zona rural?"
+c0535,financeiro,media,simples,simples,False,4.5,4.75,4.75,preciso saber: quando cai o reembolso? pfv
+c0538,suporte,media,simples,simples,False,4.5,4.0,4.75,boa tarde! o meu pedido já saiu pra entrega? é urgente pfv
+c0539,suporte,simples,simples,simples,False,4.75,4.75,4.5,boa tarde! qual o prazo de entrega pra Recife?
+c0540,suporte,media,complexa,complexa,False,3.25,4.25,4.75,"oi, dá pra cancelar o pedido 10453 é urgente"
+c0542,financeiro,media,simples,simples,False,4.5,4.75,4.5,"por favor, o estorno do pedido 10440 já foi feito valeu"
+c0541,financeiro,complexa,complexa,complexa,False,2.75,3.25,4.75,"oi, oi, devolvi só o mochila do pedido 10407, que tinha cupom, e o estorno veio menor. quero o cálculo obrigado"
+c0543,suporte,complexa,media,media,False,4.0,4.5,4.75,"oi, o pedido 10440 consta entregue mas não recebi nada e já é a terceira vez que reclamo??"
+c0544,suporte,simples,simples,simples,False,5.0,5.0,4.0,boa tarde! o app mostra o rastreio? valeu
+c0547,suporte,simples,simples,simples,False,4.75,3.75,4.0,"oi, como mudo minha senha? valeu pfv"
+c0546,financeiro,media,media,media,False,2.5,4.75,4.25,paguei o pedido 10426 e aparece como não pago
+c0550,devolucao,simples,simples,simples,False,4.75,4.75,4.75,boa tarde! posso trocar por outro modelo?
+c0548,devolucao,simples,simples,simples,False,5.0,4.75,4.75,"por favor, o frete da devolução é pago por mim? obrigado"
+c0549,devolucao,media,simples,simples,False,4.75,4.75,4.75,"preciso saber: o kit veio com defeito, como troco???"
+c0551,devolucao,simples,simples,simples,False,4.75,3.5,4.5,vcs buscam o produto em casa?
+c0552,devolucao,media,simples,simples,False,4.5,4.75,4.75,"o mochila do pedido 10421 veio com defeito, como troco? é urgente pfv"
+c0553,suporte,simples,simples,simples,False,4.75,4.75,4.5,vocês entregam no sábado pfv
+c0555,suporte,simples,simples,simples,False,4.75,4.75,4.25,o app mostra o rastreio? pfv
+c0556,suporte,simples,media,simples,False,4.5,5.0,4.75,preciso saber: dá pra retirar na loja obrigado
+c0554,financeiro,media,simples,simples,False,4.75,4.75,5.0,"oi, quanto vou receber de volta do pedido 10454? valeu pfv"
+c0557,devolucao,simples,simples,simples,False,4.5,4.5,4.5,"oi, olá, uma dúvida: posso devolver sem a caixa original? pfv"
+c0560,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, oi, como vejo o comprovante do estorno???"
+c0559,devolucao,media,simples,simples,False,4.75,4.75,4.75,"boa tarde! o caneca do pedido 10440 veio com defeito, como troco? valeu"
+c0561,devolucao,simples,media,simples,False,4.5,4.75,5.0,"por favor, qual o prazo pra devolver?"
+c0563,suporte,simples,simples,simples,False,4.75,4.5,4.75,"olá, uma dúvida: como configuro o smartwatch"
+c0564,devolucao,simples,media,media,False,4.0,4.75,4.75,"oi, posso devolver sem a caixa original??? pfv"
+c0565,financeiro,simples,simples,simples,False,4.75,4.5,4.25,"oi, vocês cobram taxa de reembolso valeu"
+c0567,suporte,simples,simples,simples,False,4.75,4.75,4.5,"por favor, dá pra retirar na loja pfv"
+c0566,suporte,media,simples,simples,False,4.5,4.75,4.5,"oi, dá pra cancelar o pedido 10449???"
+c0568,devolucao,simples,complexa,simples,False,4.5,4.5,5.0,"olá, uma dúvida: o frete da devolução é pago por mim? é urgente pfv"
+c0569,suporte,media,simples,simples,False,4.75,4.75,4.75,cadê o pedido 10441?
+c0570,devolucao,media,simples,simples,False,4.75,4.75,5.0,"olá, uma dúvida: dá pra devolver o tênis? é do pedido 10405??"
+c0573,devolucao,simples,simples,simples,False,4.75,4.75,4.5,"oi, vocês buscam o produto em casa?"
+c0571,suporte,simples,simples,simples,False,4.75,4.75,4.75,como rastreio meu pedido? pfv
+c0572,clarificar,,media,media,False,3.75,4.5,4.5,boa tarde! ainda não resolveram pfv
+c0574,clarificar,,simples,simples,False,4.5,4.5,4.5,e agora?
+c0575,devolucao,simples,complexa,complexa,False,4.0,4.25,4.75,posso devolver sem a caixa original? obrigado pfv
+c0576,devolucao,simples,simples,simples,False,4.5,4.75,4.5,onde deixo o pacote da devolução? obrigado
+c0577,financeiro,simples,simples,simples,False,4.75,4.75,5.0,quanto tempo leva o reembolso no pix?
+c0578,suporte,simples,simples,simples,False,4.75,4.75,4.25,entregam em zona rural?
+c0580,financeiro,media,complexa,complexa,False,4.0,3.5,4.75,"olá, uma dúvida: paguei o meu pedido e aparece como não pago pfv"
+c0579,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"oi, olá, uma dúvida: como gero a etiqueta de devolução? pfv"
+c0581,suporte,simples,media,complexa,True,3.0,3.75,3.5,"por favor, como excluo minha conta? valeu pfv"
+c0582,suporte,media,media,media,False,4.25,4.75,4.75,"por favor, dá pra cancelar o pedido 10428? pfv"
+c0584,financeiro,complexa,complexa,complexa,False,2.5,2.75,4.5,"boa tarde! parcelei o pedio 10455, devolvi metade e a fatura continua cheia"
+c0583,suporte,media,simples,simples,False,4.5,4.5,4.5,dá pra cancelar o pedio 10449? é urgente
+c0586,suporte,media,simples,complexa,True,4.0,4.25,4.25,"oi, cadê o pedido 10443? obrigado"
+c0588,suporte,simples,simples,simples,False,4.75,4.75,4.5,boa tarde! vocês entregam no sábado? obrigado
+c0589,suporte,simples,simples,simples,False,4.75,4.75,4.75,como rastreio meu pedido?
+c0590,financeiro,complexa,media,media,False,3.75,4.5,4.75,"oi, olá, uma dúvida: três cobranças do pedido 10434 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0593,suporte,simples,simples,simples,False,4.75,4.75,4.5,o app mostra o rastreio? é urgente
+c0592,financeiro,media,simples,simples,False,4.75,4.75,4.75,o estorno do pedido 10449 já foi feito? obrigado
+c0596,financeiro,media,simples,simples,False,4.5,4.75,4.75,quanto vou receber de volta do pedio 10439? pfv
+c0594,financeiro,complexa,simples,simples,False,4.5,3.5,4.75,"olá, uma dúvida: três cobranças do pedido 10449 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje é urgente"
+c0597,suporte,simples,simples,simples,False,4.75,4.5,4.75,como configuro o smartwatch?
+c0598,financeiro,media,simples,simples,False,4.75,4.75,4.75,quanto vou receber de volta do pedido 10449? valeu
+c0599,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"por favor, posso trocar por outro modelo? é urgente"
+c0600,suporte,media,simples,simples,False,4.5,4.75,4.75,preciso saber: posso mudar o endereço?
+c0602,financeiro,simples,simples,simples,False,4.75,4.75,4.75,preciso saber: como peço segunda via do boleto? valeu
+c0604,devolucao,simples,simples,simples,False,4.75,4.75,4.75,preciso saber: como gero a etiqueta de devolução pfv
+c0603,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"oi, olá, uma dúvida: quanto tempo vocês levam pra analisar a devolução?"
+c0605,suporte,simples,simples,simples,False,5.0,5.0,4.75,como cadastro outro endereço? pfv
+c0608,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, dá pra antecipar o reembolso? pfv"
+c0607,financeiro,simples,simples,simples,False,4.75,4.75,4.75,dá pra antecipar o reembolso?
+c0610,financeiro,simples,simples,simples,False,4.75,4.75,4.5,"oi, por favor, como vejo o comprovante do estorno? obrigado"
+c0606,financeiro,simples,simples,simples,False,4.75,4.75,4.75,como peço segunda via do boleto???
+c0609,suporte,simples,simples,simples,False,4.75,5.0,4.75,preciso saber: como cadastro outro endereço?
+c0612,devolucao,simples,simples,complexa,False,4.25,4.25,4.5,"olá, uma dúvida: devolução vale pra loja física? pfv"
+c0611,suporte,simples,simples,simples,False,5.0,4.75,4.0,"oi, o app mostra o rastreio?"
+c0613,suporte,simples,simples,simples,False,4.75,4.75,4.75,vocês entregam no sábado? pfv
+c0619,suporte,simples,simples,simples,False,4.75,4.75,4.25,entregam em zona rural? valeu
+c0618,suporte,simples,simples,simples,False,4.5,4.5,4.75,"olá, uma dúvida: como configuro o smartwatch? pfv"
+c0621,financeiro,simples,simples,simples,False,4.75,4.75,4.75,boa tarde! como vejo o comprovante do estorno?
+c0622,financeiro,complexa,complexa,complexa,False,2.75,4.0,4.75,"devolvi só o notebook, que tinha cupom, e o estorno veio menor. quero o cálculo é urgente"
+c0623,devolucao,simples,simples,simples,False,4.5,4.5,4.25,boa tarde! troca de tamanho tem custo? é urgente
+c0624,suporte,media,simples,simples,False,4.75,3.5,4.75,o pedido 10424 já saiu pra entrega??? pfv
+c0625,financeiro,media,simples,simples,False,4.5,4.75,4.75,"por favor, quando cai o reembolso do pedio 10412? é urgente"
+c0626,suporte,simples,simples,simples,False,4.75,4.75,4.5,"oi, por favor, o app mostra o rastreio? é urgente"
+c0627,devolucao,complexa,media,media,False,3.0,4.75,4.75,"no pedido 10456 usei cupom, um item veio com defeito e quero devolver só ele. quanto volta?"
+c0628,suporte,simples,simples,simples,False,4.75,2.5,4.5,boa tarde! como mudo minha senha? pfv
+c0629,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"por favor, o boleto venceu, gero outro"
+c0631,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"olá, uma dúvida: como gero a etiqueta de devolução"
+c0630,devolucao,media,simples,simples,False,4.75,4.75,4.75,"o caneca do pedido 10407 veio com defeito, como troco? é urgente"
+c0633,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"oi, por favor, o boleto venceu, gero outro???"
+c0634,devolucao,simples,simples,simples,False,5.0,5.0,5.0,"olá, uma dúvida: prazo conta da compra ou da entrega???"
+c0632,financeiro,complexa,media,media,False,4.25,4.75,4.75,"por favor, parcelei o pedido 10423, devolvi metade e a fatura continua cheia"
+c0635,suporte,simples,simples,simples,False,4.5,4.5,4.75,como configuro o smartwatch?
+c0636,devolucao,simples,media,simples,False,4.5,4.75,5.0,"oi, boa tarde! o frete da devolução é pago por mim? pfv"
+c0638,financeiro,simples,simples,simples,False,4.5,4.75,4.75,dá pra antecipar o reembolso? é urgente pfv
+c0639,financeiro,simples,simples,simples,False,4.5,4.75,4.75,o estorno sai em qual fatura? é urgente
+c0640,financeiro,simples,simples,simples,False,4.75,4.75,4.75,como vejo o comprovante do estorno? obrigado
+c0642,devolucao,media,media,simples,False,4.5,4.75,5.0,"preciso saber: quero devolver o tênis do pedio 10405, ainda dá?"
+c0643,financeiro,media,simples,simples,False,4.5,4.75,4.5,o estorno já foi feito? pfv
+c0644,financeiro,media,simples,simples,False,4.75,4.75,5.0,"olá, uma dúvida: quanto vou receber de volta do pedido 10433?"
+c0645,suporte,media,simples,simples,False,4.75,5.0,4.75,preciso saber: o pedido 10420 já saiu pra entrega? pfv pfv
+c0649,suporte,simples,simples,simples,False,5.0,5.0,4.75,"oi, por favor, entregam em zona rural? valeu"
+c0647,suporte,simples,simples,simples,False,4.75,4.75,4.75,boa tarde! como rastreio meu pedido???
+c0651,devolucao,simples,simples,simples,False,4.75,4.75,4.75,como gero a etiqueta de devolução? é urgente
+c0650,financeiro,simples,simples,simples,False,4.75,4.75,4.75,o estorno sai em qual fatura? obrigado
+c0652,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"parcelado, o estorno volta parcelado? é urgente pfv"
+c0653,devolucao,complexa,simples,simples,False,4.75,4.25,5.0,"é a segunda troca do escova do pedio 10403 com defeito, quero meu dinheiro e não outro, isso é um absurdo"
+c0654,financeiro,complexa,simples,simples,False,4.5,4.5,4.75,"oi, três cobranças do pedido 10409 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje obrigado"
+c0655,suporte,media,simples,simples,False,4.5,4.75,4.75,posso mudar o endereço do pedido 10443? pfv
+c0657,financeiro,simples,simples,simples,False,4.75,4.75,4.75,"parcelado, o estorno volta parcelado? é urgente"
+c0656,financeiro,simples,simples,simples,False,4.75,4.5,5.0,"olá, uma dúvida: dá pra receber o reembolso como crédito na loja? obrigado"
+c0658,suporte,simples,simples,simples,False,4.5,4.75,3.25,"olá, uma dúvida: dá pra retirar na loja? é urgente pfv"
+c0660,suporte,media,media,media,False,2.75,4.75,4.75,boa tarde! o pedido 10453 já saiu pra entrega? é urgente
+c0661,suporte,simples,simples,simples,False,4.75,4.75,4.25,"oi, vocês entregam no sábado? é urgente"
+c0659,suporte,media,media,media,False,4.25,4.75,4.5,o pedio 10449 tá atrasado? obrigado
+c0662,financeiro,simples,simples,simples,False,4.75,4.75,4.75,como vejo o comprovante do estorno? pfv
+c0663,suporte,media,complexa,complexa,False,4.25,4.25,4.75,preciso saber: dá pra cancelar o meu pedido?
+c0669,financeiro,media,simples,simples,False,4.75,4.75,4.75,boa tarde! fui cobrado duas vezes?
+c0667,suporte,complexa,complexa,complexa,True,2.5,3.5,4.25,"o pedio 10432 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo é urgente"
+c0675,financeiro,media,simples,simples,False,4.75,4.75,4.75,"oi, o estorno do pedido 10459 já foi feito?"
+c0677,suporte,complexa,complexa,complexa,False,4.0,3.75,4.5,"oi, alguém fez o pedio 10439 na minha conta, não fui eu é urgente"
+c0679,suporte,complexa,simples,simples,False,4.5,4.25,4.5,o pedido 10440 consta entregue mas não recebi nada e já é a terceira vez que reclamo??
+c0678,suporte,media,media,media,False,4.25,4.75,4.75,"oi, cadê o meu pedido?"
+c0680,financeiro,media,simples,simples,False,4.75,3.5,4.75,fui cobrado duas vezes no pedido 10413 pfv
+c0685,financeiro,media,simples,simples,False,4.75,5.0,4.75,o estorno do pedido 10442 já foi feito? valeu
+c0687,devolucao,media,media,media,False,2.5,4.75,4.75,"o caneca do pedio 10440 parou de funcionar, tá na garantia???"
+c0688,devolucao,complexa,media,media,False,3.25,4.75,4.75,"preciso saber: no meu pedido usei cupom, um item veio com defeito e quero devolver só ele. quanto volta?"
+c0689,financeiro,media,simples,simples,False,5.0,4.75,4.75,"oi, fui cobrado duas vezes no pedido 10458 pfv"
+c0691,financeiro,media,simples,simples,False,4.75,4.75,4.75,o estorno já foi feito? pfv
+c0698,financeiro,media,simples,simples,False,5.0,4.75,4.5,"oi, fui cobrado duas vezes no pedido 10453? é urgente"
+c0697,suporte,media,simples,simples,False,4.5,4.75,4.75,"oi, o pedido 10454 tá atrasado? valeu"
+c0696,devolucao,media,simples,simples,False,4.75,3.25,4.75,"o tênis do pedido 10425 veio com defeito, como troco?"
+c0702,financeiro,complexa,simples,simples,False,4.5,4.5,4.75,"três cobranças no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0708,devolucao,complexa,simples,complexa,True,4.25,4.25,4.0,"passou do prazo mas o mochila do pedido 10410 nunca funcionou direito, vocês têm que aceitar pfv"
+c0720,suporte,complexa,complexa,complexa,False,4.0,4.0,4.75,"boa tarde! alguém fez o pedido 10434 na minha conta, não fui eu"
+c0719,suporte,complexa,complexa,complexa,False,2.5,3.25,4.75,"o pedido 10407 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo valeu"
+c0736,financeiro,complexa,simples,simples,False,4.5,4.75,4.75,"três cobranças do pedio 10448 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0745,devolucao,complexa,complexa,simples,False,4.5,4.5,5.0,"preciso saber: é a segunda troca do mochila do pedido 10420 com defeito, quero meu dinheiro e não outro, isso é um absurdo obrigado"
+c0751,financeiro,complexa,media,media,False,3.25,4.75,4.75,"por favor, três cobranças do pedido 10430 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0758,suporte,complexa,simples,simples,False,4.5,4.75,4.5,"oi, alguém fez o pedido 10435 na minha conta, não fui eu obrigado"
+c0762,devolucao,complexa,simples,simples,False,4.75,4.75,4.75,"oi, quero devolver o liquidificador do pedido 10422 e trocar o outro item por um maior, como fica o valor?"
+c0765,financeiro,complexa,simples,simples,False,4.5,4.5,4.75,"preciso saber: três cobranças do pedido 10443 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje é urgente pfv"
+c0779,suporte,complexa,complexa,complexa,False,3.75,3.75,4.75,"oi, o meu pedido veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo é urgente"
+c0787,financeiro,complexa,media,media,False,3.25,4.75,4.75,"preciso saber: devolvi só o liquidificador do pedido 10437, que tinha cupom, e o estorno veio menor. quero o cálculo obrigado"
+c0776,suporte,complexa,media,complexa,False,2.25,4.25,4.5,"por favor, o pedido 10458 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo pfv"
+c0800,suporte,complexa,simples,complexa,False,4.25,3.25,4.5,"o pedido 10447 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo pfv"
+c0820,suporte,complexa,complexa,complexa,True,2.5,2.75,4.25,"o pedido 10401 veio pela metade e o restante sumiu do rastreio, e ainda qrem cobrar frete de novo"
+c0822,financeiro,complexa,complexa,complexa,False,2.75,4.25,4.75,"parcelei o pedio 10401, devolvi metade e a fatura continua cheia??"
+c0826,devolucao,complexa,complexa,complexa,False,3.25,2.75,5.0,"preciso saber: no pedido 10424 usei cupom, um item veio com defeito e quero devolver só ele. quanto volta???"
+c0827,suporte,complexa,simples,complexa,False,4.25,3.5,4.5,"olá, uma dúvida: o pedido 10416 consta entregue mas não recebi nada e já é a terceira vez que reclamo pfv pfv"
+c0830,suporte,complexa,media,media,False,2.75,4.5,4.5,"por favor, o pedido 10439 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo é urgente"
+c0854,suporte,complexa,complexa,complexa,False,2.75,3.0,4.75,"o pedido 10423 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo é urgente"
+c0864,suporte,complexa,complexa,complexa,False,3.0,2.75,4.5,"boa tarde! alguém fez o meu pedido na minha conta, não fui eu é urgente"
+c0857,financeiro,complexa,simples,simples,False,4.5,4.75,4.75,"olá, uma dúvida: três cobranças do pedido 10423 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje pfv"
+c0894,financeiro,complexa,complexa,complexa,False,2.75,3.75,4.75,"oi, por favor, parcelei o meu pedido, devolvi metade e a fatura continua cheia"
+c0899,financeiro,complexa,media,media,False,2.75,4.75,4.75,"parcelei o pedido 10415, devolvi metade e a fatura continua cheia"
+c0917,suporte,complexa,complexa,complexa,False,2.5,4.0,4.75,"oi, preciso saber: o meu pedido consta entregue mas não recebi nada e já é a terceira vez que reclamo"
+c0920,devolucao,complexa,complexa,complexa,False,3.75,4.0,5.0,"olá, uma dúvida: é a segunda troca do kit do pedido 10411 com defeito, qro meu dinheiro e não outro, isso é um absurdo??"
+c0927,financeiro,complexa,simples,simples,False,4.75,4.75,4.75,"olá, uma dúvida: três cobranças do pedido 10413 no meu cartão, vou abrir chargeback e ir no procon se não resolverem hoje"
+c0926,devolucao,complexa,simples,simples,False,4.75,4.75,4.75,"passou do prazo mas o notebook do pedido 10446 nunca funcionou direito, vocês têm que aceitar pfv"
+c0938,devolucao,complexa,simples,simples,False,4.75,4.75,5.0,"é a segunda troca do caneca do pedido 10445 com defeito, quero meu dinheiro e não outro, isso é um absurdo??"
+c0941,suporte,complexa,media,complexa,False,2.5,4.25,4.5,"preciso saber: o pedido 10414 veio pela metade e o restante sumiu do rastreio, e ainda querem cobrar frete de novo"
+c0954,suporte,complexa,simples,simples,False,4.5,3.5,4.5,"oi, alguém fez o pedido 10438 na minha conta, não fui eu"
