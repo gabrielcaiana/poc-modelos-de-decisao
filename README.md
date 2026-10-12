@@ -13,6 +13,10 @@ Chatbots de atendimento costumam usar um único modelo caro para tudo, ou um LLM
 
 ## Arquitetura
 
+[![Diagrama arquitetura](report/diagramas/arquitetura.png)](report/diagramas/arquitetura.svg)
+
+<details><summary>Fonte Mermaid</summary>
+
 ```mermaid
 flowchart TD
     U["Mensagem do cliente"] --> D1{"Camada 1: MSD1 choice<br/>devolucao / suporte / financeiro / fora_de_escopo"}
@@ -29,6 +33,8 @@ flowchart TD
     T --> R["Resposta"]
     R --> L[("Logs JSONL + ledger de custo")]
 ```
+
+</details>
 
 | Subagente | O que atende |
 |---|---|
