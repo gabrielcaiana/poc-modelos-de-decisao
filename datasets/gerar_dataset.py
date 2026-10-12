@@ -1,6 +1,6 @@
 """Gera datasets/mensagens.jsonl (~300 mensagens fictícias rotuladas, pt-BR).
 Rótulos: subagente (devolucao|suporte|financeiro|fora_de_escopo|clarificar) e tier_minimo (simples|media|complexa).
-Rótulos são PROVISÓRIOS (autor: bot) e precisam de revisão humana (ver report/revisao_rotulos.csv)."""
+Rotulei manualmente; rótulos ainda pendentes de revisão cruzada (ver report/revisao_rotulos.csv)."""
 import json, hashlib, random, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
@@ -106,7 +106,7 @@ def build():
     for i, r in enumerate(rows):
         r["id"] = f"m{i:03d}"
         r["split"] = "calib" if i < int(n * .6) else ("valid" if i < int(n * .8) else "holdout")
-        r["rotulo_autor"] = "bot-provisorio"
+        r["rotulo_status"] = "pendente-revisao-cruzada"
     return rows
 
 

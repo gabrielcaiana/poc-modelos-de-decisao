@@ -1,7 +1,7 @@
 # Estimativa de custo — POC modelos de decisão (Fase 2)
 
-Gerado por `python -m harness.estimate`. Preços: `config/prices.json` (OpenRouter /api/v1/models, 2026-10-12 08:56 -03) + MSD1 de `config/prices_extra.json`.
-Orçamento: **teto rígido US$20; o harness aborta ao atingir US$18** (`config/budget.json`). A chave também está com limite de US$20 no OpenRouter (GET /api/v1/key: `limit=20`).
+Gerado por `python -m harness.estimate`. Preços: `config/prices.json` (OpenRouter /api/v1/models, 2026-10-12 08:57 -03) + MSD1 de `config/prices_extra.json`.
+Orçamento: **teto rígido US$20; o harness aborta ao atingir US$18** (`config/budget.json`). Também configurei o limite de US$20 na própria chave do OpenRouter (GET /api/v1/key: `limit=20`).
 
 ## Preços ao vivo (US$ por 1M tokens)
 
@@ -13,7 +13,7 @@ Orçamento: **teto rígido US$20; o harness aborta ao atingir US$18** (`config/b
 | tier complexa | `openai/gpt-6-sol` | 2.000 | 10.000 |
 | juiz | `deepseek/deepseek-v4.1-flash` | 0.150 | 0.600 |
 
-## Premissas
+## Premissas que usei
 
 - Dataset: 300 mensagens; decisões MSD1 em todas; geração só no holdout (60 msgs, 52 chegam à geração; fora_de_escopo/ambíguas param na resposta fixa).
 - max_tokens: 400 (Gemini) e 800 (GPT-6 Sol, v2).
@@ -21,9 +21,9 @@ Orçamento: **teto rígido US$20; o harness aborta ao atingir US$18** (`config/b
 - Tokens por chamada (central ≈ smoke de 12/10/2026, arredondado para cima; pessimista ≈ teto de `max_tokens` (Sol 800)):
   - **central**: geração 550 in / saída {'simples': 120, 'media': 160, 'complexa': 300} (GPT-6 Sol inclui tokens de raciocínio); C1 200 in; C2 150 in; juiz 900 in / 200 out.
   - **pessimista**: geração 900 in / saída {'simples': 400, 'media': 400, 'complexa': 800} (GPT-6 Sol inclui tokens de raciocínio); C1 300 in; C2 250 in; juiz 1400 in / 500 out.
-- Medido no smoke: C1 ≈ 183–192 tokens, C2 ≈ 130–139 tokens (US$0,000006–0,000008 por decisão); geração ≈ 340–480 tokens in; saída Gemini 45–122, GPT-6 Sol 79–277 (39–187 de raciocínio).
-- Mistura msd1 assumida 40% simples / 40% média / 20% complexa (fallback de baixa confiança sobe para complexa).
-- Juiz avalia TODAS as respostas das 6 configurações (é barato); planilha de revisão humana cega numa amostra de 40.
+- O que medi no smoke: C1 ≈ 183–192 tokens, C2 ≈ 130–139 tokens (US$0,000006–0,000008 por decisão); geração ≈ 340–480 tokens in; saída Gemini 45–122, GPT-6 Sol 79–277 (39–187 de raciocínio).
+- Assumi para msd1 a mistura 40% simples / 40% média / 20% complexa (fallback de baixa confiança sobe para complexa).
+- O juiz avalia TODAS as respostas das 6 configurações (é barato); eu reviso manualmente uma amostra cega de 40.
 - Cada mensagem é um turno único (sem conversas multi-turno nesta POC).
 
 ## Tabela
@@ -53,9 +53,9 @@ Orçamento: **teto rígido US$20; o harness aborta ao atingir US$18** (`config/b
 | `openai/gpt-6-sol` | 0.3231 |
 | `deepseek/deepseek-v4.1-flash` | 0.0796 |
 
-## Leitura
+## Minha leitura
 
 - Mesmo no cenário pessimista o experimento completo fica em ~US$1.68, bem abaixo da parada de US$18. Isso dá folga para: dobrar o dataset, rodar a variante de fallback "+1 tier", testar C1+C2 numa única chamada, e repetir a rodada.
 - O item dominante é o GPT-6 Sol (always-expensive + parte de msd1/oracle). O MSD1 e o juiz custam centavos.
-- Gasto já realizado na Fase 1 (smoke): ver `runs/ledger.json` e README.
-- Conferir com o painel/fatura do OpenRouter depois da rodada (`Client.key_usage()`).
+- O gasto real que tive está em `runs/ledger.json` e no README.
+- Depois da rodada eu confiro com o painel do OpenRouter (`Client.key_usage()`).

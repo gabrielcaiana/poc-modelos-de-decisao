@@ -1,5 +1,7 @@
 # Exemplos reais de routing (holdout)
 
+Listo aqui todas as decisões da Camada 1 que o MSD1 tomou no holdout, com as probabilidades que ele devolveu e o que o meu threshold τ1 fez com elas.
+
 - **ACERTO** `m240` “ond ta meu pedio 10442” → rótulo `suporte`, MSD1 `suporte` p=0.999 → `suporte`. probs: suporte=0.999, devolucao=0.000, financeiro=0.000, fora_de_escopo=0.000
 - **ACERTO** `m241` “pedido 10437 veio faltando a tampa do liquidificador, troca só a peça ou tudo?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, suporte=0.000, fora_de_escopo=0.000, financeiro=0.000
 - **ACERTO** `m242` “fui cobrado por um pedido que não fiz” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, fora_de_escopo=0.000, devolucao=0.000, suporte=0.000

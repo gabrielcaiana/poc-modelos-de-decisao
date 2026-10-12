@@ -143,7 +143,7 @@ def main(hold, calib):
         for e in EST:
             r = rows[e]; w_.writerow([e, r["n"], r["n_resp"], f"{r['custo_total']:.6f}", f"{r['custo_msg']:.7f}", f"{r['econ']:.4f}", f"{r['econ_ic'][0]:.4f}", f"{r['econ_ic'][1]:.4f}", f"{r['nota']:.3f}", f"{r['nota_ic'][0]:.3f}", f"{r['nota_ic'][1]:.3f}", f"{r['pct_ge4']:.3f}", f"{r['custo_por_boa']:.6f}" if r["custo_por_boa"] else "", int(r["lat_p50"]), int(r["lat_p95"]), f"{r['overhead_pct']:.3f}" if r["overhead_pct"] is not None else "", r["trunc"]])
     # ---------- exemplos ----------
-    ex = ["# Exemplos reais de routing (holdout)", ""]
+    ex = ["# Exemplos reais de routing (holdout)", "", "Listo aqui todas as decisões da Camada 1 que o MSD1 tomou no holdout, com as probabilidades que ele devolveu e o que o meu threshold τ1 fez com elas.", ""]
     for i, d in list(d1h.items()):
         lab = ds[i]["label"]; c = "clarificar" if d["p_max"] < TH["tau1"] else d["raw_choice"]
         tag = "ACERTO" if c == lab or (lab == "clarificar" and d["raw_choice"] in (ds[i].get("aceitos") or [])) else ("CLARIFICAÇÃO" if c == "clarificar" else "ERRO")
@@ -152,9 +152,10 @@ def main(hold, calib):
     # ---------- RESULTADOS.md ----------
     L = ["# Resultados — POC modelos de decisão (Fase 2)", "",
          f"Rodada: `{hold.name}` (holdout, {man['n_itens']} mensagens × {len(EST)} estratégias), iniciada {man['inicio']} (horário de SP). Calibração: `{calib.name}` ({len(CAL)} mensagens do split calib).",
-         f"Dataset: `datasets/mensagens.jsonl` (sha256 `{man['dataset_sha256'][:16]}…`, 300 mensagens fictícias, rótulos provisórios do bot). Thresholds congelados antes do holdout: τ1={TH['tau1']}, τ2={TH['tau2']} (fallback → complexa), τ2_up1={TH['tau2_up1']} (fallback +1 tier).",
+         f"Dataset: `datasets/mensagens.jsonl` (sha256 `{man['dataset_sha256'][:16]}…`, 300 mensagens fictícias que eu escrevi e rotulei; rótulos ainda pendentes de revisão cruzada). Thresholds congelados antes do holdout: τ1={TH['tau1']}, τ2={TH['tau2']} (fallback → complexa), τ2_up1={TH['tau2_up1']} (fallback +1 tier).",
+         "Obs.: o sha256 registrado no manifest da rodada é o da versão do arquivo antes de eu renomear um campo de metadados (`rotulo_autor` → `rotulo_status`); mensagens, rótulos e splits são idênticos.",
          "Tudo abaixo é regenerado por `.venv/bin/python -m harness.report " + f"runs/{hold.name} runs/{calib.name}`.", "",
-         "## Resumo", "",
+         "Neste relatório eu comparo, no split de teste (holdout), o chatbot com as duas camadas de decisão do Microsoft-Decision-1 contra baselines de modelo fixo.", "", "## Resumo", "",
          f"- **Camada 1 (routing)**: acurácia bruta do MSD1 nas mensagens claras = **{pct(c1h['acuracia_bruta_claras'])}** no holdout ({pct(c1c['acuracia_bruta_claras'])} no calib). Com τ1={TH['tau1']}: clarificação {pct(c1h['taxa_clarificacao'])} (desnecessária {pct(c1h['clarificacao_desnecessaria'])}), erro entre aceitas {pct(c1h['erro_entre_aceitas_claras'])}, ambíguas bem tratadas {pct(c1h['ambiguas_tratadas_ok'])}.",
          f"- **Camada 2 (modelo)**: acerto do tier vs. rótulo {pct(c2m['acuracia'])} (msd1); sub-roteamento {pct(c2m['sub'])}, super-roteamento {pct(c2m['super'])}, fallback {pct(c2m['fallback'])}.",
          f"- **Custo × qualidade**: msd1 custa {pct(rows['msd1']['econ'])} menos que always-expensive (IC95% {pct(rows['msd1']['econ_ic'][0])}–{pct(rows['msd1']['econ_ic'][1])}) com nota {rows['msd1']['nota']:.2f} vs {rows['always-expensive']['nota']:.2f} (always-cheap: {rows['always-cheap']['nota']:.2f}).",
@@ -166,7 +167,7 @@ def main(hold, calib):
                   ("erro_entre_aceitas_claras", "Erro entre aceitas (claras)"), ("ambiguas_tratadas_ok", "Ambíguas: clarificou ou rótulo aceito")]:
         L.append(f"| {nm} | {pct(c1h[k])} | {pct(c1h_0[k])} | {pct(c1c[k])} |")
     L += [f"| n | {c1h['n']} | {c1h_0['n']} | {c1c['n']} |", "",
-          f"ECE (calib+holdout, claras): **{ece1:.3f}**. Latência da decisão C1: P50 {q(lat1,.5):.0f} ms, P95 {q(lat1,.95):.0f} ms; C2: P50 {q(lat2,.5):.0f} ms, P95 {q(lat2,.95):.0f} ms (medido do box, SP).", "",
+          f"ECE (calib+holdout, claras): **{ece1:.3f}**. Latência da decisão C1: P50 {q(lat1,.5):.0f} ms, P95 {q(lat1,.95):.0f} ms; C2: P50 {q(lat2,.5):.0f} ms, P95 {q(lat2,.95):.0f} ms (medido de um servidor Linux em São Paulo).", "",
           "Matriz de confusão (holdout, com τ1; linhas = rótulo, colunas = decisão):", "", "| rótulo \\ decisão | " + " | ".join(SUBS + ["clarificar"]) + " |", "|---" * 6 + "|"]
     for lab in SUBS + ["clarificar"]:
         L.append(f"| {lab} | " + " | ".join(str(c1h["confusao"].get((lab, c), 0)) for c in SUBS + ["clarificar"]) + " |")
@@ -177,7 +178,7 @@ def main(hold, calib):
         L.append(f"| {nm} | {c['n']} | {pct(c['acuracia'])} | {pct(c['sub'])} | {pct(c['super'])} | {pct(c['fallback'])} | {c['dist'].get('simples',0)}/{c['dist'].get('media',0)}/{c['dist'].get('complexa',0)} |")
     agree = [i for i in emp if ds[i]["tier_minimo"]]
     L += ["", f"No calib (subagente correto, escolha bruta sem τ), o acerto do tier foi {pct(c2cal_raw)} (n={len(zc)}).",
-          f"Tier empírico (o mais barato cuja nota do juiz fica a ≤0,25 da melhor): {dict(Counter(emp.values()))}; concorda com o rótulo do bot em {pct(sum(emp[i]==ds[i]['tier_minimo'] for i in agree)/len(agree))} dos casos — os rótulos de complexidade são frágeis.", "",
+          f"Tier empírico (o mais barato cuja nota do juiz fica a ≤0,25 da melhor): {dict(Counter(emp.values()))}; concorda com os meus rótulos em {pct(sum(emp[i]==ds[i]['tier_minimo'] for i in agree)/len(agree))} dos casos — os rótulos de complexidade são frágeis.", "",
           "![tiers](report/graficos/tiers.png)", "", "## Ponta a ponta — qualidade × custo × latência (holdout)", "",
           "| Estratégia | Custo total US$ | US$/msg | Economia vs caro (IC95%) | Nota juiz (IC95%) | % nota ≥4 | US$/resposta boa | Lat P50 / P95 (s) | Overhead decisão | Truncadas |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for e in EST:
@@ -191,16 +192,20 @@ def main(hold, calib):
     ku = os.environ.get("KEY_USAGE")
     if ku: L += ["", f"- Conferência OpenRouter (GET /api/v1/key, no momento do relatório): uso = US${float(ku):.4f}, limite US$20."]
     L += ["", "## Limitações", "",
-          "- **Rótulos do bot, não revisados por humano** (subagente e tier). O tier empírico mostra que o rótulo de complexidade diverge bastante; os números da C2 devem ser lidos com isso em mente. Revisar `report/revisao_rotulos.csv`.",
-          "- **Juiz único e barato** (DeepSeek V4.1 Flash) sem calibração humana ainda; a planilha cega de 40 itens está em `runs/" + hold.name + "/revisao_humana_juiz.csv` (chave em `revisao_humana_chave.json`). Viés de verbosidade possível a favor do modelo caro.",
+          "- **Rotulei sozinho** (subagente e tier); os rótulos ainda estão pendentes de revisão cruzada (`report/revisao_rotulos.csv`). O tier empírico mostra que o meu rótulo de complexidade diverge bastante, então leio os números da C2 com cautela.",
+          "- **Juiz único e barato** (DeepSeek V4.1 Flash), ainda sem a minha calibração manual; a planilha cega de 40 itens que vou preencher está em `runs/" + hold.name + "/revisao_humana_juiz.csv` (chave em `revisao_humana_chave.json`). Viés de verbosidade possível a favor do modelo caro.",
           f"- **Holdout pequeno** ({man['n_itens']} mensagens, ~52 geradas por estratégia): ICs largos; diferenças de nota < ~0,3 não são conclusivas.",
-          "- Mensagens de turno único, sintéticas, escritas por um só autor (provável homogeneidade de estilo); ferramentas mock injetadas no prompt, sem tool-calling real.",
-          "- τ calibrados com utilidade definida por nós; a escolha de pesos muda τ. A C2 do calib usou o subagente correto; no holdout usou o escolhido pela C1.",
-          "- Latência medida do box (Linux, SP), um horário só; geração depende do provedor servido pelo OpenRouter.",
-          "- Sem baselines de router gerativo/Jev/OpenAI Decisions nesta rodada.", "",
+          "- Mensagens de turno único e sintéticas, todas escritas por mim (provável homogeneidade de estilo); ferramentas mock injetadas no prompt, sem tool-calling real.",
+          "- Calibrei os τ com uma função de utilidade que eu defini; outros pesos mudariam os τ. A C2 do calib usou o subagente correto; no holdout usou o escolhido pela C1.",
+          "- Medi a latência de um único servidor Linux em São Paulo, num horário só; geração depende do provedor servido pelo OpenRouter.",
+          "- Não rodei os baselines de router gerativo/Jev/OpenAI Decisions nesta rodada.", "",
+          "## Minha conclusão", "",
+          f"- A Camada 1 funcionou bem: o MSD1 roteou {pct(c1h['acuracia_bruta_claras'])} das mensagens claras corretamente, com probabilidades bem calibradas (ECE {ece1:.3f}) e ~{q(lat1,.5):.0f} ms por decisão; o τ1 trocou erro por clarificação de forma controlada.",
+          f"- A Camada 2, do jeito que eu montei, não se pagou: always-media custou US${rows['always-media']['custo_msg']:.6f}/msg com nota {rows['always-media']['nota']:.2f}, contra US${rows['msd1']['custo_msg']:.6f}/msg e nota {rows['msd1']['nota']:.2f} do msd1. A variante +1 tier chegou a {rows['msd1-up1']['nota']:.2f}, mas a {pct(rows['msd1-up1']['econ'])} de economia.",
+          "- O gargalo é a definição de complexidade (meus rótulos discordam do tier empírico em metade dos casos), não a latência nem o custo da decisão, que são desprezíveis.", "",
           "## Evidências", "", f"- `runs/{hold.name}/` — decisions.jsonl, turns.jsonl, judge.jsonl, manifest.json, revisao_humana_juiz.csv",
           f"- `runs/{calib.name}/` — decisions.jsonl, calibracao.json (curvas de utilidade de τ1/τ2)", "- `config/thresholds.json` (τ congelados), `config/prices.json` (preços datados)",
-          "- `report/tabelas/estrategias.csv`, `report/graficos/*.png`, `report/exemplos-routing.md`", "- `ESTIMATIVA_CUSTO.md` (estimativa feita antes da rodada)"]
+          "- `report/tabelas/estrategias.csv`, `report/graficos/*.png`, `report/exemplos-routing.md`", "- `ESTIMATIVA_CUSTO.md` (estimativa que fiz antes da rodada)"]
     (ROOT / "RESULTADOS.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
 

@@ -57,21 +57,21 @@ def main(refresh=False):
 
     L = ["# Estimativa de custo — POC modelos de decisão (Fase 2)", "",
          f"Gerado por `python -m harness.estimate`. Preços: `config/prices.json` (OpenRouter /api/v1/models, {pdate}) + MSD1 de `config/prices_extra.json`.",
-         "Orçamento: **teto rígido US$20; o harness aborta ao atingir US$18** (`config/budget.json`). A chave também está com limite de US$20 no OpenRouter (GET /api/v1/key: `limit=20`).", "",
+         "Orçamento: **teto rígido US$20; o harness aborta ao atingir US$18** (`config/budget.json`). Também configurei o limite de US$20 na própria chave do OpenRouter (GET /api/v1/key: `limit=20`).", "",
          "## Preços ao vivo (US$ por 1M tokens)", "", "| Papel | Modelo | Entrada | Saída |", "|---|---|---|---|"]
     for papel, m in [("decisão (C1/C2)", MODELS["msd1"]), ("tier simples", T["simples"]), ("tier média", T["media"]),
                      ("tier complexa", T["complexa"]), ("juiz", MODELS["judge"])]:
         L.append(f"| {papel} | `{m}` | {P[m]['in']*1e6:.3f} | {P[m]['out']*1e6:.3f} |")
-    L += ["", "## Premissas", "",
+    L += ["", "## Premissas que usei", "",
           f"- Dataset: {N_ALL} mensagens; decisões MSD1 em todas; geração só no holdout ({N} msgs, {N_GER} chegam à geração; fora_de_escopo/ambíguas param na resposta fixa).",
           "- max_tokens: 400 (Gemini) e 800 (GPT-6 Sol, v2).",
           f"- Tiers rotulados: {TIERS}.",
           "- Tokens por chamada (central ≈ smoke de 12/10/2026, arredondado para cima; pessimista ≈ teto de `max_tokens` (Sol 800)):"]
     for cen, pr in PREM.items():
         L.append(f"  - **{cen}**: geração {pr['gen_in']} in / saída {pr['out']} (GPT-6 Sol inclui tokens de raciocínio); C1 {pr['c1_in']} in; C2 {pr['c2_in']} in; juiz {pr['judge_in']} in / {pr['judge_out']} out.")
-    L += ["- Medido no smoke: C1 ≈ 183–192 tokens, C2 ≈ 130–139 tokens (US$0,000006–0,000008 por decisão); geração ≈ 340–480 tokens in; saída Gemini 45–122, GPT-6 Sol 79–277 (39–187 de raciocínio).",
-          "- Mistura msd1 assumida 40% simples / 40% média / 20% complexa (fallback de baixa confiança sobe para complexa).",
-          "- Juiz avalia TODAS as respostas das 6 configurações (é barato); planilha de revisão humana cega numa amostra de 40.",
+    L += ["- O que medi no smoke: C1 ≈ 183–192 tokens, C2 ≈ 130–139 tokens (US$0,000006–0,000008 por decisão); geração ≈ 340–480 tokens in; saída Gemini 45–122, GPT-6 Sol 79–277 (39–187 de raciocínio).",
+          "- Assumi para msd1 a mistura 40% simples / 40% média / 20% complexa (fallback de baixa confiança sobe para complexa).",
+          "- O juiz avalia TODAS as respostas das 6 configurações (é barato); eu reviso manualmente uma amostra cega de 40.",
           "- Cada mensagem é um turno único (sem conversas multi-turno nesta POC).", "",
           "## Tabela", "", "| Item | Central (US$) | Pessimista (US$) |", "|---|---:|---:|"]
     for k in out["central"]:
@@ -89,11 +89,11 @@ def main(refresh=False):
     for t, n in TIERS.items(): per[T[t]] += gen(t, n, pc)
     per[MODELS["judge"]] = c["Juiz DeepSeek V4.1 Flash (todas as respostas: 6 configs)"]
     for m, v in per.items(): L.append(f"| `{m}` | {v:.4f} |")
-    L += ["", "## Leitura", "",
+    L += ["", "## Minha leitura", "",
           f"- Mesmo no cenário pessimista o experimento completo fica em ~US${tp:.2f}, bem abaixo da parada de US$18. Isso dá folga para: dobrar o dataset, rodar a variante de fallback \"+1 tier\", testar C1+C2 numa única chamada, e repetir a rodada.",
           "- O item dominante é o GPT-6 Sol (always-expensive + parte de msd1/oracle). O MSD1 e o juiz custam centavos.",
-          "- Gasto já realizado na Fase 1 (smoke): ver `runs/ledger.json` e README.",
-          "- Conferir com o painel/fatura do OpenRouter depois da rodada (`Client.key_usage()`)."]
+          "- O gasto real que tive está em `runs/ledger.json` e no README.",
+          "- Depois da rodada eu confiro com o painel do OpenRouter (`Client.key_usage()`)."]
     (ROOT / "ESTIMATIVA_CUSTO.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
 

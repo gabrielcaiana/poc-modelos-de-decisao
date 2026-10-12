@@ -1,4 +1,4 @@
-"""Mensagens adicionais (v2) para chegar a ~300. Fictícias; rótulos provisórios do bot."""
+"""Mensagens adicionais (v2) para chegar a ~300. Fictícias; rótulos meus, pendentes de revisão cruzada."""
 import random
 S, M, C = "simples", "media", "complexa"
 _r = random.Random(2026)

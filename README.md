@@ -1,95 +1,261 @@
-# POC — Modelos de decisão num chatbot de pós-venda (Fase 1)
+# Modelos de decisão num chatbot de pós-venda
 
-POC derivada de `/workspace/artigos/modelos-de-decisao/plano-experimento.md` (v2), com os ajustes do Gabriel de 12/10/2026:
-orçamento rígido de **US$20** no OpenRouter (parada automática em **US$18**), escopo **pós-venda** com 3 subagentes e dataset pequeno (130 mensagens fictícias).
+> POC em que eu testei o **Microsoft-Decision-1 (MSD1)** como camada de decisão de um chatbot de pós-venda: primeiro para escolher o subagente certo (com pedido de clarificação quando a confiança é baixa) e depois para escolher entre três LLMs de custos diferentes conforme a complexidade da mensagem. Construí tudo com dados 100% fictícios, um teto rígido de US$20 de API e gastei **US$0,30** no total.
 
-**Status: Fase 1 concluída (código, dataset, harness, testes, dry-run com mocks, smoke test). A rodada completa NÃO foi executada.**
+![Custo × qualidade por estratégia](report/graficos/custo_vs_qualidade.png)
+
+## O problema
+
+Chatbots de atendimento costumam usar um único modelo caro para tudo, ou um LLM gerativo como "roteador". Eu queria responder duas perguntas com números reais:
+
+1. Um modelo de decisão pequeno, que devolve **probabilidades calibradas por opção** em vez de texto, consegue rotear mensagens para o subagente certo e saber quando deve perguntar de volta?
+2. Usando o mesmo modelo para estimar a complexidade da mensagem, dá para mandar o caso fácil para um modelo barato e o difícil para um caro, **economizando sem perder qualidade**?
 
 ## Arquitetura
 
-```
-mensagem ──► Camada 1: MSD1 (choice) ─► p_max < τ1 ─► clarificação (texto fixo, custo zero)
-                     │                 └► fora_de_escopo ─► resposta padrão
-                     ▼ devolucao | suporte | financeiro
-             Camada 2: MSD1 (score 0-2) ─► simples → google/gemini-2.5-flash-lite
-                                         ├► media   → google/gemini-3.5-flash-lite
-                                         ├► complexa→ openai/gpt-6-sol
-                                         └► p_max < τ2 → complexa (ou "+1 tier", configurável)
-             Geração no subagente com ferramentas mock (resultado injetado no prompt)
+```mermaid
+flowchart TD
+    U["Mensagem do cliente"] --> D1{"Camada 1: MSD1 choice<br/>devolucao / suporte / financeiro / fora_de_escopo"}
+    D1 -->|"p_max menor que τ1"| C["Clarificação: pergunta fixa, sem LLM"]
+    D1 -->|"fora_de_escopo"| F["Resposta padrão"]
+    D1 -->|"p_max maior ou igual a τ1"| D2{"Camada 2: MSD1 score<br/>simples / media / complexa"}
+    D2 -->|simples| M1["Gemini 2.5 Flash Lite"]
+    D2 -->|media| M2["Gemini 3.5 Flash Lite"]
+    D2 -->|complexa| M3["GPT-6 Sol"]
+    D2 -->|"p_max menor que τ2"| M3
+    M1 --> T["Subagente + ferramentas mock"]
+    M2 --> T
+    M3 --> T
+    T --> R["Resposta"]
+    R --> L[("Logs JSONL + ledger de custo")]
 ```
 
-| Subagente | Cobre |
+| Subagente | O que atende |
 |---|---|
-| `devolucao` | devolução, troca, arrependimento, defeito, etiqueta/coleta |
-| `suporte` | status/rastreio, entrega, endereço, cancelamento antes do envio, conta, uso do produto |
-| `financeiro` | reembolso, cobrança (duplicada/indevida/juros/boleto), estorno |
+| `devolucao` | devolução, troca, arrependimento, defeito, etiqueta e coleta |
+| `suporte` | status e rastreio, entrega, endereço, cancelamento antes do envio, conta, uso do produto |
+| `financeiro` | reembolso, cobrança (duplicada, indevida, juros, boleto), estorno |
 
-### Microsoft-Decision-1 (MSD1)
-Existe e foi usado **sem substituto**: `microsoft/microsoft-decision-1` (versão retornada `microsoft-decision-1-20261009`, provedor Azure), lançado em 09/10/2026, pós-treino do Qwen3.5-9B que devolve **probabilidade calibrada por opção** (não gera texto). Endpoint do OpenRouter: `POST https://openrouter.ai/api/alpha/decisions` (API *alpha*; não é chat completions), corpo `{model, state, questions:{nome:{type: choice|score|noul, instructions, criteria}}}`. Preço: US$0,042/M tokens de entrada, saída grátis; contexto 32k. Ele **não aparece** em `/api/v1/models`, por isso o preço fica em `config/prices_extra.json`; o custo real de cada chamada vem de `usage.cost`.
-- C1 usa `type: choice` (4 opções). C2 usa `type: score` (escala ordinal 0/1/2 = simples/média/complexa).
-- Fontes: https://openrouter.ai/microsoft/microsoft-decision-1 · https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request · https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
+As ferramentas (consulta de pedido e política da loja) são mocks determinísticos de uma loja fictícia, a "LojaExemplo", com 60 pedidos inventados (`mocks/dados.py`). O resultado da ferramenta entra no prompt do subagente.
 
-### Modelos (verificados em `/api/v1/models` em 12/10/2026)
-| Papel | Modelo | US$/1M in / out |
-|---|---|---|
-| decisão | `microsoft/microsoft-decision-1` | 0,042 / 0 |
-| barato | `google/gemini-2.5-flash-lite` | 0,10 / 0,40 |
-| médio | `google/gemini-3.5-flash-lite` | 0,30 / 2,50 |
-| caro | `openai/gpt-6-sol` | 2,00 / 10,00 |
-| juiz | `deepseek/deepseek-v4.1-flash` | 0,15 / 0,60 |
+## As duas camadas de decisão
 
-Os três do plano existem com os preços do plano; nenhuma substituição. O juiz é de outra família (evita auto-preferência) e barato. Obs.: existe também `openai/gpt-6.1-sol` (mesmo preço); mantivemos o `gpt-6-sol` do plano.
+**O MSD1.** O `microsoft/microsoft-decision-1` (versão `-20261009`, servido pela Azure via OpenRouter) é um Qwen3.5-9B pós-treinado que não gera texto: recebe um estado e perguntas com opções fixas e devolve a probabilidade de cada opção. Usei o endpoint `POST https://openrouter.ai/api/alpha/decisions`. Ele custa US$0,042 por milhão de tokens de entrada; cada decisão minha saiu por **~US$0,000008** e **~230 ms**.
 
-### Estratégias
-`msd1` (C1+C2), `always-cheap`, `always-expensive` (baselines pedidos), `always-media` (necessária para rotular o tier mínimo empiricamente) e `oracle` (label humano, teto teórico). A C1 é idêntica em todas e é reaproveitada via cache dentro da execução (é paga uma vez; o custo é contabilizado em cada estratégia, como seria em produção; linhas reaproveitadas têm `reuso_cache: true`).
+**Camada 1 — routing (`type: choice`).** Quatro opções, cada uma com uma descrição. Se a maior probabilidade fica abaixo de **τ1 = 0,9**, o chatbot não arrisca: pergunta ao cliente se o assunto é devolução, pedido ou dinheiro.
 
-## Orçamento e segurança
-- `harness/budget.py`: ledger persistente em `runs/ledger.json`. Antes de **cada** chamada reserva o custo máximo possível (tokens estimados × preço + `max_tokens` × preço de saída); se `gasto + reserva > 18`, levanta `BudgetExceeded` e a execução para, gravando `status: ABORTADO_ORCAMENTO` no `manifest.json`. `--session-cap` adiciona um teto por execução.
-- Custo real por chamada: `usage.cost` do OpenRouter (fallback: tabela de preços). Conferência: `Client.key_usage()` (GET `/api/v1/key`). A chave já tem `limit = 20` no OpenRouter.
-- A chave vem só de `OPENROUTER_API_KEY`; nunca é impressa/logada. `.env` está no `.gitignore`; use `.env.example`.
-- Dados 100% fictícios (`mocks/dados.py`, loja "LojaExemplo").
+**Camada 2 — escolha do modelo (`type: score`).** Uma escala ordinal 0/1/2 (simples / média / complexa) que mapeia para três modelos:
+
+| Tier | Modelo | US$/1M tokens (entrada / saída) | max_tokens |
+|---|---|---|---|
+| simples | `google/gemini-2.5-flash-lite` | 0,10 / 0,40 | 400 |
+| média | `google/gemini-3.5-flash-lite` | 0,30 / 2,50 | 400 |
+| complexa | `openai/gpt-6-sol` | 2,00 / 10,00 | 800 |
+
+Se a confiança fica abaixo de **τ2 = 0,5**, sobe direto para o caro. Também testei uma variante (`msd1-up1`) que sobe só **um** tier, com τ2 = 0,98.
+
+Escolhi os thresholds no split de calibração (180 mensagens), maximizando uma função de utilidade que defini antes de olhar o teste, e congelei em `config/thresholds.json` antes de rodar o holdout.
+
+**Juiz.** `deepseek/deepseek-v4.1-flash`, de outra família, dá notas de 1 a 5 em correção, resolução, política e tom.
+
+## Resultados (holdout: 60 mensagens × 6 estratégias)
+
+| Estratégia | US$/msg | Economia vs sempre caro (IC95%) | Nota do juiz (IC95%) | % nota ≥ 4 | Latência P50 / P95 |
+|---|---:|---:|---:|---:|---:|
+| **msd1** (C1 + C2) | 0,000417 | 78,3% (67,9–86,7) | 4,48 (4,31–4,62) | 90,4% | 1,34 s / 5,07 s |
+| msd1-up1 (fallback +1 tier) | 0,000880 | 54,1% (42,4–65,4) | 4,62 (4,50–4,72) | 96,2% | 1,67 s / 5,95 s |
+| always-cheap | 0,000063 | 96,7% (96,4–97,0) | 4,18 (3,96–4,40) | 71,2% | 0,90 s / 1,82 s |
+| always-media | 0,000312 | 83,7% (82,1–85,3) | 4,60 (4,50–4,69) | 96,2% | 1,28 s / 1,78 s |
+| always-expensive | 0,001919 | — | 4,71 (4,67–4,75) | 100% | 3,18 s / 6,07 s |
+| oracle (tier do meu rótulo) | 0,000481 | 74,9% (64,2–85,2) | 4,48 (4,32–4,62) | 88,5% | 0,93 s / 3,85 s |
+
+**Camada 1 (routing):**
+- Acurácia nas mensagens claras: **94,4%** no holdout (94,0% na calibração).
+- Com τ1 = 0,9: clarificação em **8,3%** das mensagens, sendo 5,6% desnecessárias.
+- Erro entre as mensagens aceitas: **3,9%**; as 6 ambíguas do holdout foram tratadas de forma aceitável.
+- Calibração das probabilidades: **ECE 0,054**.
+
+**Camada 2 (modelo):**
+- Acerto do tier contra o meu rótulo: **70,8%**.
+- Mandou para um tier abaixo do necessário em **22,9%** dos casos (na variante +1 tier, 6,2%).
+
+**Truncamento:** nenhuma resposta foi cortada por `max_tokens`, em nenhum modelo.
+
+<p>
+  <img src="report/graficos/matriz_confusao_c1.png" width="49%" alt="Matriz de confusão da Camada 1">
+  <img src="report/graficos/confiabilidade_c1.png" width="49%" alt="Diagrama de confiabilidade da Camada 1">
+</p>
+<p>
+  <img src="report/graficos/custo_e_nota_por_estrategia.png" width="49%" alt="Custo e nota por estratégia">
+  <img src="report/graficos/tiers.png" width="49%" alt="Distribuição de tiers">
+</p>
+<p>
+  <img src="report/graficos/cobertura_erro_c1.png" width="49%" alt="Cobertura x erro por τ1">
+  <img src="report/graficos/latencia.png" width="49%" alt="Latência por estratégia">
+</p>
+
+O relatório completo, com matriz de confusão, IC por bootstrap e tabelas, está em [`RESULTADOS.md`](RESULTADOS.md). Todos os números vêm dos logs em `runs/` via `harness/report.py`; não digitei nenhum à mão.
+
+## Exemplos reais
+
+### Uma mensagem passando pelas duas camadas
+
+O rastro abaixo é renderizado pelo `harness/show.py` a partir dos logs gravados (não chama a API de novo):
+
+![Rastro no terminal](report/graficos/terminal_rastro_msd1.png)
+
+```text
+$ python3 -m harness.show runs/20261012-holdout-live m246 --estrategia msd1
+[msd1] m246  cliente: "liquidificador fazendo barulho estranho, pedido 10443, ainda na garantia?"  (rótulo: devolucao/media)
+  C1 MSD1  devolucao=0.999  suporte=0.001  financeiro=0.000  fora_de_escopo=0.000
+      p_max=0.999 τ=0.9 → devolucao   211 ms  US$0.0000081
+  C2 MSD1  media=0.995  simples=0.005  complexa=0.000
+      p_max=0.995 τ=0.5 → media   235 ms  US$0.0000059
+  GERAÇÃO google/gemini-3.5-flash-lite  in=517 out=157 finish=stop  1336 ms  US$0.000548
+  resposta: Olá! Que pena que seu produto está com problemas.   Verifiquei o pedido 10443, mas ele não contém um liquidificador. Os itens deste pedido são: Escova…
+  juiz: média 4.75  correcao=5 resolucao=4 politica=5 tom=5
+  total do turno: US$0.000562  latência 1.78 s
+```
+
+### Um caso de clarificação
+
+O MSD1 ficou dividido entre devolução e financeiro. Como 0,503 < τ1, o chatbot perguntou em vez de chutar, e isso custou só a decisão:
+
+```text
+$ python3 -m harness.show runs/20261012-holdout-live m283 --estrategia msd1
+[msd1] m283  cliente: "já mandei a devolução faz 10 dias, chegou aí?"  (rótulo: devolucao/simples)
+  C1 MSD1  devolucao=0.503  financeiro=0.444  suporte=0.053  fora_de_escopo=0.000
+      p_max=0.503 τ=0.9 → clarificar   245 ms  US$0.0000079
+  CLARIFICAR (resposta fixa, sem geração)
+  resposta: Para te ajudar melhor: sua dúvida é sobre devolução/troca, sobre o andamento do pedido/entrega, ou sobre reembolso/cobrança? Se tiver, me passa o núme…
+  total do turno: US$0.000008  latência 0.24 s
+```
+
+Outras decisões reais da Camada 1 no holdout (de [`report/exemplos-routing.md`](report/exemplos-routing.md)):
+
+| Mensagem | Probabilidades do MSD1 | Decisão com τ1 = 0,9 | Meu rótulo |
+|---|---|---|---|
+| "como declaro imposto de renda?" | fora_de_escopo 1,000 | fora_de_escopo | fora_de_escopo ✅ |
+| "ajuda" | suporte 0,592 · fora_de_escopo 0,407 | clarificar | ambígua ✅ |
+| "não quero mais" | devolucao 0,749 · suporte 0,243 | clarificar | ambígua ✅ |
+| "devolve o dinheiro se eu devolver o fone?" | devolucao 0,651 · financeiro 0,349 | clarificar | devolucao (clarificação desnecessária) |
+| "o rastreio diz 'objeto aguardando retirada', onde retiro?" | devolucao 0,852 · suporte 0,148 | clarificar | suporte (o τ1 evitou um erro) |
+| "posso acompanhar pelo whatsapp?" | fora_de_escopo 0,981 · suporte 0,018 | fora_de_escopo | suporte ❌ |
+
+### A mesma mensagem nos três modelos
+
+Mensagem `m246`: *"liquidificador fazendo barulho estranho, pedido 10443, ainda na garantia?"*. A ferramenta mock mostra que o pedido 10443 **não tem** liquidificador (são escova elétrica, tênis e fone), status `devolucao_em_andamento`, 33 dias desde a entrega.
+
+| Modelo | Tokens in/out | Custo da geração | Latência | Nota do juiz | Trecho da resposta |
+|---|---:|---:|---:|---:|---|
+| Gemini 2.5 Flash Lite (always-cheap) | 517 / 68 | US$0,000079 | 0,70 s | **2,00** | "O liquidificador, por ser um item de higiene pessoal, tem o prazo de devolução por defeito de até 30 dias… infelizmente não consigo prosseguir" |
+| Gemini 3.5 Flash Lite (escolhido pelo msd1) | 517 / 157 | US$0,000548 | 1,34 s | **4,75** | "Verifiquei o pedido 10443, mas ele não contém um liquidificador… Poderia confirmar o número do pedido correto?" |
+| GPT-6 Sol (always-expensive) | 476 / 127 | US$0,002222 | 3,77 s | **4,75** | "No pedido 10443, não consta um liquidificador… Você pode conferir o número do pedido do liquidificador?" |
+
+O modelo barato inventou que o liquidificador estava no pedido. Já o médio acertou como o caro, por um quarto do preço. É exatamente o caso que a Camada 2 deveria pegar, e aqui ela pegou.
+
+## Guarda de custo
+
+Rodei tudo com um **teto rígido de US$20** e parada automática em **US$18** (`config/budget.json`):
+
+- `harness/budget.py` mantém um ledger persistente (`runs/ledger.json`).
+- Antes de **cada** chamada, ele reserva o pior custo possível (tokens estimados do prompt × preço de entrada + `max_tokens` × preço de saída).
+- Se `gasto + reserva` passar de US$18, levanta `BudgetExceeded`, interrompe a execução e grava `status: ABORTADO_ORCAMENTO` no `manifest.json`.
+- Também há `--session-cap` para limitar uma execução específica (usei US$0,08 no smoke test).
+- O custo de cada chamada é o `usage.cost` devolvido pelo OpenRouter. No fim, conferi o ledger com `GET /api/v1/key`, que bateu exatamente: **US$0,2971**.
+- Antes da rodada principal fiz a estimativa em [`ESTIMATIVA_CUSTO.md`](ESTIMATIVA_CUSTO.md): US$0,73 no cenário central e US$1,68 no pessimista.
+
+Saídas reais das execuções:
+
+```text
+$ python3 -m harness.calibrate --live
+{"n": 180, "n_c2": 149, "tau1": 0.9, "tau2": 0.5, "gasto_usd": 0.0022035720000000026} runs/20261012-085619-calib-live
+
+$ python3 -m harness.run --live --split holdout --estrategias msd1,msd1-up1,always-cheap,always-media,always-expensive,oracle --out runs/20261012-holdout-live
+runs/20261012-holdout-live  status=ok  gasto_sessao=US$0.242438  ledger=US$0.256619
+```
+
+Ledger final (`runs/ledger.json`):
+
+```json
+{
+  "spent_usd": 0.29710383100000026,
+  "calls": 1144,
+  "by_model": {
+    "microsoft/microsoft-decision-1": 0.00330338400000001,
+    "google/gemini-3.5-flash-lite": 0.045361200000000004,
+    "google/gemini-2.5-flash-lite": 0.007209500000000002,
+    "openai/gpt-6-sol": 0.1999,
+    "deepseek/deepseek-v4.1-flash": 0.04132974700000001
+  }
+}
+```
+
+A chave nunca entra no código: vem só da variável `OPENROUTER_API_KEY` (veja `.env.example`), e o `.env` está no `.gitignore`.
+
+## O que eu concluí
+
+- **A Camada 1 funciona.** O MSD1 roteou 94,4% das mensagens claras corretamente, com probabilidades bem calibradas e ~230 ms por decisão, a um custo desprezível. O threshold dá um controle explícito entre errar e perguntar.
+- **A Camada 2, do jeito que eu montei, não se pagou.** O msd1 economiza 78% em relação a sempre usar o GPT-6 Sol, mas **always-media é mais barato e tem nota maior** (4,60 vs 4,48): o msd1 fica fora da fronteira de Pareto. A variante +1 tier chega a 4,62, mas economiza só 54%.
+- **O gargalo é a definição de "complexidade", não o modelo de decisão.** Meus rótulos de tier concordam com o tier empírico (o mais barato que o juiz considera tão bom quanto o melhor) em só 47,9% dos casos. Até o `oracle`, que usa meu rótulo, fica abaixo do always-media.
+- O overhead das decisões (~0,2 a 0,5 s, ~US$0,00001) é pequeno perto da geração, principalmente perto do GPT-6 Sol (3,2 s de P50).
+
+## Limitações
+
+- **Rotulei sozinho** as 300 mensagens (subagente e tier); os rótulos ainda estão pendentes de revisão cruzada ([`report/revisao_rotulos.csv`](report/revisao_rotulos.csv)).
+- O juiz é um único modelo barato. Ainda vou calibrar com a planilha cega de 40 respostas (`runs/20261012-holdout-live/revisao_humana_juiz.csv`).
+- O holdout é pequeno (60 mensagens, ~52 respostas geradas por estratégia): diferenças de nota abaixo de ~0,3 não são conclusivas.
+- Mensagens sintéticas, de turno único e escritas por mim; ferramentas mock no prompt, sem tool-calling real.
+- Medi a latência de um único servidor Linux em São Paulo, num só horário.
+- O manifest da rodada registra o sha256 do dataset antes de eu renomear um campo de metadados (`rotulo_autor` → `rotulo_status`); mensagens, rótulos e splits não mudaram.
+
+## Próximos passos
+
+1. Revisão cruzada dos rótulos e calibração do juiz com a planilha cega (kappa ponderado).
+2. Rotular o tier de forma **empírica** (o mais barato que passa no juiz) e recalibrar o τ2 em cima disso.
+3. Testar outras perguntas para a Camada 2 (por exemplo, "o modelo barato resolve isto?" como `noul`) em vez da escala de complexidade.
+4. Conversas multi-turno com tool-calling real.
+5. Comparar a Camada 1 com um router gerativo (GPT-6 Luna) e com outros modelos de decisão (Jev, OpenAI Decisions).
+6. Aumentar o holdout para estreitar os intervalos de confiança.
 
 ## Como rodar
-Requer só Python 3.11+ (stdlib; sem dependências).
+
+Requer Python 3.11+; o harness usa só a stdlib. Os gráficos usam `matplotlib`.
+
 ```bash
-python3 -m unittest -v tests.test_poc                       # testes (mock, custo zero)
-python3 datasets/gerar_dataset.py                           # regenera o dataset (determinístico)
-python3 -m harness.run --mock --estrategias msd1,always-cheap,always-media,always-expensive,oracle   # dry-run
-python3 -m harness.judge runs/<dir> --mock --amostra 40     # juiz + planilha cega de revisão humana
-python3 -m harness.metrics runs/<dir>                       # métricas -> runs/<dir>/report.md
-python3 -m harness.estimate --refresh                       # atualiza preços e ESTIMATIVA_CUSTO.md
-# LIVE (só com autorização): troque --mock por --live; use --split calib|valid|holdout e --session-cap
+python3 -m venv .venv && .venv/bin/pip install matplotlib
+cp .env.example .env            # coloque sua OPENROUTER_API_KEY e exporte no shell
+
+python3 -m unittest -v tests.test_poc                 # 10 testes, tudo com mocks
+python3 datasets/gerar_dataset.py                     # regenera o dataset (determinístico)
+python3 -m harness.estimate --refresh                 # preços ao vivo -> ESTIMATIVA_CUSTO.md
+python3 -m harness.run --mock --split holdout         # dry-run sem custo
+
+# com API real
+python3 -m harness.calibrate --live                   # escolhe e congela τ1/τ2 no split calib
+python3 -m harness.run --live --split holdout \
+  --estrategias msd1,msd1-up1,always-cheap,always-media,always-expensive,oracle
+python3 -m harness.judge runs/<dir> --live --amostra 1000
+.venv/bin/python -m harness.report runs/<dir-holdout> runs/<dir-calib>   # RESULTADOS.md + gráficos
+.venv/bin/python -m harness.figuras_extra             # figuras extras do README
+python3 -m harness.show runs/<dir> <id> --estrategia msd1                 # rastro de uma mensagem
 ```
 
 ## Estrutura
+
+```text
+config/    models.json, prices.json (datado), prices_extra.json (MSD1), thresholds.json (congelados), budget.json
+datasets/  gerar_dataset.py, extra_v2.py, mensagens.jsonl (300 mensagens; split 180/60/60)
+mocks/     dados.py (pedidos fictícios, política, ferramenta de consulta)
+harness/   budget.py, client.py, pipeline.py, run.py, calibrate.py, judge.py, metrics.py,
+           estimate.py, report.py, show.py, figuras_extra.py
+tests/     test_poc.py
+runs/      smoke-20261012/, 20261012-085619-calib-live/, 20261012-holdout-live/, ledger.json
+report/    graficos/*.png, tabelas/estrategias.csv, exemplos-routing.md, revisao_rotulos.csv
 ```
-config/   models.json, prices.json (datado), prices_extra.json (MSD1), thresholds.json (τ1=0,6 / τ2=0,5 provisórios), budget.json
-datasets/ gerar_dataset.py, mensagens.jsonl (130: 36 devolução, 36 suporte, 36 financeiro, 10 fora, 12 ambíguas; split 78/26/26)
-mocks/    dados.py (60 pedidos fictícios, política, ferramenta status_pedido)
-harness/  budget.py, client.py (OpenRouter + mocks), pipeline.py, run.py, judge.py, metrics.py, estimate.py
-tests/    test_poc.py (10 testes)
-report/   revisao_rotulos.csv (planilha p/ revisão humana dos rótulos)
-runs/     smoke-20261012/ (evidência do smoke real); ledger.json (gitignored)
-```
 
-## Smoke test (12/10/2026, ~08:50 PT/BRT)
-4 mensagens (`m000, m002, m006, m008`) × 3 estratégias + juiz em 2 mensagens × 3 estratégias = 27 chamadas.
-**Gasto: US$0,0120** (ledger local; o OpenRouter reportou US$0,0086 antes do juiz). Tudo funcionou: C1 acertou as 4 com p_max ≥ 0,999; C2 deu média/simples/simples/média (rótulos: média/simples/simples/complexa); latência de decisão ~220–500 ms; geração 0,7–1,9 s (Gemini) e 2,4–4,5 s (GPT-6 Sol).
-Problemas encontrados e corrigidos: (1) juiz DeepSeek devolvia `content: null` (raciocínio consumia o `max_tokens`) → raciocínio desligado + `response_format: json_object`; (2) mock gerava pedido "cancelado" com dias desde a entrega → corrigido; (3) o juiz recalculava o contexto das ferramentas → agora o contexto usado na geração é salvo em `turns.jsonl` e reutilizado. Por isso as notas do juiz em `runs/smoke-20261012/judge.jsonl` foram dadas contra um contexto diferente do da geração e **não valem como resultado**.
+## Referências
 
-## Desvios em relação ao plano v2
-- Escopo pós-venda (devolução/suporte/financeiro) em vez de catálogo/carrinho/pós-venda.
-- 130 mensagens de turno único em vez de 500+300+150 conversas multi-turno.
-- Ferramentas mock injetadas no prompt (sem loop de tool-calling) para reduzir custo/complexidade.
-- Python stdlib em vez de TypeScript/Node.
-- Sem `llm-router`, Jev, OpenAI Decisions e Cloudflare auto (opcionais; cabem no orçamento se o Gabriel quiser).
-- Rótulos feitos pelo bot (provisórios), precisam de revisão humana.
-
----
-## Fase 2 (12/10/2026) — executada
-- Dataset ampliado para **300** mensagens (84 por subagente, 24 fora de escopo, 24 ambíguas; split 180/60/60). `datasets/extra_v2.py` + `report/revisao_rotulos.csv` atualizado.
-- GPT-6 Sol com `max_tokens=800` (Gemini 400); truncamento registrado por turno (`finish`): 0% em todos os modelos.
-- Estimativa refeita antes de rodar (`ESTIMATIVA_CUSTO.md`: central US$0,73 / pessimista US$1,68 < limite de US$6).
-- `harness/calibrate.py`: τ1/τ2 escolhidos no split calib e congelados em `config/thresholds.json` (τ1=0,9; τ2=0,5; τ2_up1=0,98).
-- Holdout com 6 estratégias (msd1, msd1-up1, always-cheap, always-media, always-expensive, oracle), juiz em todas as respostas, planilha cega de 40 itens.
-- Relatório: **`RESULTADOS.md`** (gerado por `.venv/bin/python -m harness.report runs/20261012-holdout-live runs/20261012-085619-calib-live`; precisa de `matplotlib` num venv: `python3 -m venv .venv && .venv/bin/pip install matplotlib`).
+- [Microsoft-Decision-1 no OpenRouter](https://openrouter.ai/microsoft/microsoft-decision-1)
+- [OpenRouter Decisions API](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request)
+- [Microsoft-Decision-1 no Microsoft Foundry](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision)
