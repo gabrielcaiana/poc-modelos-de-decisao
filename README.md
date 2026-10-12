@@ -209,6 +209,10 @@ A chave nunca entra no código: vem só da variável `OPENROUTER_API_KEY` (veja 
 - Medi a latência de um único servidor Linux em São Paulo, num só horário.
 - O manifest da rodada registra o sha256 do dataset antes de eu renomear um campo de metadados (`rotulo_autor` → `rotulo_status`); mensagens, rótulos e splits não mudaram.
 
+## Fase 3 (em preparação)
+
+Preparei uma terceira fase para testar se a derrota da Camada 2 para always-media foi efeito do teste pequeno: 1000 conversas multi-turno com contexto de pedido, distribuição realista de complexidade, coleta em grade com replay pareado, três variantes da Camada 2 (incluindo uma que vê o resultado da ferramenta) e testes de significância. A análise dos dados da Fase 2 já mostrou que o modelo barato passa em 93% das mensagens sem nº de pedido e em só 23% das que exigem cruzar o pedido com a política. Detalhes em [`PLANO_FASE3.md`](PLANO_FASE3.md), custo em [`ESTIMATIVA_CUSTO_FASE3.md`](ESTIMATIVA_CUSTO_FASE3.md).
+
 ## Próximos passos
 
 1. Revisão humana dos rótulos e calibração do juiz com a planilha cega (kappa ponderado).

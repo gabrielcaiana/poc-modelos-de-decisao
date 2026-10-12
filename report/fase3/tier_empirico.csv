@@ -1,0 +1,53 @@
+id,label,tier_rotulo,tier_relativo,tier_absoluto,nao_resolvido,nota_simples,nota_media,nota_complexa,mensagem
+m240,suporte,simples,simples,simples,False,4.5,4.75,4.25,ond ta meu pedio 10442
+m241,devolucao,media,complexa,complexa,False,3.5,3.5,4.5,"pedido 10437 veio faltando a tampa do liquidificador, troca só a peça ou tudo?"
+m242,financeiro,complexa,simples,simples,False,4.75,4.75,4.75,fui cobrado por um pedido que não fiz
+m243,devolucao,complexa,complexa,complexa,False,2.75,4.0,4.75,"já devolvi 2 vezes produtos com defeito do mesmo pedido 10449 e quero cancelar tudo, é um desrespeito"
+m244,financeiro,simples,simples,simples,False,4.75,4.75,4.75,como consulto meu reembolso?
+m245,devolucao,simples,media,media,False,4.25,4.75,4.75,"i want to return my order 10417, wrong color"
+m246,devolucao,media,media,media,False,2.0,4.75,4.75,"liquidificador fazendo barulho estranho, pedido 10443, ainda na garantia?"
+m247,financeiro,simples,simples,simples,False,4.75,4.75,4.75,tem como antecipar o reembolso?
+m248,devolucao,media,simples,simples,False,4.5,4.75,4.75,o código de postagem da devolução expirou
+m249,financeiro,media,simples,simples,False,4.75,5.0,5.0,fui cobrado duas vezes no pedido 10405
+m250,devolucao,media,complexa,complexa,False,2.5,4.0,4.75,"veio a camiseta no tamanho P e eu pedi M, pedido 10408, como troco?"
+m251,devolucao,complexa,media,media,False,2.5,4.75,4.75,"comprei 3 itens com cupom no pedido 10412, um veio com defeito e quero devolver só ele, quanto volta?"
+m252,financeiro,simples,simples,simples,False,4.75,4.75,4.75,vcs estornam o frete tbm?
+m254,suporte,simples,simples,simples,False,4.5,4.5,4.75,como conecto o smartwatch no iphone?
+m255,financeiro,media,simples,simples,False,4.75,4.75,4.75,"parcelei em 10x e devolvi, as parcelas param?"
+m258,financeiro,simples,complexa,complexa,False,3.25,4.0,4.75,posso pedir reembolso do pedido cancelado 10435?
+m259,devolucao,media,media,simples,False,4.5,5.0,4.75,"devolução parcial de um kit, pode?"
+m260,financeiro,media,media,media,False,3.75,4.75,4.25,vocês reembolsam taxa de parcelamento?
+m261,devolucao,simples,simples,simples,False,4.75,4.75,4.75,como gero a etiqueta de devolução?
+m262,suporte,media,complexa,complexa,False,3.75,4.25,4.75,"quero cancelar o pedido 10456, já foi enviado?"
+m263,financeiro,simples,simples,simples,False,4.75,4.75,4.75,como peço segunda via do boleto?
+m264,financeiro,media,simples,simples,False,4.5,4.75,4.75,"meu cartão foi cancelado, como recebo o estorno?"
+m265,devolucao,simples,simples,simples,False,4.75,4.75,4.75,"comprei dois tênis iguais sem querer, devolvo um?"
+m266,financeiro,media,simples,simples,False,4.5,4.5,4.75,o reembolso caiu mas faltou o valor do frete
+m268,clarificar,,simples,simples,False,4.5,4.75,4.75,o pedido 10444 tá estranho
+m269,financeiro,media,media,media,False,4.25,4.75,4.75,"o reembolso do pedido 10410 ainda não caiu, já faz 10 dias"
+m270,suporte,complexa,simples,simples,False,4.75,4.75,4.75,minha conta foi invadida e fizeram um pedido no meu nome
+m271,devolucao,media,complexa,complexa,False,3.5,3.25,4.75,"produto chegou molhado, pedido 10425"
+m272,clarificar,,simples,simples,False,4.75,4.75,4.75,quero meu dinheiro de volta
+m273,financeiro,media,media,media,False,4.25,4.5,4.75,posso receber o reembolso em outra conta?
+m275,devolucao,simples,simples,simples,False,5.0,5.0,5.0,prazo de devolução conta da compra ou da entrega?
+m276,devolucao,simples,media,media,False,2.75,4.75,4.75,"quero devolver o tênis do pedido 10411, não serviu"
+m277,suporte,simples,media,media,False,2.5,4.5,4.25,tracking number for order 10454?
+m278,financeiro,media,simples,simples,False,4.75,4.75,5.0,o boleto foi pago em duplicidade
+m280,financeiro,media,media,complexa,False,3.25,4.25,4.5,"devolvi há 15 dias e nada de reembolso, pedido 10414"
+m281,clarificar,,simples,simples,False,4.75,4.75,4.75,vocês me devem
+m282,suporte,simples,simples,simples,False,4.75,4.75,4.75,dá pra agendar a entrega pra sábado?
+m285,suporte,simples,simples,simples,False,4.75,4.75,4.75,quanto tempo demora a entrega pra Recife?
+m286,suporte,simples,simples,simples,False,4.75,4.75,4.75,vocês entregam em zona rural?
+m287,devolucao,media,complexa,complexa,False,2.5,4.0,4.75,chegou o produto de outra pessoa no pedido 10439
+m288,devolucao,media,media,media,False,3.5,4.75,4.75,"o smartwatch parou de funcionar depois de 20 dias, pedido 10433"
+m289,devolucao,complexa,simples,simples,False,4.75,4.75,4.75,"recebi o pedido 10441 faz 8 dias e quero devolver por arrependimento, tem exceção?"
+m290,financeiro,media,simples,simples,False,4.75,4.75,4.75,o valor do reembolso tá errado
+m291,devolucao,simples,simples,simples,False,4.75,4.5,4.75,como embalo o produto pra devolver?
+m292,clarificar,,simples,simples,False,4.5,4.5,4.5,preciso resolver o pedido 10425
+m293,devolucao,media,simples,simples,False,4.75,4.75,4.75,"o produto quebrou na primeira semana, troca?"
+m294,devolucao,media,simples,simples,False,4.75,4.75,4.75,"comprei de presente, a pessoa quer trocar sem me dizer o valor"
+m295,suporte,simples,simples,simples,False,5.0,4.75,4.5,como cadastro um segundo endereço?
+m296,suporte,media,media,media,False,3.5,4.75,4.75,"mudei de endereço, e o pedido 10404?"
+m297,suporte,complexa,simples,complexa,False,4.25,4.25,4.5,o pedido 10419 diz entregue em outra cidade
+m298,devolucao,media,simples,simples,False,4.75,4.75,4.75,"abri a escova elétrica e não gostei, devolvo?"
+m299,devolucao,media,simples,simples,False,4.5,4.75,4.75,"me mandaram 2 unidades em vez de 1, devolvo a extra?"

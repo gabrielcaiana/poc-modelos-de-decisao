@@ -65,7 +65,7 @@ def camada2(client, state, subagente, tau2=None, fallback=None):
 
 
 def gerar(client, subagente, tier, msg, historico=None):
-    ctx = contexto_ferramentas(subagente, msg)
+    ctx = contexto_ferramentas(subagente, msg, historico)
     sys = f"{PROMPTS[subagente]} {REGRAS}\n\n{ctx}"
     msgs = [{"role": "system", "content": sys}] + [{"role": h["role"], "content": h["content"]} for h in (historico or [])]
     msgs.append({"role": "user", "content": msg})

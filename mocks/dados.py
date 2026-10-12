@@ -50,11 +50,12 @@ def consultar_pedido(pid: str):
     return PEDIDOS.get(pid)
 
 
-def contexto_ferramentas(subagente: str, mensagem: str) -> str:
+def contexto_ferramentas(subagente: str, mensagem: str, historico=None) -> str:
     """Simula as ferramentas do subagente: procura nº de pedido na mensagem e injeta o resultado.
     (Simplificação de custo: em vez de loop de tool-calling, o resultado da ferramenta vai no prompt.)"""
     import re
-    ids = re.findall(r"\b1\d{4}\b", mensagem)
+    texto = " ".join(h.get("content", "") for h in (historico or []) if h.get("role") == "user") + " " + mensagem
+    ids = list(dict.fromkeys(re.findall(r"\b1\d{4}\b", texto)))  # Fase 3: pedido pode estar só no histórico
     linhas = [POLITICA]
     for pid in ids:
         p = consultar_pedido(pid)

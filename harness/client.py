@@ -107,6 +107,8 @@ def mock_decision(model, state, questions):
         w = [rnd.random() ** 3 for _ in keys]; s = sum(w); probs = {k: round(x / s, 4) for k, x in zip(keys, w)}
         best = max(probs, key=probs.get)
         a = {"type": q["type"], "probabilities": probs, "confidence": probs[best]}
+        if q["type"] == "noul":
+            ans[name] = {"type": "noul", "noul": round(rnd.random(), 4)}; continue
         if q["type"] == "choice":
             a["choice"] = best
         else:
