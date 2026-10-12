@@ -1,6 +1,6 @@
 """Gera datasets/mensagens.jsonl (~300 mensagens fictícias rotuladas, pt-BR).
 Rótulos: subagente (devolucao|suporte|financeiro|fora_de_escopo|clarificar) e tier_minimo (simples|media|complexa).
-Rotulei manualmente; rótulos ainda pendentes de revisão cruzada (ver report/revisao_rotulos.csv)."""
+Os rótulos foram gerados com apoio de um LLM e ainda não passaram por revisão humana (planilha: report/revisao_rotulos.csv)."""
 import json, hashlib, random, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 

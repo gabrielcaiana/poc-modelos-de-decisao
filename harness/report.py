@@ -152,7 +152,7 @@ def main(hold, calib):
     # ---------- RESULTADOS.md ----------
     L = ["# Resultados — POC modelos de decisão (Fase 2)", "",
          f"Rodada: `{hold.name}` (holdout, {man['n_itens']} mensagens × {len(EST)} estratégias), iniciada {man['inicio']} (horário de SP). Calibração: `{calib.name}` ({len(CAL)} mensagens do split calib).",
-         f"Dataset: `datasets/mensagens.jsonl` (sha256 `{man['dataset_sha256'][:16]}…`, 300 mensagens fictícias que eu escrevi e rotulei; rótulos ainda pendentes de revisão cruzada). Thresholds congelados antes do holdout: τ1={TH['tau1']}, τ2={TH['tau2']} (fallback → complexa), τ2_up1={TH['tau2_up1']} (fallback +1 tier).",
+         f"Dataset: `datasets/mensagens.jsonl` (sha256 `{man['dataset_sha256'][:16]}…`, 300 mensagens fictícias geradas com apoio de um LLM; os rótulos também foram gerados com apoio de um LLM e ainda não passaram por revisão humana). Thresholds congelados antes do holdout: τ1={TH['tau1']}, τ2={TH['tau2']} (fallback → complexa), τ2_up1={TH['tau2_up1']} (fallback +1 tier).",
          "Obs.: o sha256 registrado no manifest da rodada é o da versão do arquivo antes de eu renomear um campo de metadados (`rotulo_autor` → `rotulo_status`); mensagens, rótulos e splits são idênticos.",
          "Tudo abaixo é regenerado por `.venv/bin/python -m harness.report " + f"runs/{hold.name} runs/{calib.name}`.", "",
          "Neste relatório eu comparo, no split de teste (holdout), o chatbot com as duas camadas de decisão do Microsoft-Decision-1 contra baselines de modelo fixo.", "", "## Resumo", "",
@@ -178,7 +178,7 @@ def main(hold, calib):
         L.append(f"| {nm} | {c['n']} | {pct(c['acuracia'])} | {pct(c['sub'])} | {pct(c['super'])} | {pct(c['fallback'])} | {c['dist'].get('simples',0)}/{c['dist'].get('media',0)}/{c['dist'].get('complexa',0)} |")
     agree = [i for i in emp if ds[i]["tier_minimo"]]
     L += ["", f"No calib (subagente correto, escolha bruta sem τ), o acerto do tier foi {pct(c2cal_raw)} (n={len(zc)}).",
-          f"Tier empírico (o mais barato cuja nota do juiz fica a ≤0,25 da melhor): {dict(Counter(emp.values()))}; concorda com os meus rótulos em {pct(sum(emp[i]==ds[i]['tier_minimo'] for i in agree)/len(agree))} dos casos — os rótulos de complexidade são frágeis.", "",
+          f"Tier empírico (o mais barato cuja nota do juiz fica a ≤0,25 da melhor): {dict(Counter(emp.values()))}; concorda com os rótulos do dataset em {pct(sum(emp[i]==ds[i]['tier_minimo'] for i in agree)/len(agree))} dos casos — os rótulos de complexidade são frágeis.", "",
           "![tiers](report/graficos/tiers.png)", "", "## Ponta a ponta — qualidade × custo × latência (holdout)", "",
           "| Estratégia | Custo total US$ | US$/msg | Economia vs caro (IC95%) | Nota juiz (IC95%) | % nota ≥4 | US$/resposta boa | Lat P50 / P95 (s) | Overhead decisão | Truncadas |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for e in EST:
@@ -192,17 +192,17 @@ def main(hold, calib):
     ku = os.environ.get("KEY_USAGE")
     if ku: L += ["", f"- Conferência OpenRouter (GET /api/v1/key, no momento do relatório): uso = US${float(ku):.4f}, limite US$20."]
     L += ["", "## Limitações", "",
-          "- **Rotulei sozinho** (subagente e tier); os rótulos ainda estão pendentes de revisão cruzada (`report/revisao_rotulos.csv`). O tier empírico mostra que o meu rótulo de complexidade diverge bastante, então leio os números da C2 com cautela.",
+          "- **Os rótulos foram gerados com apoio de um LLM e ainda não passaram por revisão humana** (subagente e tier; planilha em `report/revisao_rotulos.csv`). O tier empírico mostra que o rótulo de complexidade diverge bastante, então leio os números da C2 com cautela.",
           "- **Juiz único e barato** (DeepSeek V4.1 Flash), ainda sem a minha calibração manual; a planilha cega de 40 itens que vou preencher está em `runs/" + hold.name + "/revisao_humana_juiz.csv` (chave em `revisao_humana_chave.json`). Viés de verbosidade possível a favor do modelo caro.",
           f"- **Holdout pequeno** ({man['n_itens']} mensagens, ~52 geradas por estratégia): ICs largos; diferenças de nota < ~0,3 não são conclusivas.",
-          "- Mensagens de turno único e sintéticas, todas escritas por mim (provável homogeneidade de estilo); ferramentas mock injetadas no prompt, sem tool-calling real.",
+          "- Mensagens de turno único e sintéticas, geradas com apoio de um LLM a partir das minhas instruções (provável homogeneidade de estilo); ferramentas mock injetadas no prompt, sem tool-calling real.",
           "- Calibrei os τ com uma função de utilidade que eu defini; outros pesos mudariam os τ. A C2 do calib usou o subagente correto; no holdout usou o escolhido pela C1.",
           "- Medi a latência de um único servidor Linux em São Paulo, num horário só; geração depende do provedor servido pelo OpenRouter.",
           "- Não rodei os baselines de router gerativo/Jev/OpenAI Decisions nesta rodada.", "",
           "## Minha conclusão", "",
           f"- A Camada 1 funcionou bem: o MSD1 roteou {pct(c1h['acuracia_bruta_claras'])} das mensagens claras corretamente, com probabilidades bem calibradas (ECE {ece1:.3f}) e ~{q(lat1,.5):.0f} ms por decisão; o τ1 trocou erro por clarificação de forma controlada.",
           f"- A Camada 2, do jeito que eu montei, não se pagou: always-media custou US${rows['always-media']['custo_msg']:.6f}/msg com nota {rows['always-media']['nota']:.2f}, contra US${rows['msd1']['custo_msg']:.6f}/msg e nota {rows['msd1']['nota']:.2f} do msd1. A variante +1 tier chegou a {rows['msd1-up1']['nota']:.2f}, mas a {pct(rows['msd1-up1']['econ'])} de economia.",
-          "- O gargalo é a definição de complexidade (meus rótulos discordam do tier empírico em metade dos casos), não a latência nem o custo da decisão, que são desprezíveis.", "",
+          "- O gargalo é a definição de complexidade (os rótulos do dataset discordam do tier empírico em metade dos casos), não a latência nem o custo da decisão, que são desprezíveis.", "",
           "## Evidências", "", f"- `runs/{hold.name}/` — decisions.jsonl, turns.jsonl, judge.jsonl, manifest.json, revisao_humana_juiz.csv",
           f"- `runs/{calib.name}/` — decisions.jsonl, calibracao.json (curvas de utilidade de τ1/τ2)", "- `config/thresholds.json` (τ congelados), `config/prices.json` (preços datados)",
           "- `report/tabelas/estrategias.csv`, `report/graficos/*.png`, `report/exemplos-routing.md`", "- `ESTIMATIVA_CUSTO.md` (estimativa que fiz antes da rodada)"]

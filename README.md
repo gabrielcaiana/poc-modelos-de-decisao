@@ -67,7 +67,7 @@ Escolhi os thresholds no split de calibração (180 mensagens), maximizando uma 
 | always-cheap | 0,000063 | 96,7% (96,4–97,0) | 4,18 (3,96–4,40) | 71,2% | 0,90 s / 1,82 s |
 | always-media | 0,000312 | 83,7% (82,1–85,3) | 4,60 (4,50–4,69) | 96,2% | 1,28 s / 1,78 s |
 | always-expensive | 0,001919 | — | 4,71 (4,67–4,75) | 100% | 3,18 s / 6,07 s |
-| oracle (tier do meu rótulo) | 0,000481 | 74,9% (64,2–85,2) | 4,48 (4,32–4,62) | 88,5% | 0,93 s / 3,85 s |
+| oracle (tier do rótulo do dataset) | 0,000481 | 74,9% (64,2–85,2) | 4,48 (4,32–4,62) | 88,5% | 0,93 s / 3,85 s |
 
 **Camada 1 (routing):**
 - Acurácia nas mensagens claras: **94,4%** no holdout (94,0% na calibração).
@@ -76,7 +76,7 @@ Escolhi os thresholds no split de calibração (180 mensagens), maximizando uma 
 - Calibração das probabilidades: **ECE 0,054**.
 
 **Camada 2 (modelo):**
-- Acerto do tier contra o meu rótulo: **70,8%**.
+- Acerto do tier contra o rótulo do dataset: **70,8%**.
 - Mandou para um tier abaixo do necessário em **22,9%** dos casos (na variante +1 tier, 6,2%).
 
 **Truncamento:** nenhuma resposta foi cortada por `max_tokens`, em nenhum modelo.
@@ -133,7 +133,7 @@ $ python3 -m harness.show runs/20261012-holdout-live m283 --estrategia msd1
 
 Outras decisões reais da Camada 1 no holdout (de [`report/exemplos-routing.md`](report/exemplos-routing.md)):
 
-| Mensagem | Probabilidades do MSD1 | Decisão com τ1 = 0,9 | Meu rótulo |
+| Mensagem | Probabilidades do MSD1 | Decisão com τ1 = 0,9 | Rótulo do dataset |
 |---|---|---|---|
 | "como declaro imposto de renda?" | fora_de_escopo 1,000 | fora_de_escopo | fora_de_escopo ✅ |
 | "ajuda" | suporte 0,592 · fora_de_escopo 0,407 | clarificar | ambígua ✅ |
@@ -197,21 +197,21 @@ A chave nunca entra no código: vem só da variável `OPENROUTER_API_KEY` (veja 
 
 - **A Camada 1 funciona.** O MSD1 roteou 94,4% das mensagens claras corretamente, com probabilidades bem calibradas e ~230 ms por decisão, a um custo desprezível. O threshold dá um controle explícito entre errar e perguntar.
 - **A Camada 2, do jeito que eu montei, não se pagou.** O msd1 economiza 78% em relação a sempre usar o GPT-6 Sol, mas **always-media é mais barato e tem nota maior** (4,60 vs 4,48): o msd1 fica fora da fronteira de Pareto. A variante +1 tier chega a 4,62, mas economiza só 54%.
-- **O gargalo é a definição de "complexidade", não o modelo de decisão.** Meus rótulos de tier concordam com o tier empírico (o mais barato que o juiz considera tão bom quanto o melhor) em só 47,9% dos casos. Até o `oracle`, que usa meu rótulo, fica abaixo do always-media.
+- **O gargalo é a definição de "complexidade", não o modelo de decisão.** Os rótulos de tier do dataset concordam com o tier empírico (o mais barato que o juiz considera tão bom quanto o melhor) em só 47,9% dos casos. Até o `oracle`, que usa esse rótulo, fica abaixo do always-media.
 - O overhead das decisões (~0,2 a 0,5 s, ~US$0,00001) é pequeno perto da geração, principalmente perto do GPT-6 Sol (3,2 s de P50).
 
 ## Limitações
 
-- **Rotulei sozinho** as 300 mensagens (subagente e tier); os rótulos ainda estão pendentes de revisão cruzada ([`report/revisao_rotulos.csv`](report/revisao_rotulos.csv)).
+- **As 300 mensagens e os rótulos (subagente e tier) foram gerados com apoio de um LLM e ainda não passaram por revisão humana.** A planilha de revisão está em [`report/revisao_rotulos.csv`](report/revisao_rotulos.csv).
 - O juiz é um único modelo barato. Ainda vou calibrar com a planilha cega de 40 respostas (`runs/20261012-holdout-live/revisao_humana_juiz.csv`).
 - O holdout é pequeno (60 mensagens, ~52 respostas geradas por estratégia): diferenças de nota abaixo de ~0,3 não são conclusivas.
-- Mensagens sintéticas, de turno único e escritas por mim; ferramentas mock no prompt, sem tool-calling real.
+- Mensagens sintéticas e de turno único, geradas com apoio de um LLM a partir das minhas instruções; ferramentas mock no prompt, sem tool-calling real.
 - Medi a latência de um único servidor Linux em São Paulo, num só horário.
 - O manifest da rodada registra o sha256 do dataset antes de eu renomear um campo de metadados (`rotulo_autor` → `rotulo_status`); mensagens, rótulos e splits não mudaram.
 
 ## Próximos passos
 
-1. Revisão cruzada dos rótulos e calibração do juiz com a planilha cega (kappa ponderado).
+1. Revisão humana dos rótulos e calibração do juiz com a planilha cega (kappa ponderado).
 2. Rotular o tier de forma **empírica** (o mais barato que passa no juiz) e recalibrar o τ2 em cima disso.
 3. Testar outras perguntas para a Camada 2 (por exemplo, "o modelo barato resolve isto?" como `noul`) em vez da escala de complexidade.
 4. Conversas multi-turno com tool-calling real.

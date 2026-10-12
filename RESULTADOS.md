@@ -1,7 +1,7 @@
 # Resultados — POC modelos de decisão (Fase 2)
 
 Rodada: `20261012-holdout-live` (holdout, 60 mensagens × 6 estratégias), iniciada 2026-10-12T08:57:56-0300 (horário de SP). Calibração: `20261012-085619-calib-live` (180 mensagens do split calib).
-Dataset: `datasets/mensagens.jsonl` (sha256 `cc346be4ce63e35a…`, 300 mensagens fictícias que eu escrevi e rotulei; rótulos ainda pendentes de revisão cruzada). Thresholds congelados antes do holdout: τ1=0.9, τ2=0.5 (fallback → complexa), τ2_up1=0.98 (fallback +1 tier).
+Dataset: `datasets/mensagens.jsonl` (sha256 `cc346be4ce63e35a…`, 300 mensagens fictícias geradas com apoio de um LLM; os rótulos também foram gerados com apoio de um LLM e ainda não passaram por revisão humana). Thresholds congelados antes do holdout: τ1=0.9, τ2=0.5 (fallback → complexa), τ2_up1=0.98 (fallback +1 tier).
 Obs.: o sha256 registrado no manifest da rodada é o da versão do arquivo antes de eu renomear um campo de metadados (`rotulo_autor` → `rotulo_status`); mensagens, rótulos e splits são idênticos.
 Tudo abaixo é regenerado por `.venv/bin/python -m harness.report runs/20261012-holdout-live runs/20261012-085619-calib-live`.
 
@@ -48,7 +48,7 @@ Matriz de confusão (holdout, com τ1; linhas = rótulo, colunas = decisão):
 | msd1-up1 (τ2_up1, fallback +1) | 48 | 58.3% | 6.2% | 35.4% | 56.2% | 13/18/17 |
 
 No calib (subagente correto, escolha bruta sem τ), o acerto do tier foi 69.1% (n=149).
-Tier empírico (o mais barato cuja nota do juiz fica a ≤0,25 da melhor): {'complexa': 7, 'simples': 33, 'media': 12}; concorda com os meus rótulos em 47.9% dos casos — os rótulos de complexidade são frágeis.
+Tier empírico (o mais barato cuja nota do juiz fica a ≤0,25 da melhor): {'simples': 33, 'media': 12, 'complexa': 7}; concorda com os rótulos do dataset em 47.9% dos casos — os rótulos de complexidade são frágeis.
 
 ![tiers](report/graficos/tiers.png)
 
@@ -87,10 +87,10 @@ Truncamento por modelo (finish_reason): `google/gemini-2.5-flash-lite` stop=110;
 
 ## Limitações
 
-- **Rotulei sozinho** (subagente e tier); os rótulos ainda estão pendentes de revisão cruzada (`report/revisao_rotulos.csv`). O tier empírico mostra que o meu rótulo de complexidade diverge bastante, então leio os números da C2 com cautela.
+- **Os rótulos foram gerados com apoio de um LLM e ainda não passaram por revisão humana** (subagente e tier; planilha em `report/revisao_rotulos.csv`). O tier empírico mostra que o rótulo de complexidade diverge bastante, então leio os números da C2 com cautela.
 - **Juiz único e barato** (DeepSeek V4.1 Flash), ainda sem a minha calibração manual; a planilha cega de 40 itens que vou preencher está em `runs/20261012-holdout-live/revisao_humana_juiz.csv` (chave em `revisao_humana_chave.json`). Viés de verbosidade possível a favor do modelo caro.
 - **Holdout pequeno** (60 mensagens, ~52 geradas por estratégia): ICs largos; diferenças de nota < ~0,3 não são conclusivas.
-- Mensagens de turno único e sintéticas, todas escritas por mim (provável homogeneidade de estilo); ferramentas mock injetadas no prompt, sem tool-calling real.
+- Mensagens de turno único e sintéticas, geradas com apoio de um LLM a partir das minhas instruções (provável homogeneidade de estilo); ferramentas mock injetadas no prompt, sem tool-calling real.
 - Calibrei os τ com uma função de utilidade que eu defini; outros pesos mudariam os τ. A C2 do calib usou o subagente correto; no holdout usou o escolhido pela C1.
 - Medi a latência de um único servidor Linux em São Paulo, num horário só; geração depende do provedor servido pelo OpenRouter.
 - Não rodei os baselines de router gerativo/Jev/OpenAI Decisions nesta rodada.
@@ -99,7 +99,7 @@ Truncamento por modelo (finish_reason): `google/gemini-2.5-flash-lite` stop=110;
 
 - A Camada 1 funcionou bem: o MSD1 roteou 94.4% das mensagens claras corretamente, com probabilidades bem calibradas (ECE 0.054) e ~229 ms por decisão; o τ1 trocou erro por clarificação de forma controlada.
 - A Camada 2, do jeito que eu montei, não se pagou: always-media custou US$0.000312/msg com nota 4.60, contra US$0.000417/msg e nota 4.48 do msd1. A variante +1 tier chegou a 4.62, mas a 54.1% de economia.
-- O gargalo é a definição de complexidade (meus rótulos discordam do tier empírico em metade dos casos), não a latência nem o custo da decisão, que são desprezíveis.
+- O gargalo é a definição de complexidade (os rótulos do dataset discordam do tier empírico em metade dos casos), não a latência nem o custo da decisão, que são desprezíveis.
 
 ## Evidências
 
