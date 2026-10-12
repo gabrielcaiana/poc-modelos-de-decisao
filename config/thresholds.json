@@ -1,6 +1,8 @@
 {
-  "_nota": "Valores provisórios. Escolher no split de calibração e congelar ANTES do holdout.",
-  "tau1": 0.6,
+  "_nota": "Calibrado em 2026-10-12 08:57 -03 no split calib (20261012-085619-calib-live). CONGELADO antes do holdout. tau2_up1 = melhor τ2 para a variante fallback +1 tier (mesmo critério, mesmo split).",
+  "tau1": 0.9,
   "tau2": 0.5,
-  "fallback_c2": "complexa"
+  "fallback_c2": "complexa",
+  "congelado": true,
+  "tau2_up1": 0.98
 }

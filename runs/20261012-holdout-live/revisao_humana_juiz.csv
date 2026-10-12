@@ -1,0 +1,131 @@
+chave,mensagem,resposta,nota_humana_correcao,nota_humana_resolucao,nota_humana_politica,nota_humana_tom,comentario
+r000,devolve o dinheiro se eu devolver o fone?,"Olá! Para que eu possa verificar a possibilidade de devolução e reembolso do seu fone, por favor, me informe o **número do pedido**. 
+
+Lembro que, para eletrônicos com defeito, o prazo é de até 90 dias com apresentação de foto ou laudo; já para arrependimento, o prazo é de até 7 dias corridos após a entrega, desde que o produto esteja sem uso. 
+
+Fico no aguardo do número do pedido para ajudar!",,,,,
+r001,como gero a etiqueta de devolução?,"Olá! Para gerar sua etiqueta de devolução, preciso de mais algumas informações. Por favor, informe o número do seu pedido. Assim, poderei verificar a situação e te orientar sobre os próximos passos, de acordo com nossa política. 😊",,,,,
+r002,preciso resolver o pedido 10425,"O pedido 10425 está em processamento. O que você precisa resolver: entrega, pagamento, troca/devolução ou outra questão?",,,,,
+r003,vocês reembolsam taxa de parcelamento?,"Olá! Tudo bem? 
+
+Para que eu possa verificar a possibilidade e as regras de reembolso referentes à sua compra, por favor, poderia me informar o **número do seu pedido**? 
+
+Fico no aguardo para ajudar!",,,,,
+r004,como consulto meu reembolso?,"Olá! Para consultar o status do seu reembolso, por favor, me informe o número do seu pedido. Assim, poderei verificar as informações e te ajudar da melhor forma possível.
+
+Se o seu pedido foi pago via cartão de crédito, o estorno aparecerá em sua fatura em até duas faturas. Para pagamentos via Pix ou boleto, o depósito é realizado em até 5 dias úteis após o recebimento do item em nosso centro de distribuição.
+
+Aguardamos o número do seu pedido!",,,,,
+r005,"parcelei em 10x e devolvi, as parcelas param?","Se o pagamento foi no cartão, a devolução gera um estorno que pode aparecer em até 2 faturas. Não consigo garantir que as parcelas parem imediatamente; isso depende de como o estorno será lançado na fatura.
+
+Pode me informar o número do pedido para eu verificar o caso?",,,,,
+r006,posso receber o reembolso em outra conta?,"Olá! Para que eu possa verificar a possibilidade de reembolso em outra conta e dar seguimento ao seu caso, por favor, informe o número do seu pedido. Fico no aguardo!",,,,,
+r007,quanto tempo demora a entrega pra Recife?,"Olá! Para que eu possa verificar o prazo de entrega para Recife, por favor, me informe o número do seu pedido. Assim, consigo consultar as informações detalhadas para você. 😊",,,,,
+r008,minha conta foi invadida e fizeram um pedido no meu nome,"Olá! Sinto muito por isso, vamos te ajudar a proteger sua conta e resolver essa situação.
+
+Para que eu possa localizar o pedido e verificar o que aconteceu, por favor, me informe o **número do pedido** em questão (ou o e-mail cadastrado na conta). Assim que passar esse dado, seguirei com o suporte para bloqueio e análise. Fico no aguardo!",,,,,
+r009,posso pedir reembolso do pedido cancelado 10435?,"Olá! Para o pedido 10435, como o pagamento foi via Pix e o status atual é ""em trânsito"", o reembolso poderá ser solicitado assim que o item for devolvido e recebido por nós. 
+
+Para prosseguir, você poderia nos informar o motivo da devolução e se houve algum problema com o produto? Fico à disposição!",,,,,
+r010,como cadastro um segundo endereço?,"Olá! Para cadastrar um segundo endereço, por favor, me informe o número do seu pedido. Assim, poderei verificar como te ajudar da melhor forma. 😊",,,,,
+r011,como cadastro um segundo endereço?,"Olá! Para cadastrar um segundo endereço, por favor, acesse a seção ""Meus Endereços"" em sua conta no nosso site. Lá você poderá adicionar um novo endereço de entrega. Se precisar de ajuda com algum pedido específico ou tiver outra dúvida, me diga!",,,,,
+r012,quero meu dinheiro de volta,"Claro, posso ajudar com o reembolso. Qual é o número do pedido e o motivo da solicitação (arrependimento, defeito ou cobrança em duplicidade)?",,,,,
+r013,vocês me devem,"Sinto muito pela situação. Você pode me contar o que aconteceu e informar o número do pedido? Assim posso entender se é uma questão de reembolso, estorno ou cobrança.",,,,,
+r014,o pedido 10419 diz entregue em outra cidade,"Olá! Verifiquei o pedido 10419 (Smartwatch Fit, pago via Pix). Conforme nosso sistema, o status atual é ""devolução em andamento"" e já se passaram 36 dias desde a entrega. 
+
+Como se trata de um eletrônico, o prazo para troca ou devolução por defeito é de até 90 dias (exigindo foto ou laudo). A devolução por arrependimento é de até 7 dias corridos. 
+
+Como a devolução já está em andamento, o reembolso por Pix será feito via depósito em até 5 dias úteis após recebermos o item. Se o problema for divergência na entrega (cidade incorreta), por favor, me informe para verificarmos os detalhes do envio!",,,,,
+r015,"i want to return my order 10417, wrong color","Olá! Seja bem-vindo à LojaExemplo. 
+
+Notei que o seu pedido 10417 ainda está **em trânsito** (ainda não foi entregue). 
+
+Conforme a nossa política, a devolução por arrependimento (o que inclui cor incorreta) pode ser solicitada em até **7 dias corridos após a entrega**, desde que o produto esteja sem uso. 
+
+Assim que o pacote for entregue em seu endereço, por favor, entre em contato novamente por aqui para que eu possa gerar a etiqueta de postagem com frete grátis para você, ok? 
+
+Se precisar de mais alguma informação, estou à disposição!",,,,,
+r016,"veio a camiseta no tamanho P e eu pedi M, pedido 10408, como troco?","No pedido 10408, consta um **Tênis Corrida Leve**, não uma camiseta. A devolução já está em andamento, mas preciso confirmar os dados antes de orientar a troca.
+
+Você pode conferir o número do pedido e me informar se a camiseta veio nesse mesmo pedido?",,,,,
+r017,"quero cancelar o pedido 10456, já foi enviado?","Olá! Verifiquei o seu pedido 10456 e ele já está com a **devolução em andamento**. 
+
+Como passaram 36 dias desde a entrega, o prazo de 7 dias para arrependimento já encerrou, mas o seu pedido contém um eletrônico (Smartwatch Fit), que possui garantia legal de até 90 dias para defeitos. O pagamento foi feito via Pix. 
+
+Para que eu possa prosseguir e orientá-lo corretamente, poderia me informar o motivo da devolução e se o produto apresenta algum defeito (enviando foto ou laudo, caso necessário)? Fico no aguardo!",,,,,
+r018,"i want to return my order 10417, wrong color","Olá! Tudo bem?
+
+Verifiquei o seu pedido 10417 e ele ainda está em trânsito (ainda não foi entregue). 
+
+Conforme a nossa política, a devolução por arrependimento (o que inclui cor incorreta) pode ser solicitada em até **7 dias corridos após a entrega**, desde que o produto esteja sem uso. 
+
+Como o pacote ainda não chegou, por favor, aguarde a entrega e retorne o contato assim que recebê-lo para abrirmos o processo de devolução com frete de volta grátis, ok?
+
+Estou à disposição!",,,,,
+r019,"comprei dois tênis iguais sem querer, devolvo um?","Olá! Para que eu possa te ajudar com a devolução, por favor, me informe o número do seu pedido. Assim, verificarei a melhor forma de proceder de acordo com nossa política.",,,,,
+r020,o pedido 10444 tá estranho,"O pedido 10444 consta **em trânsito**. Também aparecem **duas cobranças** no registro. O que parece estranho para você: a entrega, as cobranças ou outra coisa? Se for uma cobrança em duplicidade, posso ajudar a verificar.",,,,,
+r021,fui cobrado por um pedido que não fiz,"Olá! Sinto muito pelo transtorno com essa cobrança indesejada. 
+
+Para que eu possa verificar a situação e iniciar o processo de estorno, por favor, me informe o **número do pedido** ou os dados da cobrança? 
+
+Fico no aguardo para ajudar!",,,,,
+r022,prazo de devolução conta da compra ou da entrega?,"Olá! O prazo para devolução por arrependimento na LojaExemplo conta a partir da **data de entrega** do seu pedido.
+
+Para que eu possa te ajudar melhor, você poderia me informar o número do seu pedido, por favor? Assim, consigo verificar os detalhes e te orientar sobre os próximos passos.",,,,,
+r023,posso acompanhar pelo whatsapp?,"Olá! Para acompanhar seu pedido, preciso do número dele. Você poderia me informar, por favor? Assim, consigo verificar o status e te dar as informações mais atualizadas. 😊",,,,,
+r024,prazo de devolução conta da compra ou da entrega?,"Olá! O prazo para devolução por arrependimento na LojaExemplo conta a partir da **data de entrega** do seu pedido, e não da data da compra. Você tem até 7 dias corridos após o recebimento para solicitar a devolução, desde que o produto esteja sem uso.
+
+Para qual pedido você gostaria de verificar a devolução?",,,,,
+r025,vocês reembolsam taxa de parcelamento?,"Olá! Seja bem-vindo ao suporte financeiro da LojaExemplo. 
+
+Para que eu possa verificar a possibilidade e as regras de reembolso referentes ao seu pedido, por gentileza, informe o **número do seu pedido**. 
+
+Fico no aguardo para ajudar você da melhor forma!",,,,,
+r026,chegou o produto de outra pessoa no pedido 10439,"Olá! Sinto muito pelo engano no seu pedido 10439. 
+
+Como o seu pedido ainda está com status de ""processando"" e não foi entregue, você poderia confirmar se se refere a outro pedido ou se houve algum problema com a transportadora? 
+
+Para tratarmos da incorreção dos itens assim que a entrega for finalizada, precisaremos de **fotos dos produtos recebidos**. 
+
+Lembrando que nossa política cobre trocas por defeito em até 30 dias (ou 90 dias para eletrônicos, como o Fone Bluetooth X1), mediante foto ou laudo. Fico no aguardo para ajudar!",,,,,
+r027,vocês me devem,"Sinto muito pela situação. Você pode me informar o número do pedido e dizer se está falando de um reembolso, estorno ou cobrança? Assim consigo entender o que aconteceu e orientar você.",,,,,
+r028,prazo de devolução conta da compra ou da entrega?,"Olá! O prazo para devolução por arrependimento na LojaExemplo conta a partir da **data de entrega** do seu pedido.
+
+Para que eu possa te ajudar melhor, você poderia me informar o número do seu pedido, por favor? Assim, consigo verificar os detalhes e te orientar sobre os próximos passos.",,,,,
+r029,o pedido 10419 diz entregue em outra cidade,"Olá! Verifiquei o pedido 10419 (Smartwatch Fit). O status atual consta como devolução em andamento. Como o pagamento foi via Pix, o reembolso é feito por depósito em até 5 dias úteis após a recepção do item. 
+
+Sobre a divergência na entrega (""entregue em outra cidade""), como essa questão foge dos dados disponíveis no sistema de suporte, por favor, poderia confirmar se o endereço de entrega em seu cadastro está correto ou se houve algum aviso específico da transportadora? Fico à disposição para ajudar!",,,,,
+r030,"devolvi há 15 dias e nada de reembolso, pedido 10414","Olá! Seja muito bem-vindo(a) ao setor financeiro da LojaExemplo. 
+
+Verifiquei o seu pedido 10414 em nosso sistema e consta que ele ainda está com o status ""processando"" e a entrega não foi registrada como concluída. 
+
+Para que eu possa prosseguir com a análise do seu reembolso, você poderia por gentileza confirmar a data em que o produto foi efetivamente entregue e postado de volta? Assim que confirmar, sigo com o atendimento conforme a nossa política. Fico no aguardo!",,,,,
+r031,vocês entregam em zona rural?,"Olá! Para verificar se realizamos entregas na sua região, por favor, me informe o CEP do local de entrega. Assim, poderei consultar as opções disponíveis para você. 😊",,,,,
+r032,"comprei 3 itens com cupom no pedido 10412, um veio com defeito e quero devolver só ele, quanto volta?","Olá! Para calcularmos o reembolso exato do item com defeito, preciso confirmar qual dos itens do pedido (Mochila Urbana ou Tênis Corrida Leve) apresentou defeito, pois a ferramenta indica apenas esses dois produtos e o status está como ""processando"" (ainda não entregue). 
+
+Lembrando que trocas por defeito podem ser solicitadas em até 30 dias (ou 90 dias para eletrônicos), mediante envio de foto ou laudo. O reembolso parcial é proporcional ao valor pago pelo item, já descontado o cupom, e, como o pagamento foi por boleto, o depósito é feito em até 5 dias úteis após recebermos o item. 
+
+Poderia me informar qual item apresentou defeito?",,,,,
+r033,"veio a camiseta no tamanho P e eu pedi M, pedido 10408, como troco?","Olá! Para a troca do seu pedido 10408, como o item é de vestuário e a solicitação é por tamanho incorreto, precisamos que você nos envie uma foto do produto recebido.
+
+Após o envio, analisaremos e te informaremos os próximos passos para a troca.",,,,,
+r034,"abri a escova elétrica e não gostei, devolvo?","Olá! Sinto muito que não tenha gostado da sua escova elétrica. 
+
+Para que eu possa verificar a possibilidade de devolução, por favor, me informe o **número do pedido**? 
+
+Lembrando que nossa política para devolução por arrependimento é de até 7 dias corridos após a entrega, com o produto sem uso. No entanto, itens de higiene pessoal abertos (como escovas elétricas) não podem ser devolvidos por arrependimento, mas nos avise se houver algum defeito, pois o prazo é de até 90 dias para eletrônicos. 
+
+Fico no aguardo do seu pedido!",,,,,
+r035,"o smartwatch parou de funcionar depois de 20 dias, pedido 10433","Olá! Sinto muito pelo transtorno com o seu produto. 
+
+Notei que o número do pedido 10433 refere-se à ""Mochila Urbana"", e não a um smartwatch. Além disso, o pedido ainda está em trânsito e ainda não foi entregue. 
+
+Para que eu possa verificar a situação correta, você poderia confirmar o número do pedido correto do smartwatch? 
+
+Lembro que, para defeitos, o prazo é de até 30 dias (ou 90 dias para eletrônicos), sendo necessária a apresentação de foto ou laudo do problema. Fico no aguardo!",,,,,
+r036,"meu cartão foi cancelado, como recebo o estorno?","O reembolso no cartão é feito por estorno na fatura, em até 2 faturas. A política não informa como o cancelamento do cartão afeta o recebimento do estorno. Você pode me passar o número do pedido para verificarmos seu caso?",,,,,
+r037,"o smartwatch parou de funcionar depois de 20 dias, pedido 10433","Sinto muito pelo problema com o smartwatch. Consultei o pedido 10433, mas ele contém uma Mochila Urbana e ainda está em trânsito. Pode conferir o número do pedido do smartwatch para eu orientar você sobre a troca ou devolução por defeito?",,,,,
+r038,como consulto meu reembolso?,"Olá! Para que eu possa consultar o status do seu reembolso, por favor, me informe o número do seu pedido. Fico no aguardo!",,,,,
+r039,"veio a camiseta no tamanho P e eu pedi M, pedido 10408, como troco?","Olá! Para prosseguir com a troca do seu ""Tênis Corrida Leve"" do pedido 10408 (tamanho incorreto), preciso de uma foto do produto recebido, pois a troca por defeito/incorreção deve ser solicitada em até 30 dias após a entrega. Como já se passaram 31 dias da entrega (conforme nosso sistema), por favor, envie a foto para avaliarmos a exceção e seguirmos com o atendimento. 
+
+Fico no aguardo!",,,,,

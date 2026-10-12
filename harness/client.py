@@ -123,5 +123,5 @@ def mock_chat(model, messages, max_tokens):
                           "tom": rnd.randint(3, 5), "justificativa": "mock"})
     else:
         txt = f"[mock {model}] Resposta simulada para: {last[-80:]}"
-    return {"choices": [{"message": {"content": txt}}], "model": model, "provider": "mock",
+    return {"choices": [{"message": {"content": txt}, "finish_reason": "stop"}], "model": model, "provider": "mock",
             "usage": {"prompt_tokens": est_tokens("".join(m["content"] for m in messages)), "completion_tokens": 120}}

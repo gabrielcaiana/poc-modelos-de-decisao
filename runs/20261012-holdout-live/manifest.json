@@ -1,0 +1,60 @@
+{
+  "inicio": "2026-10-12T08:57:56-0300",
+  "modo": "live",
+  "models": {
+    "_verificado_em": "2026-10-12 via https://openrouter.ai/api/v1/models",
+    "msd1": "microsoft/microsoft-decision-1",
+    "tiers": {
+      "simples": "google/gemini-2.5-flash-lite",
+      "media": "google/gemini-3.5-flash-lite",
+      "complexa": "openai/gpt-6-sol"
+    },
+    "judge": "deepseek/deepseek-v4.1-flash"
+  },
+  "thresholds": {
+    "_nota": "Calibrado em 2026-10-12 08:57 -03 no split calib (20261012-085619-calib-live). CONGELADO antes do holdout. tau2_up1 = melhor τ2 para a variante fallback +1 tier (mesmo critério, mesmo split).",
+    "tau1": 0.9,
+    "tau2": 0.5,
+    "fallback_c2": "complexa",
+    "congelado": true,
+    "tau2_up1": 0.98
+  },
+  "dataset_sha256": "cc346be4ce63e35aec3acca3104d637ac026171c6783c8c553754b994e49c077",
+  "n_itens": 60,
+  "estrategias": [
+    "msd1",
+    "msd1-up1",
+    "always-cheap",
+    "always-media",
+    "always-expensive",
+    "oracle"
+  ],
+  "precos": {
+    "google/gemini-3.5-flash-lite": {
+      "in": 3e-07,
+      "out": 2.5e-06
+    },
+    "google/gemini-2.5-flash-lite": {
+      "in": 1e-07,
+      "out": 4e-07
+    },
+    "microsoft/microsoft-decision-1": {
+      "in": 4.2e-08,
+      "out": 0.0
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "in": 1.5e-07,
+      "out": 6e-07
+    },
+    "openai/gpt-6-sol": {
+      "in": 2e-06,
+      "out": 1e-05
+    }
+  },
+  "ledger_antes_usd": 0.014180226399999987,
+  "origem": "box Linux (shared), America/Sao_Paulo",
+  "fim": "2026-10-12T09:07:17-0300",
+  "status": "ok",
+  "ledger_depois_usd": 0.2566186683999999,
+  "gasto_sessao_usd": 0.24243844199999992
+}

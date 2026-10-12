@@ -56,7 +56,7 @@ def main(argv=None):
                 cdec = sum(d["cost"] for d in r["decisoes"])
                 ft.write(json.dumps({"ts": time.time(), "estrategia": est, "id": it["id"], "label": it["label"], "aceitos": it.get("aceitos"),
                                      "tier_minimo": it.get("tier_minimo"), "tipo": r["tipo"], "subagente": r["subagente"],
-                                     "tier": r["tier"], "modelo": gen.get("model"), "provider": gen.get("provider"),
+                                     "tier": r["tier"], "modelo": gen.get("model"), "finish": gen.get("finish"), "max_tokens": P.MAX_TOKENS.get(r["tier"]) if r["tier"] else None, "provider": gen.get("provider"),
                                      "usage": gen.get("usage"), "custo_geracao": gen.get("cost", 0.0), "custo_decisoes": cdec,
                                      "lat_geracao_ms": gen.get("lat_ms"), "lat_decisoes_ms": sum(d["lat_ms"] for d in r["decisoes"]),
                                      "mensagem": it["mensagem"], "resposta": r["resposta"], "contexto": gen.get("contexto")}, ensure_ascii=False) + "\n")

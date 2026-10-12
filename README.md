@@ -84,3 +84,12 @@ Problemas encontrados e corrigidos: (1) juiz DeepSeek devolvia `content: null` (
 - Python stdlib em vez de TypeScript/Node.
 - Sem `llm-router`, Jev, OpenAI Decisions e Cloudflare auto (opcionais; cabem no orçamento se o Gabriel quiser).
 - Rótulos feitos pelo bot (provisórios), precisam de revisão humana.
+
+---
+## Fase 2 (12/10/2026) — executada
+- Dataset ampliado para **300** mensagens (84 por subagente, 24 fora de escopo, 24 ambíguas; split 180/60/60). `datasets/extra_v2.py` + `report/revisao_rotulos.csv` atualizado.
+- GPT-6 Sol com `max_tokens=800` (Gemini 400); truncamento registrado por turno (`finish`): 0% em todos os modelos.
+- Estimativa refeita antes de rodar (`ESTIMATIVA_CUSTO.md`: central US$0,73 / pessimista US$1,68 < limite de US$6).
+- `harness/calibrate.py`: τ1/τ2 escolhidos no split calib e congelados em `config/thresholds.json` (τ1=0,9; τ2=0,5; τ2_up1=0,98).
+- Holdout com 6 estratégias (msd1, msd1-up1, always-cheap, always-media, always-expensive, oracle), juiz em todas as respostas, planilha cega de 40 itens.
+- Relatório: **`RESULTADOS.md`** (gerado por `.venv/bin/python -m harness.report runs/20261012-holdout-live runs/20261012-085619-calib-live`; precisa de `matplotlib` num venv: `python3 -m venv .venv && .venv/bin/pip install matplotlib`).

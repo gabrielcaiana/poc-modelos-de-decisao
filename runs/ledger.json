@@ -1,0 +1,11 @@
+{
+  "spent_usd": 0.29710383100000026,
+  "calls": 1144,
+  "by_model": {
+    "microsoft/microsoft-decision-1": 0.00330338400000001,
+    "google/gemini-3.5-flash-lite": 0.045361200000000004,
+    "google/gemini-2.5-flash-lite": 0.007209500000000002,
+    "openai/gpt-6-sol": 0.1999,
+    "deepseek/deepseek-v4.1-flash": 0.04132974700000001
+  }
+}

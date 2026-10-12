@@ -1,0 +1,442 @@
+{
+ "r000": {
+  "estrategia": "oracle",
+  "id": "m257",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e alinhada \u00e0 pol\u00edtica, solicita dado necess\u00e1rio e explica prazos sem prometer nada indevido; tom cordial e objetivo."
+  }
+ },
+ "r001": {
+  "estrategia": "always-cheap",
+  "id": "m261",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Pede o n\u00famero do pedido, necess\u00e1rio para gerar a etiqueta, sem prometer nada fora da pol\u00edtica e com tom cordial."
+  }
+ },
+ "r002": {
+  "estrategia": "msd1-up1",
+  "id": "m292",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Dados do pedido conferem com a ferramenta (status processando, boleto, itens). Atendente n\u00e3o promete nada fora da pol\u00edtica e mant\u00e9m tom cordial. Por\u00e9m, apenas pergunta a necessidade sem avan\u00e7ar na resolu\u00e7\u00e3o, o que \u00e9 aceit\u00e1vel como triagem, mas n\u00e3o resolve o objetivo ainda n\u00e3o especificado pelo cliente."
+  }
+ },
+ "r003": {
+  "estrategia": "always-media",
+  "id": "m260",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "N\u00e3o h\u00e1 na pol\u00edtica previs\u00e3o espec\u00edfica de reembolso de taxa de parcelamento; a resposta n\u00e3o confirma nem nega indevidamente, apenas solicita o n\u00famero do pedido para verificar corretamente, sem prometer nada fora da pol\u00edtica e com tom cordial e resolutivo dentro do poss\u00edvel."
+  }
+ },
+ "r004": {
+  "estrategia": "msd1-up1",
+  "id": "m244",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Pede o n\u00famero do pedido conforme ferramenta e informa prazos corretos da pol\u00edtica, sem prometer nada fora dela; tom cordial e objetivo."
+  }
+ },
+ "r005": {
+  "estrategia": "always-expensive",
+  "id": "m255",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "A resposta est\u00e1 alinhada \u00e0 pol\u00edtica (estorno em at\u00e9 2 faturas) e n\u00e3o promete prazos menores. Explica corretamente que n\u00e3o garante a parada imediata das parcelas e solicita o n\u00famero do pedido para verificar, encaminhando bem o objetivo do cliente."
+  }
+ },
+ "r006": {
+  "estrategia": "always-media",
+  "id": "m273",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e educada, sem prometer nada fora da pol\u00edtica, mas n\u00e3o resolve nem esclarece a possibilidade de reembolso em outra conta; apenas solicita o n\u00famero do pedido, o que \u00e9 adequado diante da falta de dados."
+  }
+ },
+ "r007": {
+  "estrategia": "msd1-up1",
+  "id": "m285",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "O atendente n\u00e3o inventou prazos e pediu o n\u00famero do pedido, conforme a ferramenta indica. Encaminha bem o objetivo, embora n\u00e3o tenha dado estimativa gen\u00e9rica. Tom cordial e sem promessas fora da pol\u00edtica."
+  }
+ },
+ "r008": {
+  "estrategia": "always-media",
+  "id": "m270",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e emp\u00e1tica; solicita o n\u00famero do pedido conforme a ferramenta, sem prometer prazos ou a\u00e7\u00f5es fora da pol\u00edtica. Encaminha o caso para bloqueio e an\u00e1lise, mas n\u00e3o detalha os pr\u00f3ximos passos de prote\u00e7\u00e3o da conta."
+  }
+ },
+ "r009": {
+  "estrategia": "always-media",
+  "id": "m258",
+  "nota_juiz": {
+   "correcao": 4,
+   "resolucao": 3,
+   "politica": 4,
+   "tom": 5,
+   "justificativa": "Fatos corretos (Pix, em tr\u00e2nsito, reembolso ap\u00f3s devolu\u00e7\u00e3o), mas o cliente fala em pedido cancelado e o atendente n\u00e3o esclarece a diverg\u00eancia de status nem confirma se h\u00e1 cancelamento; pede motivo sem explicar prazos de devolu\u00e7\u00e3o/arrependimento."
+  }
+ },
+ "r010": {
+  "estrategia": "oracle",
+  "id": "m295",
+  "nota_juiz": {
+   "correcao": 2,
+   "resolucao": 2,
+   "politica": 4,
+   "tom": 5,
+   "justificativa": "Atendente n\u00e3o respondeu \u00e0 pergunta sobre cadastro de endere\u00e7o; pediu n\u00famero do pedido desnecessariamente, sem resolver ou encaminhar o objetivo do cliente. Tom cordial e sem violar pol\u00edticas."
+  }
+ },
+ "r011": {
+  "estrategia": "msd1-up1",
+  "id": "m295",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 5,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e clara, orienta o cliente a cadastrar o endere\u00e7o na se\u00e7\u00e3o apropriada, sem prometer nada fora da pol\u00edtica e com tom cordial."
+  }
+ },
+ "r012": {
+  "estrategia": "always-expensive",
+  "id": "m272",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Atendente solicita dados essenciais (pedido e motivo) sem prometer prazos ou valores fora da pol\u00edtica; tom educado e correto, mas ainda n\u00e3o resolve o reembolso por falta de informa\u00e7\u00f5es."
+  }
+ },
+ "r013": {
+  "estrategia": "msd1",
+  "id": "m281",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e emp\u00e1tica; pede contexto e n\u00famero do pedido para encaminhar, sem prometer nada fora da pol\u00edtica."
+  }
+ },
+ "r014": {
+  "estrategia": "msd1",
+  "id": "m297",
+  "nota_juiz": {
+   "correcao": 4,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Dados do pedido corretos e prazos/pol\u00edtica respeitados; por\u00e9m n\u00e3o resolve diretamente a diverg\u00eancia de endere\u00e7o relatada, apenas pede mais informa\u00e7\u00f5es, sem encaminhar claramente a investiga\u00e7\u00e3o."
+  }
+ },
+ "r015": {
+  "estrategia": "msd1",
+  "id": "m245",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Status em tr\u00e2nsito confirmado pela ferramenta; orienta corretamente aguardar entrega e prazo de 7 dias, sem prometer nada fora da pol\u00edtica; tom cordial e claro."
+  }
+ },
+ "r016": {
+  "estrategia": "always-expensive",
+  "id": "m250",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta ao apontar diverg\u00eancia entre item informado e pedido; solicita confirma\u00e7\u00e3o antes de orientar, sem prometer nada fora da pol\u00edtica e com tom adequado."
+  }
+ },
+ "r017": {
+  "estrategia": "msd1",
+  "id": "m262",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e alinhada \u00e0 pol\u00edtica: identifica devolu\u00e7\u00e3o em andamento, prazos e garantia de eletr\u00f4nico, sem prometer nada indevido. Encaminha bem ao pedir motivo/defeito, mas n\u00e3o confirma explicitamente o cancelamento solicitado."
+  }
+ },
+ "r018": {
+  "estrategia": "always-media",
+  "id": "m245",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Fatos corretos: pedido em tr\u00e2nsito, sem entrega, prazo de 7 dias ap\u00f3s entrega. Encaminha corretamente orientando aguardar a entrega, mas n\u00e3o oferece alternativa imediata (ex.: recusa na entrega) nem registra solicita\u00e7\u00e3o; ainda assim resolve o objetivo dentro da pol\u00edtica. N\u00e3o promete nada fora da pol\u00edtica e tom \u00e9 cordial."
+  }
+ },
+ "r019": {
+  "estrategia": "oracle",
+  "id": "m265",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Atendente solicita o n\u00famero do pedido, sem afirmar fatos incorretos nem prometer nada fora da pol\u00edtica; tom cordial. Ainda n\u00e3o resolve nem orienta sobre a possibilidade de devolu\u00e7\u00e3o parcial, mas o pedido de dado \u00e9 necess\u00e1rio para prosseguir."
+  }
+ },
+ "r020": {
+  "estrategia": "always-expensive",
+  "id": "m268",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Dados batem com a ferramenta (em tr\u00e2nsito, duas cobran\u00e7as). Atendente identifica poss\u00edvel duplicidade e se oferece para verificar, sem prometer prazos ou valores fora da pol\u00edtica. Tom cordial e investigativo."
+  }
+ },
+ "r021": {
+  "estrategia": "always-media",
+  "id": "m242",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Atendente solicita dados necess\u00e1rios para verificar cobran\u00e7a duplicada, sem prometer prazos ou valores fora da pol\u00edtica; tom emp\u00e1tico e educado. Resolu\u00e7\u00e3o fica pendente de informa\u00e7\u00e3o do cliente, mas encaminha corretamente."
+  }
+ },
+ "r022": {
+  "estrategia": "oracle",
+  "id": "m275",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 5,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta conforme a pol\u00edtica (prazo conta da entrega), resolve a d\u00favida e solicita o n\u00famero do pedido para prosseguir, sem prometer nada fora da pol\u00edtica e com tom cordial."
+  }
+ },
+ "r023": {
+  "estrategia": "oracle",
+  "id": "m256",
+  "nota_juiz": {
+   "correcao": 4,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Atendente n\u00e3o confirmou que o acompanhamento \u00e9 poss\u00edvel pelo WhatsApp; apenas pediu o n\u00famero do pedido. Corre\u00e7\u00e3o parcial, pois n\u00e3o valida a via de comunica\u00e7\u00e3o pedida. Resolu\u00e7\u00e3o parcial: pede dado necess\u00e1rio, mas n\u00e3o responde diretamente se d\u00e1 para acompanhar pelo WhatsApp. N\u00e3o viola pol\u00edtica e tom \u00e9 adequado."
+  }
+ },
+ "r024": {
+  "estrategia": "msd1",
+  "id": "m275",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 5,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta conforme a pol\u00edtica (7 dias corridos a partir da entrega), resolve a d\u00favida do cliente e solicita o n\u00famero do pedido para prosseguir, sem prometer nada fora da pol\u00edtica e com tom cordial."
+  }
+ },
+ "r025": {
+  "estrategia": "oracle",
+  "id": "m260",
+  "nota_juiz": {
+   "correcao": 4,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "N\u00e3o h\u00e1 pol\u00edtica expl\u00edcita sobre taxa de parcelamento; o atendente n\u00e3o prometeu nada fora da pol\u00edtica, mas faltou orienta\u00e7\u00e3o m\u00ednima sobre o tema e apenas solicitou o n\u00famero do pedido, o que \u00e9 necess\u00e1rio, por\u00e9m n\u00e3o avan\u00e7a suficientemente na resolu\u00e7\u00e3o."
+  }
+ },
+ "r026": {
+  "estrategia": "oracle",
+  "id": "m287",
+  "nota_juiz": {
+   "correcao": 4,
+   "resolucao": 3,
+   "politica": 4,
+   "tom": 4,
+   "justificativa": "Identifica corretamente que o pedido est\u00e1 em processamento e n\u00e3o entregue, mas n\u00e3o aborda diretamente o cen\u00e1rio de item errado recebido; pede fotos e cita prazos de defeito, sem prometer nada fora da pol\u00edtica."
+  }
+ },
+ "r027": {
+  "estrategia": "msd1-up1",
+  "id": "m281",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Atendente n\u00e3o inventou fatos, pediu dados essenciais para prosseguir, n\u00e3o prometeu nada fora da pol\u00edtica e manteve tom emp\u00e1tico e profissional."
+  }
+ },
+ "r028": {
+  "estrategia": "always-cheap",
+  "id": "m275",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 5,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta: prazo de arrependimento conta da entrega, conforme pol\u00edtica. Resolve a d\u00favida e solicita n\u00famero do pedido para prosseguir, sem prometer nada fora da pol\u00edtica. Tom cordial e claro."
+  }
+ },
+ "r029": {
+  "estrategia": "always-media",
+  "id": "m297",
+  "nota_juiz": {
+   "correcao": 4,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Dados do pedido corretos e pol\u00edtica de reembolso Pix respeitada. N\u00e3o resolve a diverg\u00eancia de entrega, mas encaminha pedindo confirma\u00e7\u00e3o de endere\u00e7o/aviso da transportadora. Tom cordial e sem promessas indevidas."
+  }
+ },
+ "r030": {
+  "estrategia": "msd1",
+  "id": "m280",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 3,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e educada, alinhada \u00e0 pol\u00edtica, mas n\u00e3o resolve nem encaminha efetivamente o reembolso, apenas solicita confirma\u00e7\u00e3o de dados."
+  }
+ },
+ "r031": {
+  "estrategia": "always-cheap",
+  "id": "m286",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e educada; solicita CEP para verificar entrega, sem prometer nada fora da pol\u00edtica. Resolve parcialmente, pois depende do CEP para confirmar."
+  }
+ },
+ "r032": {
+  "estrategia": "always-media",
+  "id": "m251",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta ao apontar diverg\u00eancia de itens e status processando; solicita informa\u00e7\u00e3o necess\u00e1ria e explica pol\u00edtica de reembolso parcial e prazos sem prometer nada fora da pol\u00edtica."
+  }
+ },
+ "r033": {
+  "estrategia": "always-cheap",
+  "id": "m250",
+  "nota_juiz": {
+   "correcao": 2,
+   "resolucao": 2,
+   "politica": 2,
+   "tom": 4,
+   "justificativa": "Ferramenta mostra pedido 10408 com item 'T\u00eanis Corrida Leve', n\u00e3o camiseta; status devolu\u00e7\u00e3o em andamento e 31 dias desde entrega. Atendente ignora dados, pede foto sem base na pol\u00edtica (troca por tamanho incorreto n\u00e3o exige foto) e n\u00e3o informa prazo ou procedimento de troca."
+  }
+ },
+ "r034": {
+  "estrategia": "msd1-up1",
+  "id": "m298",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Informa corretamente a pol\u00edtica de arrependimento e a exce\u00e7\u00e3o para higiene pessoal aberta, al\u00e9m do prazo de defeito para eletr\u00f4nicos. Pede o n\u00famero do pedido para prosseguir, encaminhando bem a solicita\u00e7\u00e3o, embora n\u00e3o resolva de imediato por falta do dado."
+  }
+ },
+ "r035": {
+  "estrategia": "always-media",
+  "id": "m288",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Identificou corretamente a diverg\u00eancia entre o pedido informado (Mochila Urbana, em tr\u00e2nsito) e o produto reclamado (smartwatch), solicitando o n\u00famero correto. Citou a pol\u00edtica de defeito (30/90 dias, foto/laudo) sem prometer nada fora dela. Tom emp\u00e1tico e profissional. Resolu\u00e7\u00e3o adequada ao encaminhar para confirma\u00e7\u00e3o do pedido, embora n\u00e3o tenha resolvido de imediato por falta de dados."
+  }
+ },
+ "r036": {
+  "estrategia": "always-expensive",
+  "id": "m264",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta e aderente \u00e0 pol\u00edtica, sem promessas indevidas; reconhece limita\u00e7\u00e3o e solicita n\u00famero do pedido para encaminhar, mas n\u00e3o resolve diretamente a d\u00favida sobre cart\u00e3o cancelado."
+  }
+ },
+ "r037": {
+  "estrategia": "always-expensive",
+  "id": "m288",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Resposta correta ao apontar diverg\u00eancia entre item e status do pedido, solicita o n\u00famero correto para prosseguir com troca/devolu\u00e7\u00e3o por defeito, sem prometer nada fora da pol\u00edtica e com tom emp\u00e1tico e adequado."
+  }
+ },
+ "r038": {
+  "estrategia": "always-media",
+  "id": "m244",
+  "nota_juiz": {
+   "correcao": 5,
+   "resolucao": 4,
+   "politica": 5,
+   "tom": 5,
+   "justificativa": "Atendente solicita o n\u00famero do pedido, necess\u00e1rio para consulta, sem prometer prazos ou valores fora da pol\u00edtica; tom cordial e adequado."
+  }
+ },
+ "r039": {
+  "estrategia": "msd1",
+  "id": "m250",
+  "nota_juiz": {
+   "correcao": 2,
+   "resolucao": 2,
+   "politica": 2,
+   "tom": 4,
+   "justificativa": "Atendente confunde item (cliente fala camiseta, sistema mostra t\u00eanis) e trata como defeito/incorre\u00e7\u00e3o, mas o caso \u00e9 tamanho errado (arrependimento/troca), fora do prazo de 7 dias. Pede foto sem base na pol\u00edtica e promete avaliar exce\u00e7\u00e3o, o que n\u00e3o \u00e9 permitido."
+  }
+ }
+}

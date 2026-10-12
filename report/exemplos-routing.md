@@ -1,0 +1,62 @@
+# Exemplos reais de routing (holdout)
+
+- **ACERTO** `m240` “ond ta meu pedio 10442” → rótulo `suporte`, MSD1 `suporte` p=0.999 → `suporte`. probs: suporte=0.999, devolucao=0.000, financeiro=0.000, fora_de_escopo=0.000
+- **ACERTO** `m241` “pedido 10437 veio faltando a tampa do liquidificador, troca só a peça ou tudo?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, suporte=0.000, fora_de_escopo=0.000, financeiro=0.000
+- **ACERTO** `m242` “fui cobrado por um pedido que não fiz” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, fora_de_escopo=0.000, devolucao=0.000, suporte=0.000
+- **ERRO** `m243` “já devolvi 2 vezes produtos com defeito do mesmo pedido 10449 e quero cancelar tudo, é um desrespeito” → rótulo `devolucao`, MSD1 `suporte` p=0.962 → `suporte`. probs: suporte=0.962, devolucao=0.037, financeiro=0.001, fora_de_escopo=0.000
+- **ACERTO** `m244` “como consulto meu reembolso?” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, devolucao=0.000, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m245` “i want to return my order 10417, wrong color” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, financeiro=0.000, suporte=0.000
+- **ACERTO** `m246` “liquidificador fazendo barulho estranho, pedido 10443, ainda na garantia?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, suporte=0.001, financeiro=0.000, fora_de_escopo=0.000
+- **ACERTO** `m247` “tem como antecipar o reembolso?” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, devolucao=0.000, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m248` “o código de postagem da devolução expirou” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, financeiro=0.000, suporte=0.000
+- **ACERTO** `m249` “fui cobrado duas vezes no pedido 10405” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, devolucao=0.000, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m250` “veio a camiseta no tamanho P e eu pedi M, pedido 10408, como troco?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, financeiro=0.000, suporte=0.000
+- **ACERTO** `m251` “comprei 3 itens com cupom no pedido 10412, um veio com defeito e quero devolver só ele, quanto volta?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, financeiro=0.001, fora_de_escopo=0.000, suporte=0.000
+- **ACERTO** `m252` “vcs estornam o frete tbm?” → rótulo `financeiro`, MSD1 `financeiro` p=0.995 → `financeiro`. probs: financeiro=0.995, devolucao=0.003, suporte=0.001, fora_de_escopo=0.001
+- **ACERTO** `m253` “como declaro imposto de renda?” → rótulo `fora_de_escopo`, MSD1 `fora_de_escopo` p=1.000 → `fora_de_escopo`. probs: fora_de_escopo=1.000, suporte=0.000, devolucao=0.000, financeiro=0.000
+- **ACERTO** `m254` “como conecto o smartwatch no iphone?” → rótulo `suporte`, MSD1 `suporte` p=0.989 → `suporte`. probs: suporte=0.989, fora_de_escopo=0.011, devolucao=0.000, financeiro=0.000
+- **ACERTO** `m255` “parcelei em 10x e devolvi, as parcelas param?” → rótulo `financeiro`, MSD1 `financeiro` p=0.999 → `financeiro`. probs: financeiro=0.999, devolucao=0.001, suporte=0.000, fora_de_escopo=0.000
+- **ERRO** `m256` “posso acompanhar pelo whatsapp?” → rótulo `suporte`, MSD1 `fora_de_escopo` p=0.981 → `fora_de_escopo`. probs: fora_de_escopo=0.981, suporte=0.018, devolucao=0.000, financeiro=0.000
+- **CLARIFICAÇÃO** `m257` “devolve o dinheiro se eu devolver o fone?” → rótulo `devolucao`, MSD1 `devolucao` p=0.651 → `clarificar`. probs: devolucao=0.651, financeiro=0.349, fora_de_escopo=0.000, suporte=0.000
+- **ACERTO** `m258` “posso pedir reembolso do pedido cancelado 10435?” → rótulo `financeiro`, MSD1 `financeiro` p=0.997 → `financeiro`. probs: financeiro=0.997, suporte=0.003, devolucao=0.000, fora_de_escopo=0.000
+- **ACERTO** `m259` “devolução parcial de um kit, pode?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, financeiro=0.001, fora_de_escopo=0.000, suporte=0.000
+- **ACERTO** `m260` “vocês reembolsam taxa de parcelamento?” → rótulo `financeiro`, MSD1 `financeiro` p=0.999 → `financeiro`. probs: financeiro=0.999, fora_de_escopo=0.001, devolucao=0.000, suporte=0.000
+- **ACERTO** `m261` “como gero a etiqueta de devolução?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.001, financeiro=0.000, suporte=0.000
+- **ACERTO** `m262` “quero cancelar o pedido 10456, já foi enviado?” → rótulo `suporte`, MSD1 `suporte` p=1.000 → `suporte`. probs: suporte=1.000, devolucao=0.000, financeiro=0.000, fora_de_escopo=0.000
+- **ACERTO** `m263` “como peço segunda via do boleto?” → rótulo `financeiro`, MSD1 `financeiro` p=0.998 → `financeiro`. probs: financeiro=0.998, fora_de_escopo=0.001, suporte=0.001, devolucao=0.000
+- **ACERTO** `m264` “meu cartão foi cancelado, como recebo o estorno?” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, fora_de_escopo=0.000, devolucao=0.000, suporte=0.000
+- **ACERTO** `m265` “comprei dois tênis iguais sem querer, devolvo um?” → rótulo `devolucao`, MSD1 `devolucao` p=0.998 → `devolucao`. probs: devolucao=0.998, fora_de_escopo=0.001, suporte=0.001, financeiro=0.000
+- **ACERTO** `m266` “o reembolso caiu mas faltou o valor do frete” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, devolucao=0.000, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m267` “ajuda” → rótulo `clarificar`, MSD1 `suporte` p=0.592 → `clarificar`. probs: suporte=0.592, fora_de_escopo=0.407, financeiro=0.000, devolucao=0.000
+- **ACERTO** `m268` “o pedido 10444 tá estranho” → rótulo `clarificar`, MSD1 `suporte` p=1.000 → `suporte`. probs: suporte=1.000, devolucao=0.000, fora_de_escopo=0.000, financeiro=0.000
+- **ACERTO** `m269` “o reembolso do pedido 10410 ainda não caiu, já faz 10 dias” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, devolucao=0.000, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m270` “minha conta foi invadida e fizeram um pedido no meu nome” → rótulo `suporte`, MSD1 `suporte` p=0.990 → `suporte`. probs: suporte=0.990, fora_de_escopo=0.010, financeiro=0.000, devolucao=0.000
+- **ACERTO** `m271` “produto chegou molhado, pedido 10425” → rótulo `devolucao`, MSD1 `devolucao` p=0.953 → `devolucao`. probs: devolucao=0.953, suporte=0.047, fora_de_escopo=0.000, financeiro=0.000
+- **ACERTO** `m272` “quero meu dinheiro de volta” → rótulo `clarificar`, MSD1 `financeiro` p=0.992 → `financeiro`. probs: financeiro=0.992, devolucao=0.008, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m273` “posso receber o reembolso em outra conta?” → rótulo `financeiro`, MSD1 `financeiro` p=0.999 → `financeiro`. probs: financeiro=0.999, devolucao=0.000, fora_de_escopo=0.000, suporte=0.000
+- **ACERTO** `m274` “não quero mais” → rótulo `clarificar`, MSD1 `devolucao` p=0.749 → `clarificar`. probs: devolucao=0.749, suporte=0.243, fora_de_escopo=0.007, financeiro=0.001
+- **ACERTO** `m275` “prazo de devolução conta da compra ou da entrega?” → rótulo `devolucao`, MSD1 `devolucao` p=0.995 → `devolucao`. probs: devolucao=0.995, financeiro=0.004, suporte=0.001, fora_de_escopo=0.000
+- **ACERTO** `m276` “quero devolver o tênis do pedido 10411, não serviu” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, financeiro=0.000, suporte=0.000
+- **ACERTO** `m277` “tracking number for order 10454?” → rótulo `suporte`, MSD1 `suporte` p=0.999 → `suporte`. probs: suporte=0.999, devolucao=0.000, financeiro=0.000, fora_de_escopo=0.000
+- **ACERTO** `m278` “o boleto foi pago em duplicidade” → rótulo `financeiro`, MSD1 `financeiro` p=0.999 → `financeiro`. probs: financeiro=0.999, devolucao=0.000, suporte=0.000, fora_de_escopo=0.000
+- **CLARIFICAÇÃO** `m279` “o rastreio diz 'objeto aguardando retirada', onde retiro?” → rótulo `suporte`, MSD1 `devolucao` p=0.852 → `clarificar`. probs: devolucao=0.852, suporte=0.148, fora_de_escopo=0.000, financeiro=0.000
+- **ACERTO** `m280` “devolvi há 15 dias e nada de reembolso, pedido 10414” → rótulo `financeiro`, MSD1 `financeiro` p=0.999 → `financeiro`. probs: financeiro=0.999, devolucao=0.001, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m281` “vocês me devem” → rótulo `clarificar`, MSD1 `financeiro` p=0.992 → `financeiro`. probs: financeiro=0.992, fora_de_escopo=0.008, suporte=0.000, devolucao=0.000
+- **ACERTO** `m282` “dá pra agendar a entrega pra sábado?” → rótulo `suporte`, MSD1 `suporte` p=1.000 → `suporte`. probs: suporte=1.000, fora_de_escopo=0.000, financeiro=0.000, devolucao=0.000
+- **CLARIFICAÇÃO** `m283` “já mandei a devolução faz 10 dias, chegou aí?” → rótulo `devolucao`, MSD1 `devolucao` p=0.503 → `clarificar`. probs: devolucao=0.503, financeiro=0.444, suporte=0.053, fora_de_escopo=0.000
+- **ACERTO** `m284` “vocês vendem carros?” → rótulo `fora_de_escopo`, MSD1 `fora_de_escopo` p=1.000 → `fora_de_escopo`. probs: fora_de_escopo=1.000, devolucao=0.000, suporte=0.000, financeiro=0.000
+- **ACERTO** `m285` “quanto tempo demora a entrega pra Recife?” → rótulo `suporte`, MSD1 `suporte` p=1.000 → `suporte`. probs: suporte=1.000, fora_de_escopo=0.000, devolucao=0.000, financeiro=0.000
+- **ACERTO** `m286` “vocês entregam em zona rural?” → rótulo `suporte`, MSD1 `suporte` p=0.998 → `suporte`. probs: suporte=0.998, fora_de_escopo=0.002, devolucao=0.000, financeiro=0.000
+- **ACERTO** `m287` “chegou o produto de outra pessoa no pedido 10439” → rótulo `devolucao`, MSD1 `devolucao` p=0.994 → `devolucao`. probs: devolucao=0.994, suporte=0.006, fora_de_escopo=0.000, financeiro=0.000
+- **ACERTO** `m288` “o smartwatch parou de funcionar depois de 20 dias, pedido 10433” → rótulo `devolucao`, MSD1 `devolucao` p=0.998 → `devolucao`. probs: devolucao=0.998, suporte=0.002, financeiro=0.000, fora_de_escopo=0.000
+- **ACERTO** `m289` “recebi o pedido 10441 faz 8 dias e quero devolver por arrependimento, tem exceção?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, financeiro=0.000, suporte=0.000
+- **ACERTO** `m290` “o valor do reembolso tá errado” → rótulo `financeiro`, MSD1 `financeiro` p=1.000 → `financeiro`. probs: financeiro=1.000, devolucao=0.000, suporte=0.000, fora_de_escopo=0.000
+- **ACERTO** `m291` “como embalo o produto pra devolver?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, suporte=0.000, financeiro=0.000
+- **ACERTO** `m292` “preciso resolver o pedido 10425” → rótulo `clarificar`, MSD1 `suporte` p=0.999 → `suporte`. probs: suporte=0.999, devolucao=0.001, fora_de_escopo=0.000, financeiro=0.000
+- **ACERTO** `m293` “o produto quebrou na primeira semana, troca?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, financeiro=0.000, suporte=0.000
+- **ACERTO** `m294` “comprei de presente, a pessoa quer trocar sem me dizer o valor” → rótulo `devolucao`, MSD1 `devolucao` p=0.997 → `devolucao`. probs: devolucao=0.997, financeiro=0.002, fora_de_escopo=0.000, suporte=0.000
+- **ACERTO** `m295` “como cadastro um segundo endereço?” → rótulo `suporte`, MSD1 `suporte` p=0.998 → `suporte`. probs: suporte=0.998, fora_de_escopo=0.001, devolucao=0.000, financeiro=0.000
+- **ACERTO** `m296` “mudei de endereço, e o pedido 10404?” → rótulo `suporte`, MSD1 `suporte` p=1.000 → `suporte`. probs: suporte=1.000, financeiro=0.000, devolucao=0.000, fora_de_escopo=0.000
+- **ACERTO** `m297` “o pedido 10419 diz entregue em outra cidade” → rótulo `suporte`, MSD1 `suporte` p=1.000 → `suporte`. probs: suporte=1.000, devolucao=0.000, financeiro=0.000, fora_de_escopo=0.000
+- **ACERTO** `m298` “abri a escova elétrica e não gostei, devolvo?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.001, suporte=0.000, financeiro=0.000
+- **ACERTO** `m299` “me mandaram 2 unidades em vez de 1, devolvo a extra?” → rótulo `devolucao`, MSD1 `devolucao` p=0.999 → `devolucao`. probs: devolucao=0.999, fora_de_escopo=0.000, financeiro=0.000, suporte=0.000

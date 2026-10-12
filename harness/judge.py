@@ -21,7 +21,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(); ap.add_argument("run_dir")
     g = ap.add_mutually_exclusive_group(required=True); g.add_argument("--mock", action="store_true"); g.add_argument("--live", action="store_true")
     ap.add_argument("--amostra", type=int, default=40, help="itens por estratégia (mesmos ids em todas)")
-    ap.add_argument("--session-cap", type=float); ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--session-cap", type=float); ap.add_argument("--amostra-humana", type=int, default=40); ap.add_argument("--seed", type=int, default=1)
     a = ap.parse_args(argv)
     run = pathlib.Path(a.run_dir)
     turns = [json.loads(l) for l in (run / "turns.jsonl").read_text().splitlines() if l.strip()]
@@ -48,14 +48,14 @@ def main(argv=None):
     finally:
         outj.close()
     # planilha de revisão humana: estratégia oculta (cega), ordem aleatória
-    random.Random(a.seed).shuffle(rows)
+    random.Random(a.seed).shuffle(rows); rows = rows[:a.amostra_humana]
     with open(run / "revisao_humana_juiz.csv", "w", newline="") as f:
         w = csv.writer(f); w.writerow(["chave", "mensagem", "resposta", "nota_humana_correcao", "nota_humana_resolucao",
                                        "nota_humana_politica", "nota_humana_tom", "comentario"])
         key = {}
         for i, (t, rec) in enumerate(rows):
             k = f"r{i:03d}"; key[k] = {"estrategia": t["estrategia"], "id": t["id"]}
-            w.writerow([k, t["mensagem"], t["resposta"], "", "", "", "", ""])
+            w.writerow([k, t["mensagem"], t["resposta"], "", "", "", "", ""]); key[k]["nota_juiz"] = rec["nota"]
     (run / "revisao_humana_chave.json").write_text(json.dumps(key, indent=1))
     print(f"juiz: {len(rows)} avaliações, gasto sessão US${budget.session_spent:.6f}, ledger US${budget.spent:.6f}")
 

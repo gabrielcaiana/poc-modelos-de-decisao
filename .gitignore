@@ -1,9 +1,9 @@
 .env
 *.env
 !.env.example
-runs/*/
-runs/ledger.json
+runs/*-mock*/
+runs/dryrun*/
 __pycache__/
 *.pyc
 runs/ledger-mock.json
-!runs/smoke-20261012/
+.venv/

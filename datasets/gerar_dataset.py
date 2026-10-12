@@ -1,7 +1,8 @@
-"""Gera datasets/mensagens.jsonl (130 mensagens fictícias rotuladas, pt-BR).
+"""Gera datasets/mensagens.jsonl (~300 mensagens fictícias rotuladas, pt-BR).
 Rótulos: subagente (devolucao|suporte|financeiro|fora_de_escopo|clarificar) e tier_minimo (simples|media|complexa).
 Rótulos são PROVISÓRIOS (autor: bot) e precisam de revisão humana (ver report/revisao_rotulos.csv)."""
-import json, hashlib, random, pathlib
+import json, hashlib, random, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
 S, M, C = "simples", "media", "complexa"
 D = [  # devolucao
@@ -91,13 +92,14 @@ AMB = [  # ambíguas de propósito: label clarificar, com rótulos aceitos
 
 
 def build():
+    from extra_v2 import D2, U2, F2, FORA2, AMB2
     rows = []
-    for lab, lst in (("devolucao", D), ("suporte", U), ("financeiro", F)):
+    for lab, lst in (("devolucao", D + D2), ("suporte", U + U2), ("financeiro", F + F2)):
         for t, tier in lst:
             rows.append({"mensagem": t, "label": lab, "tier_minimo": tier, "ambigua": False})
-    for t in FORA:
+    for t in FORA + FORA2:
         rows.append({"mensagem": t, "label": "fora_de_escopo", "tier_minimo": None, "ambigua": False})
-    for t, ac in AMB:
+    for t, ac in AMB + AMB2:
         rows.append({"mensagem": t, "label": "clarificar", "aceitos": ac, "tier_minimo": None, "ambigua": True})
     rnd = random.Random(42); rnd.shuffle(rows)
     n = len(rows)

@@ -6,6 +6,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 MODELS = json.loads((ROOT / "config/models.json").read_text())
 TH = json.loads((ROOT / "config/thresholds.json").read_text())
 TIER_ORDER = ["simples", "media", "complexa"]
+MAX_TOKENS = {"simples": 400, "media": 400, "complexa": 800}  # v2: GPT-6 Sol 800 (raciocínio conta como saída)
 
 Q_SUBAGENTE = {"type": "choice", "instructions": "Qual subagente do atendimento pós-venda deve tratar a última mensagem do cliente?",
                "criteria": {
@@ -46,8 +47,9 @@ def camada1(client, state, tau1=None):
 
 
 def camada2(client, state, subagente, tau2=None, fallback=None):
-    tau2 = TH["tau2"] if tau2 is None else tau2
     fallback = fallback or TH["fallback_c2"]
+    if tau2 is None:
+        tau2 = TH.get("tau2_up1", TH["tau2"]) if fallback == "+1" else TH["tau2"]
     d = client.decide(MODELS["msd1"], {**state, "subagente": subagente}, {"complexidade": Q_COMPLEXIDADE})
     a = d["answers"]["complexidade"]
     probs = {TIER_ORDER[int(k)]: v for k, v in a["probabilities"].items()}
@@ -67,11 +69,11 @@ def gerar(client, subagente, tier, msg, historico=None):
     sys = f"{PROMPTS[subagente]} {REGRAS}\n\n{ctx}"
     msgs = [{"role": "system", "content": sys}] + [{"role": h["role"], "content": h["content"]} for h in (historico or [])]
     msgs.append({"role": "user", "content": msg})
-    return {**client.chat(MODELS["tiers"][tier], msgs), "contexto": ctx}
+    return {**client.chat(MODELS["tiers"][tier], msgs, max_tokens=MAX_TOKENS[tier]), "contexto": ctx}
 
 
 def turno(client, estrategia, item, cache_c1=None):
-    """Executa um turno. Estratégias: msd1, always-cheap, always-media, always-expensive, oracle.
+    """Executa um turno. Estratégias: msd1, msd1-up1 (fallback +1 tier), always-cheap, always-media, always-expensive, oracle.
     cache_c1 permite reaproveitar a decisão da Camada 1 entre estratégias (é idêntica nelas)."""
     st = state_of(item["mensagem"], item.get("historico"))
     decs = []
@@ -88,8 +90,8 @@ def turno(client, estrategia, item, cache_c1=None):
         return {"tipo": "clarificar", "subagente": sub, "tier": None, "resposta": CLARIFICACAO, "decisoes": decs, "geracao": None}
     if sub == "fora_de_escopo":
         return {"tipo": "fora_de_escopo", "subagente": sub, "tier": None, "resposta": FORA, "decisoes": decs, "geracao": None}
-    if estrategia == "msd1":
-        tier, d2 = camada2(client, st, sub); decs.append(d2)
+    if estrategia in ("msd1", "msd1-up1"):
+        tier, d2 = camada2(client, st, sub, fallback="+1" if estrategia == "msd1-up1" else None); decs.append(d2)
     elif estrategia == "always-cheap":
         tier = "simples"
     elif estrategia == "always-media":

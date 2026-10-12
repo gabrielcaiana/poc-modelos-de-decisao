@@ -61,7 +61,7 @@ class TestPipeline(unittest.TestCase):
 class TestDataset(unittest.TestCase):
     def test_dataset(self):
         rows = R.load_items()
-        self.assertTrue(100 <= len(rows) <= 150)
+        self.assertTrue(250 <= len(rows) <= 350)
         self.assertEqual(len({r["id"] for r in rows}), len(rows))
         for r in rows:
             self.assertIn(r["label"], {"devolucao", "suporte", "financeiro", "fora_de_escopo", "clarificar"})
