@@ -1,0 +1,6 @@
+{
+  "_nota": "Valores provisórios. Escolher no split de calibração e congelar ANTES do holdout.",
+  "tau1": 0.6,
+  "tau2": 0.5,
+  "fallback_c2": "complexa"
+}

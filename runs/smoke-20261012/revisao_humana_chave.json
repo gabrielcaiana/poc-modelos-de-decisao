@@ -1,0 +1,26 @@
+{
+ "r000": {
+  "estrategia": "always-cheap",
+  "id": "m000"
+ },
+ "r001": {
+  "estrategia": "always-cheap",
+  "id": "m008"
+ },
+ "r002": {
+  "estrategia": "always-expensive",
+  "id": "m008"
+ },
+ "r003": {
+  "estrategia": "msd1",
+  "id": "m000"
+ },
+ "r004": {
+  "estrategia": "always-expensive",
+  "id": "m000"
+ },
+ "r005": {
+  "estrategia": "msd1",
+  "id": "m008"
+ }
+}

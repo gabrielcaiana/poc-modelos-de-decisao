@@ -1,0 +1,4 @@
+{
+  "_nota": "Modelos de decisão não aparecem em /api/v1/models. Preço copiado da página https://openrouter.ai/microsoft/microsoft-decision-1 em 2026-10-12 (provedor Azure). O custo real de cada chamada vem de usage.cost na resposta.",
+  "microsoft/microsoft-decision-1": {"in": 4.2e-08, "out": 0.0}
+}

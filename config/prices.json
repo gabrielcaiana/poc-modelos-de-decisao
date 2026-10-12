@@ -1,0 +1,22 @@
+{
+  "_fonte": "https://openrouter.ai/api/v1/models",
+  "_data": "2026-10-12 08:46 -03",
+  "models": {
+    "openai/gpt-6-sol": {
+      "in": 2e-06,
+      "out": 1e-05
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "in": 1.5e-07,
+      "out": 6e-07
+    },
+    "google/gemini-3.5-flash-lite": {
+      "in": 3e-07,
+      "out": 2.5e-06
+    },
+    "google/gemini-2.5-flash-lite": {
+      "in": 1e-07,
+      "out": 4e-07
+    }
+  }
+}

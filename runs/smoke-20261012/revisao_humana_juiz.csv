@@ -1,0 +1,25 @@
+chave,mensagem,resposta,nota_humana_correcao,nota_humana_resolucao,nota_humana_politica,nota_humana_tom,comentario
+r000,"pedido 10415 veio com o item errado, quero devolver","Olá! Recebi sua solicitação sobre o pedido 10415.
+
+Para prosseguir com a devolução do item errado, por favor, me envie uma foto do produto recebido e, se possível, o número da nota fiscal. Assim, poderei analisar e te orientar sobre os próximos passos.",,,,,
+r001,"o valor do estorno veio menor do que paguei, pedido 10416","Olá! Verifiquei o pedido 10416 e o valor pago foi de R$ 59,90.
+
+A política da LojaExemplo prevê que, em caso de devolução parcial, o reembolso é proporcional ao valor pago pelo item, já descontado o cupom, se houver. Como não houve cupom neste pedido, o valor a ser estornado é o total pago.
+
+Para que eu possa analisar o seu caso com mais detalhes, por favor, me informe qual foi o valor que você esperava receber de estorno.",,,,,
+r002,"o valor do estorno veio menor do que paguei, pedido 10416","No pedido 10416, consta pagamento de **R$ 59,90 por boleto**, sem cupom. Não tenho aqui o valor do reembolso realizado, então ainda não consigo identificar a diferença.
+
+Você pode me informar quanto recebeu? Se tiver o comprovante do depósito, ele também ajuda a conferir.",,,,,
+r003,"pedido 10415 veio com o item errado, quero devolver","Olá! Sinto muito pelo envio do item errado no pedido 10415. 
+
+Como o seu pedido já está cancelado e passaram 14 dias da entrega, preciso verificar os detalhes para a devolução por defeito ou incorreção. Para prosseguirmos, você poderia me enviar uma foto do produto errado que recebeu? 
+
+Lembrando que nossa política para devolução por defeito ou incorreção é de até 30 dias (ou 90 dias para eletrônicos, como o Smartwatch Fit). Fico no aguardo da foto!",,,,,
+r004,"pedido 10415 veio com o item errado, quero devolver","Sinto muito pelo item errado. O pedido 10415 consta como cancelado, e a entrega foi há 14 dias. Você pode me dizer qual item esperava receber e qual veio no lugar?
+
+A política disponível prevê devolução por arrependimento em até 7 dias após a entrega, mas não traz uma regra específica para envio de item errado. Por isso, não consigo confirmar a devolução neste momento.",,,,,
+r005,"o valor do estorno veio menor do que paguei, pedido 10416","Olá! Verifiquei o seu pedido 10416, entregue há 31 dias. 
+
+Como o pagamento foi feito por boleto, o reembolso é realizado via depósito em até 5 dias úteis após a nossa recepção do item devolvido. O valor do reembolso parcial é proporcional ao preço pago pelo item, já descontado qualquer cupom utilizado.
+
+Para que eu possa verificar o motivo de divergência no valor, por gentileza, informe qual foi o valor que você recebeu e o valor que esperava. Fico à disposição para ajudar!",,,,,

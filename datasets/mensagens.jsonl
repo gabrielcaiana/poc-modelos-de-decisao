@@ -1,0 +1,130 @@
+{"mensagem": "pedido 10415 veio com o item errado, quero devolver", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m000", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "comprei uma caneca personalizada, posso devolver?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m001", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quando o estorno é processado depois que vocês recebem o item?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m002", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o notebook não liga desde que chegou, o que faço antes de devolver?", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m003", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "a caixa chegou amassada, aceito ou recuso?", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m004", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o estorno aparece em qual fatura?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m005", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "cadê meu pedido 10401?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m006", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "dá pra trocar por um modelo mais caro pagando a diferença?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m007", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o valor do estorno veio menor do que paguei, pedido 10416", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m008", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "recebi o pedido 10441 faz 8 dias e quero devolver por arrependimento, tem exceção?", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m009", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "meu pedido 10444 veio em 2 caixas e só chegou uma", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m010", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero a nota de estorno pra apresentar na empresa", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m011", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "estorno do pedido 10423 tá pendente, o banco disse que vocês não enviaram", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m012", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero devolver o pedido inteiro 10455 porque um item veio com defeito, o cupom volta?", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m013", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "comprei 2 pedidos 10456 e 10457, um chegou e outro sumiu, e o atendimento não responde", "label": "suporte", "tier_minimo": "complexa", "ambigua": false, "id": "m014", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "cobraram meu cartão antigo, não o novo", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m015", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "cobrança duplicada no cartão, preciso do estorno urgente", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m016", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "e o valor?", "label": "clarificar", "aceitos": ["financeiro"], "tier_minimo": null, "ambigua": true, "id": "m017", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "dá pra devolver kit de panelas usado uma vez que manchou?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m018", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "meu pedido 10439 foi pra endereço errado", "label": "suporte", "tier_minimo": "complexa", "ambigua": false, "id": "m019", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como atualizo meu CPF no cadastro?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m020", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "refund for order 10428 please, it's been 2 weeks", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m021", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o notebook do pedido 10404 esquenta muito, já passou 40 dias, ainda posso trocar?", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m022", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "recebi um produto que não comprei", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m023", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como faço pra devolver o pedido 10403?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m024", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o reembolso do pedido 10410 ainda não caiu, já faz 10 dias", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m025", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o boleto venceu, pago com juros ou gero outro?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m026", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como rastreio minha entrega?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m027", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "reembolso do pedido 10440 aprovado, quanto vou receber?", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m028", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "posso devolver se eu só abri a caixa?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m029", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "tenho um pedido em trânsito, posso recusar na entrega pra devolver?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m030", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quando cai meu reembolso?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m031", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "me estornaram mas cobraram de novo no mês seguinte, absurdo, pedido 10443", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m032", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o produto veio errado e me cobraram a mais", "label": "clarificar", "aceitos": ["devolucao", "financeiro"], "tier_minimo": null, "ambigua": true, "id": "m033", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "posso devolver só um item do pedido 10430?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m034", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "fui cobrado pelo frete mas era frete grátis", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m035", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "ond ta meu pedio 10442", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m036", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como uso o modo corrida no smartwatch fit?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m037", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como peço segunda via do boleto?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m038", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como configuro o liquidificador no modo pulsar?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m039", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "posso pedir reembolso do pedido cancelado 10435?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m040", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "posso devolver produto comprado na black friday?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m041", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "cobraram juros no parcelamento que era sem juros, pedido 10431", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m042", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o reembolso caiu mas faltou o valor do frete", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m043", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "meu pedido ainda tá processando, normal?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m044", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero meu dinheiro de volta", "label": "clarificar", "aceitos": ["financeiro", "devolucao"], "tier_minimo": null, "ambigua": true, "id": "m045", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como pareio o fone bluetooth X1 no celular?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m046", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "meu cartão foi cancelado, como recebo o estorno?", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m047", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "paguei o boleto e o pedido 10419 diz não pago", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m048", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero cancelar o pedido 10453 que ainda não saiu", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m049", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o smartwatch não sincroniza com o app", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m050", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "preciso resolver o pedido 10425", "label": "clarificar", "aceitos": ["suporte", "devolucao", "financeiro"], "tier_minimo": null, "ambigua": true, "id": "m051", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como gero a etiqueta de devolução?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m052", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "minha conta foi invadida e fizeram um pedido no meu nome", "label": "suporte", "tier_minimo": "complexa", "ambigua": false, "id": "m053", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "me conta uma piada", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m054", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quanto tempo depois da devolução vocês analisam o produto?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m055", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "comprei, devolvi metade, e agora a fatura mostra valor cheio, pedido 10438", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m056", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o entregador disse que entregou mas não recebi, pedido 10409", "label": "suporte", "tier_minimo": "complexa", "ambigua": false, "id": "m057", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "vocês entregam em zona rural?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m058", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero trocar", "label": "clarificar", "aceitos": ["devolucao"], "tier_minimo": null, "ambigua": true, "id": "m059", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "tem como antecipar o reembolso?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m060", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o pedido 10447 não tá certo", "label": "clarificar", "aceitos": ["suporte", "devolucao"], "tier_minimo": null, "ambigua": true, "id": "m061", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o app da loja fecha sozinho quando abro meus pedidos", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m062", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como cadastro um segundo endereço?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m063", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "fui cobrado duas vezes no pedido 10405", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m064", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "vcs cobram taxa pra reembolso?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m065", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quem ganhou o jogo ontem?", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m066", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "posso receber o reembolso em outra conta?", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m067", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "qro devolver o fone q veio, n gostei do som", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m068", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o tênis descolou a sola, pedido 10426, quero devolver e não quero outro", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m069", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "a entrega tá atrasada 5 dias, pedido 10436", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m070", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "qual o status do pedido 10414?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m071", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "tem como desfazer?", "label": "clarificar", "aceitos": ["devolucao", "financeiro", "suporte"], "tier_minimo": null, "ambigua": true, "id": "m072", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o liquidificador do pedido 10422 veio quebrado, quero trocar por outro", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m073", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "vcs estornam o frete tbm?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m074", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o smartwatch parou de funcionar depois de 20 dias, pedido 10433", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m075", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o fone só conecta de um lado", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m076", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "preciso da nota fiscal do pedido 10451", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m077", "split": "calib", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "onde eu deixo o pacote da devolução?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m078", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "mochila veio com zíper estragado", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m079", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "qual a previsão do tempo amanhã?", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m080", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como altero o endereço de entrega do pedido 10427?", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m081", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o pedido 10432 aparece cancelado mas eu não cancelei", "label": "suporte", "tier_minimo": "complexa", "ambigua": false, "id": "m082", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "abri a escova elétrica e não gostei, devolvo?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m083", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero falar com um humano", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m084", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "qual a capital da Austrália?", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m085", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "cancelei e ainda tá aparecendo", "label": "clarificar", "aceitos": ["financeiro", "suporte"], "tier_minimo": null, "ambigua": true, "id": "m086", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "estorno caiu em dobro, o que faço?", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m087", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "vocês contratam?", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m088", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "devolvi e vocês dizem que o produto chegou usado, mas eu nem tirei da caixa! quero solução", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m089", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "foram 3 cobranças do mesmo pedido 10434, vou no procon se não resolverem hoje", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m090", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "esqueci minha senha da conta", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m091", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "qual o melhor celular do mercado?", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m092", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "minha fatura veio com cobrança da loja depois do cancelamento", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m093", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "i want to return my order 10417, wrong color", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m094", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "qual o prazo pra devolver um produto?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m095", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "troquei o tamanho e o novo também não serviu, posso devolver agora pedido 10418?", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m096", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "escreve um poema pra minha namorada", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m097", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "pedido 10448 está em trânsito há 15 dias sem atualização, estou perdendo a paciência", "label": "suporte", "tier_minimo": "complexa", "ambigua": false, "id": "m098", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "isso é um absurdo, ninguém resolve", "label": "clarificar", "aceitos": ["suporte", "devolucao", "financeiro"], "tier_minimo": null, "ambigua": true, "id": "m099", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "dá pra agendar a entrega pra sábado?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m100", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "meu pedido deu problema", "label": "clarificar", "aceitos": ["suporte", "devolucao", "financeiro"], "tier_minimo": null, "ambigua": true, "id": "m101", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "parcelei em 10x e devolvi, as parcelas param?", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m102", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero reembolso parcial do pedido 10421, um item veio com defeito e usei cupom", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m103", "split": "valid", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quanto do cupom eu perco no reembolso?", "label": "financeiro", "tier_minimo": "media", "ambigua": false, "id": "m104", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "pedido 10437 veio faltando a tampa do liquidificador, troca só a peça ou tudo?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m105", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quanto tempo demora a entrega pra Recife?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m106", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "me ajuda com meu dever de matemática", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m107", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "apareceu uma cobrança da loja que eu não reconheço", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m108", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o rastreio diz 'objeto aguardando retirada', onde retiro?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m109", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "devolução do pedido 10450: a transportadora não veio buscar 2 vezes", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m110", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "já é a segunda troca do mesmo produto com defeito, pedido 10445, quero devolução total e estou indignado", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m111", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "como faço bolo de cenoura?", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m112", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "quero devolver o tênis do pedido 10411, não serviu", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m113", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o frete da devolução é por minha conta?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m114", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "where is my order 10446?", "label": "suporte", "tier_minimo": "simples", "ambigua": false, "id": "m115", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "paguei por pix, como recebo o reembolso?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m116", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "veio a camiseta no tamanho P e eu pedi M, pedido 10408, como troco?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m117", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "posso mudar o destinatário do pedido 10459?", "label": "suporte", "tier_minimo": "media", "ambigua": false, "id": "m118", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "vocês vendem carros?", "label": "fora_de_escopo", "tier_minimo": null, "ambigua": false, "id": "m119", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "não chegou e já paguei", "label": "clarificar", "aceitos": ["suporte", "financeiro"], "tier_minimo": null, "ambigua": true, "id": "m120", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "dá pra converter o reembolso em crédito na loja?", "label": "financeiro", "tier_minimo": "simples", "ambigua": false, "id": "m121", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "já mandei a devolução faz 10 dias, chegou aí?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m122", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "o pix do reembolso foi pra uma chave errada", "label": "financeiro", "tier_minimo": "complexa", "ambigua": false, "id": "m123", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "comprei 3 itens com cupom no pedido 10412, um veio com defeito e quero devolver só ele, quanto volta?", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m124", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "ajuda", "label": "clarificar", "aceitos": ["suporte", "devolucao", "financeiro"], "tier_minimo": null, "ambigua": true, "id": "m125", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "devolução por arrependimento vale pra compra na loja física?", "label": "devolucao", "tier_minimo": "simples", "ambigua": false, "id": "m126", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "pedido 10402 foi entregue no vizinho e ele não devolve, o que vocês fazem?", "label": "suporte", "tier_minimo": "complexa", "ambigua": false, "id": "m127", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "me arrependi da compra 10420, ainda dá tempo?", "label": "devolucao", "tier_minimo": "media", "ambigua": false, "id": "m128", "split": "holdout", "rotulo_autor": "bot-provisorio"}
+{"mensagem": "presente que recebi veio errado, não tenho nota, consigo trocar?", "label": "devolucao", "tier_minimo": "complexa", "ambigua": false, "id": "m129", "split": "holdout", "rotulo_autor": "bot-provisorio"}

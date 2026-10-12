@@ -1,0 +1,55 @@
+{
+  "inicio": "2026-10-12T08:45:22-0300",
+  "modo": "live",
+  "models": {
+    "_verificado_em": "2026-10-12 via https://openrouter.ai/api/v1/models",
+    "msd1": "microsoft/microsoft-decision-1",
+    "tiers": {
+      "simples": "google/gemini-2.5-flash-lite",
+      "media": "google/gemini-3.5-flash-lite",
+      "complexa": "openai/gpt-6-sol"
+    },
+    "judge": "deepseek/deepseek-v4.1-flash"
+  },
+  "thresholds": {
+    "_nota": "Valores provisórios. Escolher no split de calibração e congelar ANTES do holdout.",
+    "tau1": 0.6,
+    "tau2": 0.5,
+    "fallback_c2": "complexa"
+  },
+  "dataset_sha256": "e15f09744f541d1c36f087cb11325b4226403c9f1d2c801a5ac1bc44707183d3",
+  "n_itens": 4,
+  "estrategias": [
+    "msd1",
+    "always-cheap",
+    "always-expensive"
+  ],
+  "precos": {
+    "google/gemini-2.5-flash-lite": {
+      "in": 1e-07,
+      "out": 4e-07
+    },
+    "openai/gpt-6-sol": {
+      "in": 2e-06,
+      "out": 1e-05
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "in": 1.5e-07,
+      "out": 6e-07
+    },
+    "google/gemini-3.5-flash-lite": {
+      "in": 3e-07,
+      "out": 2.5e-06
+    },
+    "microsoft/microsoft-decision-1": {
+      "in": 4.2e-08,
+      "out": 0.0
+    }
+  },
+  "ledger_antes_usd": 0.0,
+  "origem": "box Linux (shared), America/Sao_Paulo",
+  "fim": "2026-10-12T08:45:46-0300",
+  "status": "ok",
+  "ledger_depois_usd": 0.01113207,
+  "gasto_sessao_usd": 0.01113207
+}
